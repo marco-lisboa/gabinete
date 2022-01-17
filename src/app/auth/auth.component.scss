@@ -1,6 +1,141 @@
+html {
+  background-color: #56baed;
+  @import url('https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap');
+}
+
+body {
+  font-family: 'Signika', sans-serif;
+  height: 100vh;
+}
+
+a {
+  color: #92badd;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block;
+  margin: 2.5rem 0.5rem 0.625rem 0.5rem;
+  color: #cccccc;
+}
+
+.entry {
+  font-size: 50px;
+}
+
+
 .login {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 1.25rem;
+  background-image: url(../../assets/images/login/foto-gabinete.png);
 }
+
+#formContent {
+  -webkit-border-radius: 0.625rem 0.625rem 0.625rem 0.625rem;
+  border-radius: 0.625rem 0.625rem 0.625rem 0.625rem;
+  background: #fff;
+  padding: 1.875rem;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  padding: 0rem;
+  box-shadow: 0 1.875rem 3.75rem 0 rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 1.875rem 3.75rem 0 rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+#formFooter {
+  background-color: #f6f6f6;
+  border-top: 1px  solid #dce8f1;
+  padding: 1.563rem;
+  text-align: center;
+  border-radius: 0 0 0.625rem 0.625rem;
+  -webkit-border-radius: 0 0 0.625rem 0.625rem;
+}
+
+h2.inactive {
+  color: #cccccc;
+}
+
+h2.active {
+  color: #0d0d0d;
+  border-bottom: 0.125rem solid #5fbae9;
+}
+
+
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #236DC5;
+  border: none;
+  color: white;
+  padding: 0.938rem 5rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  -webkit-border-radius: 0.313rem 0.313rem 0.313rem 0.313rem;
+  border-radius: 0.313rem 0.313rem 0.313rem 0.313rem;
+  margin: 0.313rem 1.25rem 2.5rem 1.25rem;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+  background-color: #39ace7;
+}
+
+input[type=button]:active, input[type=submit]:active, input[type=reset]:active {
+  -moz-transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -o-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+input[type=text] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 0.938rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  margin: 0.313rem;
+  width: 85%;
+  border: 0.125rem solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 0.313rem 0.313rem 0.313rem 0.313rem;
+  border-radius: 0.313rem 0.313rem 0.313rem 0.313rem;
+}
+
+input[type=text]:focus {
+  background-color:#fff;
+  border-bottom: 0.125rem solid #5fbae9;
+}
+
+input[type=text]:placeholder {
+  color: #ccc;
+}
+
+.Hover-sublinhado {
+  font-size: 16px;
+}
+
