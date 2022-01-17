@@ -1,4 +1,94 @@
+.container{
+    text-align: left;
+    width: 100%;
+    margin-left: -20px;
+}
+
+
 .iconeseg {
-  width: 12px;
-  height: 10px;
+    width: 24px;
+    height: 24px;
+}
+
+
+.profile {
+    margin: 20px 0;
+  }
+
+.profile-sidebar {
+    padding: 20px 0 10px 0;
+    background: #fff;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+  }
+
+.profile-userpic {
+  margin-left: 88px;
+}
+
+/* pra quando for uma foto 
+.profile-userpic img {
+  float: none;
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
+*/
+
+.profile-usertitle {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+.profile-usertitle-name {
+    color: #6A6A6A;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.profile-usermenu {
+    margin-top: 10px;
+}
+
+
+.profile-usermenu ul li:last-child {
+    border-bottom: none;
+}
+
+.profile-usermenu ul li a {
+   color: #6A6A6A;
+   font-size: 20px;
+   font-weight: 400;
+   text-decoration: none;
+   width: 242px;
+}
+
+
+.profile-usermenu ul li a:hover{
+  background-color: #fafcfd;
+  color: #5b9bd1;
+}
+
+.profile-usermenu ul li.active {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li.active a {
+  color: #5b9bd1;
+  background-color: #f6f9fb;
+  border-left: 2px solid #5b9bd1;
+  margin-left: -2px;
+}
+
+.profile-content {
+  padding: 20px;
+  background: #fff;
+  min-height: 460px;
 }
