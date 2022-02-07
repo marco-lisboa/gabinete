@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { AniversariosModule } from './aniversarios/aniversarios.module';
 
 
 
@@ -9,6 +10,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
   imports: [
     CommonModule,
     DashboardModule,
+    AniversariosModule
   ]
 })
 export class ModulosModule { }

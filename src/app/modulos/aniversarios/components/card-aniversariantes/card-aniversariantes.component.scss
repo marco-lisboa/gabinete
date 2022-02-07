@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
+
+* {
+  font-family: 'Raleway', sans-serif;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.card {
+    border: 0;
+    border-radius: 10px;
+    font-family: "Raleway", sans-serif;
+    top: 50px;
+}
+
+.nav-link.active {
+  border-radius: 10px;
+}
+
+.nav-pills {
+  font-size: 14px;
+  padding-top: 20px;
+} 
+
+.nav-link {
+color:  #1E2538;
+border-radius: 10px;
+}
+
+
+.txt1 {
+  display: block;
+}
+
+.txt2 {
+  display: block;
+}
+
+input[type=date] {
+  height: 36px;
+}
+
+input[type=text], input[type=date] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 0.938rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  margin: 0.313rem;
+  width: 85%;
+  border: 0.125rem solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 0.313rem 0.313rem 0.313rem 0.313rem;
+  border-radius: 0.313rem 0.313rem 0.313rem 0.313rem;
+}
+
+select {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 0.938rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  margin: 0.313rem;
+  width: 85%;
+  border: 0.125rem solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 0.313rem 0.313rem 0.313rem 0.313rem;
+  border-radius: 0.313rem 0.313rem 0.313rem 0.313rem;
+}
+
+input[type=text]:focus {
+  background-color:#fff;
+}
+
+input[type=text]::placeholder {
+  color: #B5B8C0;
+}
+
+label[for=Nome] {
+  font-size: 14px;
+  padding-top: 30px;
+  display: block;
+}
+
+label[for="Ate"] {
+  padding-left: 10px;
+}
+
+select {
+  color: #B5B8C0;
+  transition: color 0s 2147483647s;
+}
+
+select:hover,
+select:focus,
+select:active,
+select:focus {
+  color: #0d0d0d;
+  transition:0s;
+}
+
+select option {
+  color: #333;
+}
+
+option[value=""][disabled] {
+  display: none;
+}
+
+.nav-buttons {
+  padding-left: 5px;
+  padding-top: 30px;
+}
+
+.btn-primary {
+  font-size: 14px;
+  border-radius: 11px;
+  font-style: normal;
+  width: 140px;
+}
+
+.btn-primary i {
+  padding-left: 5px;
+}

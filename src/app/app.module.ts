@@ -9,6 +9,7 @@ import { AuthComponent } from './auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ContainerComponent } from './components/container/container.component';
 import { SharedModule } from './shared/shared.module';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     HttpClientModule,
     SharedModule,
+    TabsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
