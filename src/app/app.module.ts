@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ContainerComponent } from './components/container/container.component';
 import { SharedModule } from './shared/shared.module';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { CadastrosRoutingModule } from './modulos/cadastros/cadastros-routing.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     AppRoutingModule,
     HttpClientModule,
     SharedModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    CadastrosRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
