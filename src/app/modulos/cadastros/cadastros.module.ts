@@ -4,6 +4,7 @@ import { ContainerCadastrosComponent } from './container/container-cadastros/con
 import { CardMenuComponent } from './components/card-menu/card-menu.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CadastrosRoutingModule } from './cadastros-routing.module';
+import { BoxComponent } from './components/box/box.component';
 
 
 
@@ -11,12 +12,12 @@ import { CadastrosRoutingModule } from './cadastros-routing.module';
   declarations: [
     ContainerCadastrosComponent,
     CardMenuComponent,
-
+    BoxComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
-    CadastrosRoutingModule
+    CadastrosRoutingModule,
   ]
 })
 export class CadastrosModule { }

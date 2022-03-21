@@ -12,8 +12,9 @@ import { CardAniversariantesComponent } from './components/card-aniversariantes/
   declarations: [
     ContainerAniversariosComponent,
     CardMenuComponent,
-    CardAniversariantesComponent
-  ],
+    CardAniversariantesComponent,
+
+    ],
   imports: [
     CommonModule,
     SharedModule,
