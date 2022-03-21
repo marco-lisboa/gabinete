@@ -11,8 +11,7 @@ import { ContainerComponent } from './components/container/container.component';
 import { SharedModule } from './shared/shared.module';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CadastrosRoutingModule } from './modulos/cadastros/cadastros-routing.module';
-import { AssuntoRoutingModule } from './modulos/cadastros/moduloscad/assunto/assunto-routing.module';
-import { MouloscadRoutingModule } from './modulos/cadastros/moduloscad/mouloscad-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -28,9 +27,7 @@ import { MouloscadRoutingModule } from './modulos/cadastros/moduloscad/mouloscad
     HttpClientModule,
     SharedModule,
     TabsModule.forRoot(),
-    CadastrosRoutingModule,
-    AssuntoRoutingModule,
-    MouloscadRoutingModule
+    CadastrosRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
