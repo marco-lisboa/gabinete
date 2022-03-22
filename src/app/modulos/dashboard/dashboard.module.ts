@@ -4,7 +4,6 @@ import { ContainerDashboardComponent } from './container/container-dashboard/con
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CardAniversariantesComponent } from './components/card-aniversariantes/card-aniversariantes.component';
 import { CardTaskComponent } from './components/card-task/card-task.component';
-import { CardMenuComponent } from './components/card-menu/card-menu.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 
 
@@ -13,8 +12,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
   declarations: [
     ContainerDashboardComponent,
     CardAniversariantesComponent,
-    CardTaskComponent,
-    CardMenuComponent
+    CardTaskComponent
   ],
   imports: [
     CommonModule,

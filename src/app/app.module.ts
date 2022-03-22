@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CardMenuComponent } from './components/card-menu/card-menu.component';
 import { AuthComponent } from './auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ContainerComponent } from './components/container/container.component';
@@ -18,6 +19,7 @@ import { CadastrosRoutingModule } from './modulos/cadastros/cadastros-routing.mo
     AppComponent,
     SidebarComponent,
     NavbarComponent,
+    CardMenuComponent,
     AuthComponent,
     ContainerComponent
   ],

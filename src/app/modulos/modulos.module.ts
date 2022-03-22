@@ -6,6 +6,7 @@ import { CadastrosModule } from './cadastros/cadastros.module';
 
 
 
+
 @NgModule({
   declarations: [
 
@@ -14,7 +15,7 @@ import { CadastrosModule } from './cadastros/cadastros.module';
     CommonModule,
     DashboardModule,
     AniversariosModule,
-    CadastrosModule
+    CadastrosModule,
   ]
 })
 export class ModulosModule { }
