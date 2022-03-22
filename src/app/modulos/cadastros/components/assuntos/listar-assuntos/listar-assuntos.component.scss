@@ -1,23 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
 
 .card {
   border: 0;
   border-radius: 10px;
-  font-family: "Raleway", sans-serif;
+  font-family: "Roboto", sans-serif;
   margin-top: 30px;
   color: #1E2538;
 }
 
+h1 {
+  font-weight: bold;
+}
+
 .h3 {
   margin-left: 10px;
+  font-weight: bold;
 }
 
 .form-control {
-  margin-top: 30px;;
+  margin-top: 20px;
+  background-color: #F7F6F4;
 }
 
 .btn-primary {
-  margin-top: 32px;
+  margin-top: 22px;
   margin-left: 10px;
   font-style: normal;
 }
@@ -39,7 +44,7 @@
 
 .bi-pencil-square {
     position: relative;
-    left: 150px;
+    left: 152px;
 }
 
 .one {
