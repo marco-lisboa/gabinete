@@ -1,43 +1,41 @@
 <div class="card">
-    <div class="card-body">
-      <h1 class="mt-2">Cadastrar Assunto
-        <i class="bi bi-arrow-90deg-left float-end"></i>
-      </h1>
+  <div class="card-body">
+    <h1 class="mt-2">
+      Cadastrar Assunto
+      <i
+        type="button"
+        class="bi bi-arrow-90deg-left float-end"
+        routerLink="/modulos/cadastros"
+      ></i>
+    </h1>
 
-      <div class="pesquisa">
-      <input type="text" class="form-control pesquisa btn-lg w-25 p-3 col-md-5" placeholder="Novo Assunto"
-      aria-label="Novo Assunto" aria-describedby="basic-addon1">
-      <button class="btn btn-primary btn-lg ">Cadastrar</button>
+    <div class="pesquisa">
+      <input
+        type="text"
+        class="form-control pesquisa btn-lg w-25 p-3 col-md-5"
+        placeholder="Novo Assunto"
+        aria-label="Novo Assunto"
+        name="descricaoAssunto"
+        [(ngModel)]="descricao"
+        />
+      <button class="btn btn-primary btn-lg" (click)="cadastrarAssunto()">Cadastrar</button>
     </div>
-</div>
+  </div>
 
-<span class="h3 mt-5 mb-2">Assuntos Cadastrados</span>
+  <span class="h3 mt-5 mb-2">Assuntos Cadastrados</span>
 
-    <table class="table table-responsive w-50 p-3 m-lg-2">
-      <tbody>
-        <tr>
-          <td class="assunto">Assunto tal 1</td>
-          <td>
-            <button class="btn btn-sm p float-end bi-pencil-square one">
-          </button>
-          </td>
-          <td>
-            <button class="btn btn-sm p float-end bi-trash">
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td class="assunto">Assunto tal 2</td>
-          <td>
-            <button class="btn btn-sm p float-right bi-pencil-square">
-          </button>
-          </td>
-          <td>
-            <button class="btn btn-sm p float-end bi-trash">
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
+  <table class="table table-responsive w-50 p-3 m-lg-2">
+    <tbody>
+      <tr *ngFor="let assunt of listaAssuntos">
+        <td class="assunto">{{ assunt.descricao }}</td>
+        <td>
+          <button class="btn btn-sm p float-end bi-pencil-square one"></button>
+        </td>
+        <td>
+          <button class="btn btn-sm p float-end bi-trash"></button>
+        </td>
+      </tr>
+      <tr></tr>
+    </tbody>
+  </table>
 </div>

@@ -12,6 +12,7 @@ import { ContainerComponent } from './components/container/container.component';
 import { SharedModule } from './shared/shared.module';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CadastrosRoutingModule } from './modulos/cadastros/cadastros-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { CadastrosRoutingModule } from './modulos/cadastros/cadastros-routing.mo
     HttpClientModule,
     SharedModule,
     TabsModule.forRoot(),
-    CadastrosRoutingModule
+    CadastrosRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

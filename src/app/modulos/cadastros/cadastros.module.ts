@@ -5,6 +5,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CadastrosRoutingModule } from './cadastros-routing.module';
 import { BoxComponent } from './components/box/box.component';
 import { ListarAssuntosComponent } from './components/assuntos/listar-assuntos/listar-assuntos.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +20,8 @@ import { ListarAssuntosComponent } from './components/assuntos/listar-assuntos/l
   imports: [
     CommonModule,
     SharedModule,
-    CadastrosRoutingModule
+    CadastrosRoutingModule,
+    FormsModule
   ]
 })
 export class CadastrosModule { }
