@@ -6,6 +6,10 @@ import { CadastrosRoutingModule } from './cadastros-routing.module';
 import { BoxComponent } from './components/box/box.component';
 import { ListarAssuntosComponent } from './components/assuntos/listar-assuntos/listar-assuntos.component';
 import { FormsModule } from '@angular/forms';
+import { CategoriaComponent } from './components/categoria/categoria.component';
+import { ListarOrigemComponent } from './components/listar-origem/listar-origem.component';
+import { ListarAtuacaoComponent } from './components/listar-atuacao/listar-atuacao.component';
+import { ListarPrazoComponent } from './components/listar-prazo/listar-prazo.component';
 
 
 
@@ -15,7 +19,11 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     ContainerCadastrosComponent,
     BoxComponent,
-    ListarAssuntosComponent
+    ListarAssuntosComponent,
+    CategoriaComponent,
+    ListarOrigemComponent,
+    ListarAtuacaoComponent,
+    ListarPrazoComponent
   ],
   imports: [
     CommonModule,
