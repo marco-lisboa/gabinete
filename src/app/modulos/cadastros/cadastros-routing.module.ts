@@ -7,6 +7,8 @@ import { CategoriaComponent } from './components/categoria/categoria.component';
 import { ListarAtuacaoComponent } from './components/listar-atuacao/listar-atuacao.component';
 import { ListarOrigemComponent } from './components/listar-origem/listar-origem.component';
 import { ListarPrazoComponent } from './components/listar-prazo/listar-prazo.component';
+import { ListarTipoOcorrenciaComponent } from './components/listar-tipo-ocorrencia/listar-tipo-ocorrencia.component';
+import { ListarOrgaoComponent } from './components/listar-orgao/listar-orgao.component';
 
 
 const routes: Routes = [
@@ -33,7 +35,15 @@ const routes: Routes = [
   {
     path: 'cadastros/prazo',
     component: ListarPrazoComponent,
-  }
+  },
+  {
+    path: 'cadastros/tipo-ocorrencia',
+    component: ListarTipoOcorrenciaComponent,
+  },
+  {
+    path: 'cadastros/orgao',
+    component: ListarOrgaoComponent,
+  },
 ];
 
 @NgModule({

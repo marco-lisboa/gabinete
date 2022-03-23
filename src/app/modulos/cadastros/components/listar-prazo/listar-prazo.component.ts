@@ -7,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarPrazoComponent implements OnInit {
 
+  descricao: string;
+
+  listaPrazo: any[] = [
+    { id: 1, descricao: 'Prazo 1' },
+    { id: 2, descricao: 'Prazo 2' }
+];
+
   constructor() { }
 
   ngOnInit(): void {

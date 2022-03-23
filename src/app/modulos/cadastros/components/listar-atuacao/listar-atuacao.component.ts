@@ -7,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarAtuacaoComponent implements OnInit {
 
+  descricao: string;
+
+  listaAtuacao: any[] = [
+    { id: 1, descricao: 'Atuação 1' },
+    { id: 2, descricao: 'Atuação 2' }
+];
+
   constructor() { }
 
   ngOnInit(): void {

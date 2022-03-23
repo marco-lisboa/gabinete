@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-body">
     <h1 class="mt-2">
-      Cadastrar Atuação
+      Cadastrar órgão
       <i
         type="button"
         class="bi bi-arrow-90deg-left float-end"
@@ -13,21 +13,21 @@
       <input
         type="text"
         class="form-control pesquisa btn-lg w-25 p-3 col-md-5"
-        placeholder="Nova Atuação"
-        aria-label="Novo Assunto"
-        name="descricaoAtuacao"
+        placeholder="Novo órgão"
+        aria-label="Novo órgão"
+        name="descricaoPrazo"
         [(ngModel)]="descricao"
         />
       <button class="btn btn-primary btn-lg">Cadastrar</button>
     </div>
   </div>
 
-  <span class="h3 mt-5 mb-2">Atuações Cadastradas</span>
+  <span class="h3 mt-5 mb-2">Órgãos Cadastrados</span>
 
   <table class="table table-responsive w-50 p-3 m-lg-2">
     <tbody>
-      <tr *ngFor="let atuac of listaAtuacao ">
-        <td class="atuacao" > {{atuac.descricao}} </td>
+      <tr *ngFor="let orgao of listaOrgao">
+        <td class="orgao"> {{ orgao.descricao }} </td>
         <td>
           <button class="btn btn-sm p float-end bi-pencil-square one"></button>
         </td>
@@ -39,3 +39,4 @@
     </tbody>
   </table>
 </div>
+

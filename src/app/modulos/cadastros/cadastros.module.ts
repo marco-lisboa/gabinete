@@ -10,6 +10,8 @@ import { CategoriaComponent } from './components/categoria/categoria.component';
 import { ListarOrigemComponent } from './components/listar-origem/listar-origem.component';
 import { ListarAtuacaoComponent } from './components/listar-atuacao/listar-atuacao.component';
 import { ListarPrazoComponent } from './components/listar-prazo/listar-prazo.component';
+import { ListarTipoOcorrenciaComponent } from './components/listar-tipo-ocorrencia/listar-tipo-ocorrencia.component';
+import { ListarOrgaoComponent } from './components/listar-orgao/listar-orgao.component';
 
 
 
@@ -23,7 +25,9 @@ import { ListarPrazoComponent } from './components/listar-prazo/listar-prazo.com
     CategoriaComponent,
     ListarOrigemComponent,
     ListarAtuacaoComponent,
-    ListarPrazoComponent
+    ListarPrazoComponent,
+    ListarTipoOcorrenciaComponent,
+    ListarOrgaoComponent
   ],
   imports: [
     CommonModule,

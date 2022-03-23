@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-body">
     <h1 class="mt-2">
-      Cadastrar Assunto
+      Cadastrar Categoria
       <i
         type="button"
         class="bi bi-arrow-90deg-left float-end"
@@ -13,19 +13,21 @@
       <input
         type="text"
         class="form-control pesquisa btn-lg w-25 p-3 col-md-5"
-        placeholder="Novo Assunto"
+        placeholder="Nova Categoria"
         aria-label="Novo Assunto"
+        name="descricaoCategorias"
+        [(ngModel)]="descricao"
         />
       <button class="btn btn-primary btn-lg">Cadastrar</button>
     </div>
   </div>
 
-  <span class="h3 mt-5 mb-2">Assuntos Cadastrados</span>
+  <span class="h3 mt-5 mb-2">Categorias Cadastradas</span>
 
   <table class="table table-responsive w-50 p-3 m-lg-2">
     <tbody>
-      <tr>
-        <td class="assunto">Tal</td>
+      <tr *ngFor="let categ of listaCategorias">
+        <td class="categoria"> {{ categ.descricao }} </td>
         <td>
           <button class="btn btn-sm p float-end bi-pencil-square one"></button>
         </td>
