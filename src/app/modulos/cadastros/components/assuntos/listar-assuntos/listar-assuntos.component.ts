@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IAssunto } from './model/IAssunto.model';
+import { AssuntosService } from './services/assuntos.service';
 
 @Component({
   selector: 'app-listar-assuntos',
@@ -7,28 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarAssuntosComponent implements OnInit {
 
-  id: number;
-  descricao: string;
-  ativo: boolean;
+  listaAssuntos: IAssunto[] = [];
 
-  listaStrings: string[] = ['Assunto 1', 'Assunto 2', 'Assunto 3'];
-  listaId: number[] = [1, 2, 3];
-
-  listaAssuntos: any[] = [
-    { id: 1, descricao: 'Assunto 1', ativo: true},
-    { id: 2, descricao: 'Assunto 2'},
-    { id: 3, descricao: 'Assunto 3'}
-  ];
-
-  constructor() {}
+  constructor(private assuntosService: AssuntosService) {}
 
   ngOnInit(): void {
+    this.carregarAssuntos();
+  }
+
+  carregarAssuntos(): void {
+  this.assuntosService.buscarTodos().subscribe(retorno => {
+    this.listaAssuntos = retorno;
+  });
   }
 
   cadastrarAssunto(): void {
-    console.log('Descrição: ', this.descricao);
-    console.log('Id: ', this.id);
-    console.log('Ativo: ', this.ativo);
     alert('Cadastrado com sucesso!')
   }
 }
