@@ -15,4 +15,8 @@ export class AssuntosService {
   buscarTodos(): Observable<IAssunto[]> {
     return this.http.get<IAssunto[]>(this.URL);
   }
+
+  cadastrar(assunto: IAssunto): Observable<IAssunto> {
+    return this.http.post<IAssunto>(this.URL, assunto);
+  }
 }

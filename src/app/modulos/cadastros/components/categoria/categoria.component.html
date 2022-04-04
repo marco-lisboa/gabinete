@@ -12,7 +12,7 @@
     <div class="pesquisa">
       <input
         type="text"
-        class="form-control pesquisa btn-lg w-25 p-3 col-md-5"
+        class="form-control pesquisa btn-lg w-100 p-3 col-md-5"
         placeholder="Nova Categoria"
         aria-label="Novo Assunto"
         name="descricaoCategorias"
@@ -24,7 +24,7 @@
 
   <span class="h3 mt-5 mb-2">Categorias Cadastradas</span>
 
-  <table class="table table-responsive w-50 p-3 m-lg-2">
+  <table class="table table-responsive w-100 p-3 m-lg-2">
     <tbody>
       <tr *ngFor="let categ of listaCategorias">
         <td class="categoria"> {{ categ.descricao }} </td>

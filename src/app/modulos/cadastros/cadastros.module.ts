@@ -12,6 +12,7 @@ import { ListarAtuacaoComponent } from './components/listar-atuacao/listar-atuac
 import { ListarPrazoComponent } from './components/listar-prazo/listar-prazo.component';
 import { ListarTipoOcorrenciaComponent } from './components/listar-tipo-ocorrencia/listar-tipo-ocorrencia.component';
 import { ListarOrgaoComponent } from './components/listar-orgao/listar-orgao.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -33,7 +34,8 @@ import { ListarOrgaoComponent } from './components/listar-orgao/listar-orgao.com
     CommonModule,
     SharedModule,
     CadastrosRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ]
 })
 export class CadastrosModule { }

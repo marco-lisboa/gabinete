@@ -1,5 +1,5 @@
 export interface IAssunto {
-  ativo: boolean;
+  ativo?: boolean;
   descricao: string;
-  id: number;
+  id?: number;
 }

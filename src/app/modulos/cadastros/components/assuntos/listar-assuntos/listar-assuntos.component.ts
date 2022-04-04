@@ -1,4 +1,7 @@
+import { isNull, nullSafeIsEquivalent } from '@angular/compiler/src/output/output_ast';
+import { noUndefined } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
+import { empty, noop } from 'rxjs';
 import { IAssunto } from './model/IAssunto.model';
 import { AssuntosService } from './services/assuntos.service';
 
@@ -9,7 +12,12 @@ import { AssuntosService } from './services/assuntos.service';
 })
 export class ListarAssuntosComponent implements OnInit {
 
-  listaAssuntos: IAssunto[] = [];
+  listarAssuntos: IAssunto[] = [];
+
+  assunto: IAssunto = {
+    descricao: ''
+  }
+
 
   constructor(private assuntosService: AssuntosService) {}
 
@@ -19,11 +27,14 @@ export class ListarAssuntosComponent implements OnInit {
 
   carregarAssuntos(): void {
   this.assuntosService.buscarTodos().subscribe(retorno => {
-    this.listaAssuntos = retorno;
+    this.listarAssuntos = retorno;
   });
   }
 
   cadastrarAssunto(): void {
+    this.assuntosService.cadastrar(this.assunto).subscribe(retorno => {
+      this.assunto =  retorno;
+    })
     alert('Cadastrado com sucesso!')
   }
 }

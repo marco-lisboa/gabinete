@@ -12,7 +12,7 @@
     <div class="pesquisa">
       <input
         type="text"
-        class="form-control pesquisa btn-lg w-25 p-3 col-md-5"
+        class="form-control pesquisa btn-lg w-100 p-3 col-md-5"
         placeholder="Nova Atuação"
         aria-label="Novo Assunto"
         name="descricaoAtuacao"
@@ -24,7 +24,7 @@
 
   <span class="h3 mt-5 mb-2">Atuações Cadastradas</span>
 
-  <table class="table table-responsive w-50 p-3 m-lg-2">
+  <table class="table table-responsive w-100 p-3 m-lg-2">
     <tbody>
       <tr *ngFor="let atuac of listaAtuacao ">
         <td class="atuacao" > {{atuac.descricao}} </td>
