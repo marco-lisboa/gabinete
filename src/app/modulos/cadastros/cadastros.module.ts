@@ -13,6 +13,8 @@ import { ListarPrazoComponent } from './components/listar-prazo/listar-prazo.com
 import { ListarTipoOcorrenciaComponent } from './components/listar-tipo-ocorrencia/listar-tipo-ocorrencia.component';
 import { ListarOrgaoComponent } from './components/listar-orgao/listar-orgao.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AtualizarAssuntoComponent } from './components/assuntos/atualizar-assunto/atualizar-assunto.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 
@@ -28,14 +30,16 @@ import { HttpClientModule } from '@angular/common/http';
     ListarAtuacaoComponent,
     ListarPrazoComponent,
     ListarTipoOcorrenciaComponent,
-    ListarOrgaoComponent
+    ListarOrgaoComponent,
+    AtualizarAssuntoComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     CadastrosRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SweetAlert2Module.forRoot()
   ]
 })
 export class CadastrosModule { }

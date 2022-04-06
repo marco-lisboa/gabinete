@@ -13,6 +13,9 @@ import { SharedModule } from './shared/shared.module';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CadastrosRoutingModule } from './modulos/cadastros/cadastros-routing.module';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 @NgModule({
@@ -22,7 +25,7 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     CardMenuComponent,
     AuthComponent,
-    ContainerComponent
+    ContainerComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,10 @@ import { FormsModule } from '@angular/forms';
     SharedModule,
     TabsModule.forRoot(),
     CadastrosRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
+    SweetAlert2Module.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

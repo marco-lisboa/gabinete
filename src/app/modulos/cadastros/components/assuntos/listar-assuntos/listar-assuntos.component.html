@@ -14,7 +14,6 @@
         type="text"
         class="form-control pesquisa btn-lg w-100 p-3 col-md-5"
         placeholder="Novo Assunto"
-        aria-label="Novo Assunto"
         [(ngModel)]='assunto.descricao'
         />
       <button class="btn btn-primary btn-lg" (click)="cadastrarAssunto()">Cadastrar</button>
@@ -27,11 +26,26 @@
     <tbody>
       <tr *ngFor="let assunt of listarAssuntos">
         <td class="assunto"> {{ assunt.descricao }} </td>
-        <td>
-          <button class="btn btn-sm p float-end bi-pencil-square one"></button>
+        <td style="width: 26px;">
+          <button class="btn btn-sm p float-right bi-pencil-square"
+          routerLink="/modulos/cadastros/assuntos/editar/{{ assunt.id }}"></button>
         </td>
-        <td>
-          <button class="btn btn-sm p float-end bi-trash"></button>
+        <td style="width: 26px;">
+          <button class="btn btn-sm p float-end bi-trash"
+          [swal]= "{
+            title: 'ATENÇÃO !!',
+            text: 'Deseja realmente excluir o assunto: ' + assunt.descricao + '?',
+            showDenyButton: true,
+            denyButtonText: 'Não',
+            confirmButtonText: 'Sim, excluir',
+            icon: 'warning',
+            width: 425,
+            padding: 90,
+            customClass: 'swal2'
+          }"
+        (confirm)="deletar(assunt)"
+        >
+</button>
         </td>
       </tr>
       <tr></tr>

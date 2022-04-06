@@ -162,7 +162,7 @@
     "symbol-observable" "4.0.0"
     "uuid" "8.3.2"
 
-"@angular/common@^13.0.0", "@angular/common@^13.0.0 || ^14.0.0-0", "@angular/common@~13.1.0", "@angular/common@13.1.1":
+"@angular/common@^13.0.0", "@angular/common@^13.0.0 || ^14.0.0-0", "@angular/common@>=12.0.0", "@angular/common@>=12.0.0-0", "@angular/common@~13.1.0", "@angular/common@13.1.1":
   "integrity" "sha512-FQwRZ1XgTH2PbPjBmq2jAZzETVNX9yWQt21MuNGtokC7V4eS0NYlFIDbhy3UPWCzRgd3+P7P4+HdX15VxCjf9g=="
   "resolved" "https://registry.npmjs.org/@angular/common/-/common-13.1.1.tgz"
   "version" "13.1.1"
@@ -193,7 +193,7 @@
   dependencies:
     "tslib" "^2.3.0"
 
-"@angular/core@^13.0.0", "@angular/core@^13.0.0 || ^14.0.0-0", "@angular/core@~13.1.0", "@angular/core@13.1.1":
+"@angular/core@^13.0.0", "@angular/core@^13.0.0 || ^14.0.0-0", "@angular/core@>=12.0.0", "@angular/core@>=12.0.0-0", "@angular/core@~13.1.0", "@angular/core@13.1.1":
   "integrity" "sha512-oLGKgzUbHqte/q7EokOJWUiXAtBjwuZM6c9Or2a7WDJNeImQilxk5qy91RPSbP8FhOBysebqAayrfiCYexlShg=="
   "resolved" "https://registry.npmjs.org/@angular/core/-/core-13.1.1.tgz"
   "version" "13.1.1"
@@ -221,7 +221,7 @@
   dependencies:
     "tslib" "^2.3.0"
 
-"@angular/platform-browser@~13.1.0", "@angular/platform-browser@13.1.1":
+"@angular/platform-browser@>=12.0.0-0", "@angular/platform-browser@~13.1.0", "@angular/platform-browser@13.1.1":
   "integrity" "sha512-jk9MGwnaVc98wmw5dRBicduI/a8dHtUzaAi1dV003fUWldS9a5FBuj/ym7DJubaD5Njl8l79SFbjrP9aAsqM5A=="
   "resolved" "https://registry.npmjs.org/@angular/platform-browser/-/platform-browser-13.1.1.tgz"
   "version" "13.1.1"
@@ -1298,6 +1298,13 @@
     "@angular-devkit/core" "13.1.2"
     "@angular-devkit/schematics" "13.1.2"
     "jsonc-parser" "3.0.0"
+
+"@sweetalert2/ngx-sweetalert2@^11.0.0":
+  "integrity" "sha512-xbote4s9dkwzyXb+ymhbh0FnT5GtUtk5poEWJzkaRVt+4Nuwyv+E3OgthdcH79l1QwWYWkob8cxMbL31ub5Wcw=="
+  "resolved" "https://registry.npmjs.org/@sweetalert2/ngx-sweetalert2/-/ngx-sweetalert2-11.0.0.tgz"
+  "version" "11.0.0"
+  dependencies:
+    "tslib" "^2.0.0"
 
 "@tootallnate/once@1":
   "integrity" "sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw=="
@@ -4134,6 +4141,13 @@
   dependencies:
     "tslib" "^2.0.0"
 
+"ngx-toastr@^14.2.3":
+  "integrity" "sha512-vFQqDikI6elnNq2b0LJzMUFlKcHTQsgjk8ImibHbr2jvSHdSS7oCWaDoxwFcqDCqyFIt3+qYKy8K3aY47kaZRA=="
+  "resolved" "https://registry.npmjs.org/ngx-toastr/-/ngx-toastr-14.2.3.tgz"
+  "version" "14.2.3"
+  dependencies:
+    "tslib" "^2.3.0"
+
 "node-forge@^0.10.0":
   "integrity" "sha512-PPmu8eEeG9saEUvI97fm4OYxXVB6bFvyNTyiUOBichBpFG8A1Ljw3bY62+5oOjDEMHRnd0Y7HQ+x7uzxOzC6JA=="
   "resolved" "https://registry.npmjs.org/node-forge/-/node-forge-0.10.0.tgz"
@@ -5760,6 +5774,11 @@
   "version" "8.1.1"
   dependencies:
     "has-flag" "^4.0.0"
+
+"sweetalert2@^11.0.0", "sweetalert2@^11.4.8":
+  "integrity" "sha512-BDS/+E8RwaekGSxCPUbPnsRAyQ439gtXkTF/s98vY2l9DaVEOMjGj1FaQSorfGREKsbbxGSP7UXboibL5vgTMA=="
+  "resolved" "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.4.8.tgz"
+  "version" "11.4.8"
 
 "symbol-observable@4.0.0":
   "integrity" "sha512-b19dMThMV4HVFynSAM1++gBHAbk2Tc/osgLIBZMKsyqh34jb2e8Os7T6ZW/Bt3pJFdBTd2JwAnAAEQV7rSNvcQ=="

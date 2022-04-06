@@ -1,7 +1,5 @@
-import { isNull, nullSafeIsEquivalent } from '@angular/compiler/src/output/output_ast';
-import { noUndefined } from '@angular/compiler/src/util';
-import { Component, OnInit } from '@angular/core';
-import { empty, noop } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IAssunto } from './model/IAssunto.model';
 import { AssuntosService } from './services/assuntos.service';
 
@@ -18,8 +16,7 @@ export class ListarAssuntosComponent implements OnInit {
     descricao: ''
   }
 
-
-  constructor(private assuntosService: AssuntosService) {}
+  constructor(private assuntosService: AssuntosService, private router: Router) {}
 
   ngOnInit(): void {
     this.carregarAssuntos();
@@ -34,7 +31,14 @@ export class ListarAssuntosComponent implements OnInit {
   cadastrarAssunto(): void {
     this.assuntosService.cadastrar(this.assunto).subscribe(retorno => {
       this.assunto =  retorno;
-    })
-    alert('Cadastrado com sucesso!')
+     this.carregarAssuntos();
+     this.assunto.descricao = '';
+    });
+  }
+
+  deletar(assunto: IAssunto): void {
+    this.assuntosService.excluir(assunto.id).subscribe(() => {
+      this.carregarAssuntos();
+    });
   }
 }

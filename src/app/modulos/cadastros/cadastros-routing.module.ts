@@ -9,6 +9,7 @@ import { ListarOrigemComponent } from './components/listar-origem/listar-origem.
 import { ListarPrazoComponent } from './components/listar-prazo/listar-prazo.component';
 import { ListarTipoOcorrenciaComponent } from './components/listar-tipo-ocorrencia/listar-tipo-ocorrencia.component';
 import { ListarOrgaoComponent } from './components/listar-orgao/listar-orgao.component';
+import { AtualizarAssuntoComponent } from './components/assuntos/atualizar-assunto/atualizar-assunto.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'cadastros/assuntos',
     component: ListarAssuntosComponent,
+  },
+  {
+    path: 'cadastros/assuntos/editar/:id',
+    component: AtualizarAssuntoComponent,
   },
   {
     path: 'cadastros/categoria',
