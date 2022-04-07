@@ -1,0 +1,12 @@
+	 [swal]=
+          "{
+            icon: 'warning',
+            title: 'ATENÇÃO !!!',
+            text: 'Deseja realmente excluir o assunto: ' + assunt.descricao + '?',
+            showDenyButton: true,
+            denyButtonText: 'Não',
+            confirmButtonText: 'Sim, excluir',
+            width: 425,
+            customClass: 'sweet-alert'
+          }"
+        (confirm)="deletar(assunt)"

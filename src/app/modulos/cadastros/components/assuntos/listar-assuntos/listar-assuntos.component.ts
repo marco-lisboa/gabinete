@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { IAssunto } from './model/IAssunto.model';
 import { AssuntosService } from './services/assuntos.service';
 
+
 @Component({
   selector: 'app-listar-assuntos',
   templateUrl: './listar-assuntos.component.html',

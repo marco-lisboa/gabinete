@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EMPTY, Observable } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { IAssunto } from '../model/IAssunto.model';
 import { ToastrService } from 'ngx-toastr';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,19 +16,11 @@ export class AssuntosService {
 
   constructor(private http: HttpClient, private toastr: ToastrService) { }
 
-  exibirMensagem(titulo:string, mensagem:string, tipo: string): void {
-    this.toastr.show(mensagem, titulo, {closeButton: true, progressBar: true}, tipo)
-  }
 
-  exibirErro(e: any): Observable<any> {
-  this.exibirMensagem('ERRO!!!', 'Não foi possível realizar a operação!', 'toastr-error');
-  return EMPTY;
-  }
 
-  buscarTodos(): Observable<IAssunto[]> {
+   buscarTodos(): Observable<IAssunto[]> {
     return this.http.get<IAssunto[]>(this.URL).pipe(
-      map(retorno => retorno),
-      catchError(erro => this.exibirErro(erro))
+      map(retorno => retorno)
     );
   }
 
@@ -37,8 +30,7 @@ export class AssuntosService {
 
   cadastrar(assunto: IAssunto): Observable<IAssunto> {
     return this.http.post<IAssunto>(this.URL, assunto).pipe(
-      map(retorno => retorno),
-      catchError(erro => this.exibirErro(erro))
+      map(retorno => retorno)
     );
   }
 

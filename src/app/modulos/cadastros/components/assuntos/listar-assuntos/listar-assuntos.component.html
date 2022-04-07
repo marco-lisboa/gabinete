@@ -32,19 +32,18 @@
         </td>
         <td style="width: 26px;">
           <button class="btn btn-sm p float-end bi-trash"
-          [swal]= "{
-            title: 'ATENÇÃO !!',
+          [swal]=
+          "{
+            icon: 'warning',
+            title: 'ATENÇÃO !!!',
             text: 'Deseja realmente excluir o assunto: ' + assunt.descricao + '?',
             showDenyButton: true,
             denyButtonText: 'Não',
             confirmButtonText: 'Sim, excluir',
-            icon: 'warning',
-            width: 425,
-            padding: 90,
-            customClass: 'swal2'
+            confirmButtonColor: '#3085d6',
+            customClass: 'tamanho'
           }"
-        (confirm)="deletar(assunt)"
-        >
+        (confirm)="deletar(assunt)">
 </button>
         </td>
       </tr>
