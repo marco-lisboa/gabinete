@@ -10,6 +10,7 @@ import { ListarPrazoComponent } from './components/listar-prazo/listar-prazo.com
 import { ListarTipoOcorrenciaComponent } from './components/listar-tipo-ocorrencia/listar-tipo-ocorrencia.component';
 import { ListarOrgaoComponent } from './components/listar-orgao/listar-orgao.component';
 import { AtualizarAssuntoComponent } from './components/assuntos/atualizar-assunto/atualizar-assunto.component';
+import { AtualizarCategoriaComponent } from './components/categoria/atualizar-categoria/atualizar-categoria.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'cadastros/categoria',
     component: CategoriaComponent,
+  },
+  {
+    path: 'cadastros/categoria/editar/:id',
+    component: AtualizarCategoriaComponent,
   },
   {
     path: 'cadastros/atuacao',

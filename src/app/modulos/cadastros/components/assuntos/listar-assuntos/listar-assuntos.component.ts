@@ -14,7 +14,7 @@ export class ListarAssuntosComponent implements OnInit {
   listarAssuntos: IAssunto[] = [];
 
   assunto: IAssunto = {
-    descricao: ''
+    descricao: '',
   }
 
   constructor(private assuntosService: AssuntosService, private router: Router) {}
@@ -32,7 +32,6 @@ export class ListarAssuntosComponent implements OnInit {
   cadastrarAssunto(): void {
     this.assuntosService.cadastrar(this.assunto).subscribe(retorno => {
       this.assunto =  retorno;
-      this.assunto.ativo = true;
      this.carregarAssuntos();
      this.assunto.descricao = '';
     });

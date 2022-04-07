@@ -16,9 +16,17 @@
         placeholder="Nova Categoria"
         aria-label="Novo Assunto"
         name="descricaoCategorias"
-        [(ngModel)]="descricao"
+        [(ngModel)]="categoria.descricao"
         />
-      <button class="btn btn-primary btn-lg">Cadastrar</button>
+      <button class="btn btn-primary btn-lg" (click)="cadastrarCategoria()"
+      [swal]="{
+        icon: 'success',
+        title: 'Cadastrado com sucesso!',
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true
+      }">Cadastrar</button>
     </div>
   </div>
 
@@ -26,13 +34,25 @@
 
   <table class="table table-responsive w-100 p-3 m-lg-2">
     <tbody>
-      <tr *ngFor="let categ of listaCategorias">
+      <tr *ngFor="let categ of listarCategorias">
         <td class="categoria"> {{ categ.descricao }} </td>
-        <td>
-          <button class="btn btn-sm p float-end bi-pencil-square one"></button>
+        <td style="width: 26px;">
+          <button class="btn btn-sm p float-end bi-pencil-square"
+          routerLink="/modulos/cadastros/categoria/editar/{{ categ.id }}"></button>
         </td>
-        <td>
-          <button class="btn btn-sm p float-end bi-trash"></button>
+        <td style="width: 26px;">
+          <button class="btn btn-sm p float-end bi-trash"
+          [swal]=
+          "{
+            icon: 'warning',
+            title: 'DESEJA REALMENTE EXCLUIR?',
+            showDenyButton: true,
+            denyButtonText: 'Não',
+            confirmButtonText: 'Sim, excluir',
+            confirmButtonColor: '#3085d6'
+          }"
+          (confirm)="deletar(categ)">
+        </button>
         </td>
       </tr>
       <tr></tr>

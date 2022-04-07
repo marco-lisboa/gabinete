@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ICategoria } from './model/ICategoria.model';
+import { CategoriaService } from './services/categoria.service';
+
 
 @Component({
   selector: 'app-categoria',
@@ -7,14 +10,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriaComponent implements OnInit {
 
-  descricao: string;
+  listarCategorias: ICategoria[] = [];
 
-  listaCategorias: any[] = [
-    { id: 1, descricao: 'Categoria 1' },
-    { id: 2, descricao: 'Categoria 2' }
-];
+  categoria: ICategoria = {
+    descricao: ''
+  }
 
-  constructor() {}
+  constructor(private categoriaService: CategoriaService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.carregarCategorias();
+  }
+
+  carregarCategorias(): void {
+    this.categoriaService.buscarTodos().subscribe(retorno => {
+      this.listarCategorias = retorno;
+    });
+    }
+
+  cadastrarCategoria(): void {
+    this.categoriaService.cadastrar(this.categoria).subscribe(retorno => {
+    this.categoria =  retorno;
+    this.carregarCategorias();
+    this.categoria.descricao = '';
+    });
+  }
+
+  deletar(categoria: ICategoria): void {
+    this.categoriaService.excluir(categoria.id).subscribe(() => {
+      this.carregarCategorias();
+    });
+  }
 }
