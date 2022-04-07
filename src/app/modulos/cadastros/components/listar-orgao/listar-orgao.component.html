@@ -12,7 +12,7 @@
     <div class="pesquisa">
       <input
         type="text"
-        class="form-control pesquisa btn-lg w-25 p-3 col-md-5"
+        class="form-control pesquisa btn-lg w-100 p-3 col-md-5"
         placeholder="Novo órgão"
         aria-label="Novo órgão"
         name="descricaoOrgao"
@@ -24,14 +24,14 @@
 
   <span class="h3 mt-5 mb-2">Órgãos Cadastrados</span>
 
-  <table class="table table-responsive w-50 p-3 m-lg-2">
+  <table class="table table-responsive w-100 p-3 m-lg-2">
     <tbody>
       <tr *ngFor="let orgao of listaOrgao">
         <td class="orgao"> {{ orgao.descricao }} </td>
-        <td>
-          <button class="btn btn-sm p float-end bi-pencil-square one"></button>
+        <td style="width: 26px;">
+          <button class="btn btn-sm p float-end bi-pencil-square"></button>
         </td>
-        <td>
+        <td style="width: 26px;">
           <button class="btn btn-sm p float-end bi-trash"></button>
         </td>
       </tr>
