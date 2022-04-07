@@ -17,7 +17,16 @@
         aria-label="Novo Assunto"
         [(ngModel)]='assunto.descricao'
         />
-      <button class="btn btn-primary btn-lg" (click)="cadastrarAssunto()">Salvar</button>
+      <button class="btn btn-primary btn-lg" (click)="cadastrarAssunto()"
+      [swal]="{
+        icon: 'success',
+        title: 'Editado com sucesso!',
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true
+      }"
+      >Salvar</button>
     </div>
   </div>
 </div>

@@ -14,6 +14,9 @@ export class AtualizarAssuntoComponent implements OnInit {
     descricao: ''
   }
 
+
+
+
   constructor(private assuntosService: AssuntosService,
     private router: Router,
     private ActivatedRouter: ActivatedRoute) { }
