@@ -16,7 +16,15 @@
         placeholder="Novo Assunto"
         [(ngModel)]='assunto.descricao'
         />
-      <button class="btn btn-primary btn-lg" (click)="cadastrarAssunto()">Cadastrar</button>
+      <button class="btn btn-primary btn-lg" (click)="cadastrarAssunto()"
+      [swal]="{
+        icon: 'success',
+        title: 'Cadastrado com sucesso!',
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true
+      }">Cadastrar</button>
     </div>
   </div>
 
