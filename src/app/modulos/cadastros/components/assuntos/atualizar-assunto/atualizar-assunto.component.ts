@@ -28,7 +28,7 @@ export class AtualizarAssuntoComponent implements OnInit {
     });
   }
 
-  cadastrarAssunto(): void {
+  editarAssunto(): void {
     this.assuntosService.editar(this.assunto).subscribe(retorno => {
       this.assunto =  retorno;
     this.router.navigate(['/modulos/cadastros/assuntos']);
