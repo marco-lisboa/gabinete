@@ -17,6 +17,7 @@ import { AtualizarAssuntoComponent } from './components/assuntos/atualizar-assun
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { AtualizarCategoriaComponent } from './components/categoria/atualizar-categoria/atualizar-categoria.component';
 import { AtualizarOrigemComponent } from './components/listar-origem/atualizar-origem/atualizar-origem.component';
+import { AtualizarTipoOcorrenciaComponent } from './components/listar-tipo-ocorrencia/atualizar-tipo-ocorrencia/atualizar-tipo-ocorrencia.component';
 
 
 
@@ -36,7 +37,8 @@ import { AtualizarOrigemComponent } from './components/listar-origem/atualizar-o
     ListarOrgaoComponent,
     AtualizarAssuntoComponent,
     AtualizarCategoriaComponent,
-    AtualizarOrigemComponent
+    AtualizarOrigemComponent,
+    AtualizarTipoOcorrenciaComponent
   ],
   imports: [
     CommonModule,

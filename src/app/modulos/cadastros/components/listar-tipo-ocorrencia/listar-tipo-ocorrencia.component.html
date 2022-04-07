@@ -12,26 +12,35 @@
     <div class="pesquisa">
       <input
         type="text"
-        class="form-control pesquisa btn-lg w-25 p-3 col-md-5"
-        placeholder="Novo tipo de Ocorrência"
-        aria-label="Novo Assunto"
+        class="form-control pesquisa btn-lg w-100 p-3 col-md-5"
+        placeholder="Novo Tipo de Ocorrência"
+        aria-label="Novo Tipo de Ocorrência"
         name="descricaoTipoOcorrencia"
-        [(ngModel)]="descricao"
+        [(ngModel)]="tipoocorrencia.descricao"
         />
-      <button class="btn btn-primary btn-lg">Cadastrar</button>
+      <button class="btn btn-primary btn-lg" (click)="cadastrarTipoOcorrencia()"
+      [swal]="{
+        icon: 'success',
+        title: 'Cadastrado com sucesso!',
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true
+      }">Cadastrar</button>
     </div>
   </div>
 
   <span class="h3 mt-5 mb-2">Tipos de Ocorrências Cadastradas</span>
 
-  <table class="table table-responsive w-50 p-3 m-lg-2">
+  <table class="table table-responsive w-100 p-3 m-lg-2">
     <tbody>
-      <tr *ngFor="let ocor of listaOcorrencia">
+      <tr *ngFor="let ocor of listarTipoOcorrencia">
         <td class="ocor"> {{ ocor.descricao }} </td>
-        <td>
-          <button class="btn btn-sm p float-end bi-pencil-square one"></button>
+        <td style="width: 26px;">
+          <button class="btn btn-sm p float-end bi-pencil-square"
+          routerLink="/modulos/cadastros/tipo-ocorrencia/editar/{{ ocor.id }}"></button>
         </td>
-        <td>
+        <td style="width: 26px;">
           <button class="btn btn-sm p float-end bi-trash"></button>
         </td>
       </tr>

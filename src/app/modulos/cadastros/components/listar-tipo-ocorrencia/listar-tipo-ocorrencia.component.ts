@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ITipoOcorrencia } from './model/ITipoOcorrencia.interface';
+import { TipoOcorrenciaService } from './services/tipo-ocorrencia.service';
 
 @Component({
   selector: 'app-listar-tipo-ocorrencia',
@@ -7,16 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarTipoOcorrenciaComponent implements OnInit {
 
-  descricao: string;
+  listarTipoOcorrencia: ITipoOcorrencia[] = [];
 
-  listaOcorrencia: any[] = [
-    { id: 1, descricao: 'Ocorrência 1' },
-    { id: 2, descricao: 'Ocorrência 2' }
-];
-
-  constructor() { }
-
-  ngOnInit(): void {
+  tipoocorrencia: ITipoOcorrencia= {
+    descricao: ''
   }
 
+  constructor(private tipoocorrenciaService : TipoOcorrenciaService) { }
+
+  ngOnInit(): void {
+    this.carregarTipoOcorrencia();
+  }
+
+  carregarTipoOcorrencia(): void {
+    this.tipoocorrenciaService.buscarTodos().subscribe(retorno => {
+      this.listarTipoOcorrencia = retorno;
+    });
+    }
+
+  cadastrarTipoOcorrencia(): void {
+    this.tipoocorrenciaService.cadastrar(this.tipoocorrencia).subscribe(retorno => {
+    this.tipoocorrencia =  retorno;
+    this.carregarTipoOcorrencia();
+    this.tipoocorrencia.descricao = '';
+    });
+  }
 }
