@@ -13,6 +13,8 @@ import { AtualizarAssuntoComponent } from './components/assuntos/atualizar-assun
 import { AtualizarCategoriaComponent } from './components/categoria/atualizar-categoria/atualizar-categoria.component';
 import { AtualizarOrigemComponent } from './components/listar-origem/atualizar-origem/atualizar-origem.component';
 import { AtualizarTipoOcorrenciaComponent } from './components/listar-tipo-ocorrencia/atualizar-tipo-ocorrencia/atualizar-tipo-ocorrencia.component';
+import { AtualizarPrazoComponent } from './components/listar-prazo/atualizar-prazo/atualizar-prazo.component';
+import { AtualizarOrgaoComponent } from './components/listar-orgao/atualizar-orgao/atualizar-orgao.component';
 
 
 const routes: Routes = [
@@ -53,6 +55,10 @@ const routes: Routes = [
     component: ListarPrazoComponent,
   },
   {
+    path: 'cadastros/prazo/editar/:id',
+    component: AtualizarPrazoComponent,
+  },
+  {
     path: 'cadastros/tipo-ocorrencia',
     component: ListarTipoOcorrenciaComponent,
   },
@@ -63,6 +69,10 @@ const routes: Routes = [
   {
     path: 'cadastros/orgao',
     component: ListarOrgaoComponent,
+  },
+  {
+    path: 'cadastros/orgao/editar/:id',
+    component: AtualizarOrgaoComponent,
   },
 ];
 

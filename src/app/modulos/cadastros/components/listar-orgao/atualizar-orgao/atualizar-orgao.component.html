@@ -1,0 +1,34 @@
+<div class="card">
+  <div class="card-body">
+    <h1 class="mt-2">
+      Editar Órgão
+      <i
+        type="button"
+        class="bi bi-arrow-90deg-left float-end"
+        routerLink="/modulos/cadastros/orgao"
+      ></i>
+    </h1>
+
+    <div class="pesquisa">
+      <input
+        type="text"
+        class="form-control pesquisa btn-lg w-100 p-3 col-md-5"
+        placeholder="Editar Órgão"
+        aria-label="Editar Órgão"
+        name="descricaoOrgao"
+        [(ngModel)]="orgao.descricao"
+        />
+      <button class="btn btn-primary btn-lg" (click)="editarOrgao()"
+      [swal]="{
+        icon: 'success',
+        title: 'Editado com sucesso!',
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true
+      }">Editar</button>
+    </div>
+  </div>
+
+</div>
+

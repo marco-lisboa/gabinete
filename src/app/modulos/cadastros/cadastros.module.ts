@@ -18,6 +18,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { AtualizarCategoriaComponent } from './components/categoria/atualizar-categoria/atualizar-categoria.component';
 import { AtualizarOrigemComponent } from './components/listar-origem/atualizar-origem/atualizar-origem.component';
 import { AtualizarTipoOcorrenciaComponent } from './components/listar-tipo-ocorrencia/atualizar-tipo-ocorrencia/atualizar-tipo-ocorrencia.component';
+import { AtualizarPrazoComponent } from './components/listar-prazo/atualizar-prazo/atualizar-prazo.component';
+import { AtualizarOrgaoComponent } from './components/listar-orgao/atualizar-orgao/atualizar-orgao.component';
 
 
 
@@ -38,7 +40,9 @@ import { AtualizarTipoOcorrenciaComponent } from './components/listar-tipo-ocorr
     AtualizarAssuntoComponent,
     AtualizarCategoriaComponent,
     AtualizarOrigemComponent,
-    AtualizarTipoOcorrenciaComponent
+    AtualizarTipoOcorrenciaComponent,
+    AtualizarPrazoComponent,
+    AtualizarOrgaoComponent
   ],
   imports: [
     CommonModule,
