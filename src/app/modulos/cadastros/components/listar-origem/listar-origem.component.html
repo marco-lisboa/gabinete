@@ -16,9 +16,17 @@
         placeholder="Nova Origem"
         aria-label="Novo Assunto"
         name="descricaoOrigem"
-        [(ngModel)]="descricao"
+        [(ngModel)]="origem.descricao"
         />
-      <button class="btn btn-primary btn-lg">Cadastrar</button>
+      <button class="btn btn-primary btn-lg" (click)="cadastrarOrigem()"
+      [swal]="{
+        icon: 'success',
+        title: 'Cadastrado com sucesso!',
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true
+      }">Cadastrar</button>
     </div>
   </div>
 
@@ -26,13 +34,24 @@
 
   <table class="table table-responsive w-100 p-3 m-lg-2">
     <tbody>
-      <tr *ngFor="let orig of listaOrigem">
+      <tr *ngFor="let orig of listarOrigens">
         <td class="origem"> {{orig.descricao}} </td>
-        <td>
-          <button class="btn btn-sm p float-end bi-pencil-square one"></button>
+        <td style="width: 26px;">
+          <button class="btn btn-sm p float-end bi-pencil-square"
+          routerLink="/modulos/cadastros/origem/editar/{{ orig.id }}"></button>
         </td>
-        <td>
-          <button class="btn btn-sm p float-end bi-trash"></button>
+        <td style="width: 26px;">
+          <button class="btn btn-sm p float-end bi-trash"
+          [swal]=
+          "{
+            icon: 'warning',
+            title: 'DESEJA REALMENTE EXCLUIR A ORIGEM?',
+            showDenyButton: true,
+            denyButtonText: 'Não',
+            confirmButtonText: 'Sim, excluir',
+            confirmButtonColor: '#3085d6'
+          }"
+          (confirm)="deletar(orig)"></button>
         </td>
       </tr>
       <tr></tr>

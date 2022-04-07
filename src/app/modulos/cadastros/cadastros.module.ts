@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AtualizarAssuntoComponent } from './components/assuntos/atualizar-assunto/atualizar-assunto.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { AtualizarCategoriaComponent } from './components/categoria/atualizar-categoria/atualizar-categoria.component';
+import { AtualizarOrigemComponent } from './components/listar-origem/atualizar-origem/atualizar-origem.component';
 
 
 
@@ -34,7 +35,8 @@ import { AtualizarCategoriaComponent } from './components/categoria/atualizar-ca
     ListarTipoOcorrenciaComponent,
     ListarOrgaoComponent,
     AtualizarAssuntoComponent,
-    AtualizarCategoriaComponent
+    AtualizarCategoriaComponent,
+    AtualizarOrigemComponent
   ],
   imports: [
     CommonModule,

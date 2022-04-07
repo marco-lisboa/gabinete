@@ -11,6 +11,7 @@ import { ListarTipoOcorrenciaComponent } from './components/listar-tipo-ocorrenc
 import { ListarOrgaoComponent } from './components/listar-orgao/listar-orgao.component';
 import { AtualizarAssuntoComponent } from './components/assuntos/atualizar-assunto/atualizar-assunto.component';
 import { AtualizarCategoriaComponent } from './components/categoria/atualizar-categoria/atualizar-categoria.component';
+import { AtualizarOrigemComponent } from './components/listar-origem/atualizar-origem/atualizar-origem.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'cadastros/origem',
     component: ListarOrigemComponent,
+  },
+  {
+    path: 'cadastros/origem/editar/:id',
+    component: AtualizarOrigemComponent,
   },
   {
     path: 'cadastros/prazo',

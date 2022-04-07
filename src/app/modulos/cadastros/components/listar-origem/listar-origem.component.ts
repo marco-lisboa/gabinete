@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IOrigem } from './model/IOrigem.interface';
+import { OrigemService } from './services/origem.service';
 
 @Component({
   selector: 'app-listar-origem',
@@ -7,16 +9,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarOrigemComponent implements OnInit {
 
-  descricao: string;
+  listarOrigens: IOrigem[] = [];
 
-  listaOrigem: any[] = [
-    { id: 1, descricao: 'Origem 1' },
-    { id: 2, descricao: 'Origem 2' }
-];
-
-  constructor() { }
-
-  ngOnInit(): void {
+  origem: IOrigem = {
+    descricao: ''
   }
 
+  constructor(private origemService: OrigemService) { }
+
+  ngOnInit(): void {
+    this.carregarOrigens();
+  }
+
+  carregarOrigens(): void {
+    this.origemService.buscarTodos().subscribe(retorno => {
+      this.listarOrigens = retorno;
+    });
+    }
+
+  cadastrarOrigem(): void {
+    this.origemService.cadastrar(this.origem).subscribe(retorno => {
+    this.origem =  retorno;
+    this.carregarOrigens();
+    this.origem.descricao = '';
+    });
+  }
+
+  deletar(categoria: IOrigem): void {
+    this.origemService.excluir(categoria.id).subscribe(() => {
+      this.carregarOrigens();
+    });
+  }
 }
