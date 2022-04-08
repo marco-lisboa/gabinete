@@ -41,7 +41,17 @@
           routerLink="/modulos/cadastros/tipo-ocorrencia/editar/{{ ocor.id }}"></button>
         </td>
         <td style="width: 26px;">
-          <button class="btn btn-sm p float-end bi-trash"></button>
+          <button class="btn btn-sm p float-end bi-trash"
+          [swal]=
+          "{
+            icon: 'warning',
+            title: 'Deseja realmente excluir o tipo de ocorrência: ' + ocor.descricao + '?',
+            showDenyButton: true,
+            denyButtonText: 'Não',
+            confirmButtonText: 'Sim, excluir',
+            confirmButtonColor: '#3085d6'
+          }"
+          (confirm)="deletar(tipoocorrencia)"></button>
         </td>
       </tr>
       <tr></tr>

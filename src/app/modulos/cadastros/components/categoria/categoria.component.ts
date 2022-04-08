@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 import { ICategoria } from './model/ICategoria.model';
 import { CategoriaService } from './services/categoria.service';
 
@@ -13,7 +14,8 @@ export class CategoriaComponent implements OnInit {
   listarCategorias: ICategoria[] = [];
 
   categoria: ICategoria = {
-    descricao: ''
+    descricao: '',
+    ativo: true
   }
 
   constructor(private categoriaService: CategoriaService) {}
@@ -33,11 +35,17 @@ export class CategoriaComponent implements OnInit {
     this.categoria =  retorno;
     this.carregarCategorias();
     this.categoria.descricao = '';
+    this.categoria.id = (0);
     });
   }
 
   deletar(categoria: ICategoria): void {
     this.categoriaService.excluir(categoria.id).subscribe(() => {
+      Swal.fire({
+        title: 'Excluído com sucesso!',
+        icon: 'success',
+        confirmButtonColor: '#3085d6'
+      }),
       this.carregarCategorias();
     });
   }

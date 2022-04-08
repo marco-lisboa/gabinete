@@ -36,8 +36,8 @@ export class ListarPrazoComponent implements OnInit {
       });
     }
 
-    deletar(categoria: IPrazo): void {
-      this.prazoService.excluir(categoria.id).subscribe(() => {
+    deletar(prazo: IPrazo): void {
+      this.prazoService.excluir(prazo.id).subscribe(() => {
         Swal.fire({
           title: 'Excluído com sucesso!',
           icon: 'success',

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { IAssunto } from './model/IAssunto.model';
 import { AssuntosService } from './services/assuntos.service';
 
@@ -15,6 +16,7 @@ export class ListarAssuntosComponent implements OnInit {
 
   assunto: IAssunto = {
     descricao: '',
+    ativo: true
   }
 
   constructor(private assuntosService: AssuntosService, private router: Router) {}
@@ -39,6 +41,11 @@ export class ListarAssuntosComponent implements OnInit {
 
   deletar(assunto: IAssunto): void {
     this.assuntosService.excluir(assunto.id).subscribe(() => {
+      Swal.fire({
+        title: 'Excluído com sucesso!',
+        icon: 'success',
+        confirmButtonColor: '#3085d6'
+      }),
       this.carregarAssuntos();
     });
   }

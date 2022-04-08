@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 import { ITipoOcorrencia } from './model/ITipoOcorrencia.interface';
 import { TipoOcorrenciaService } from './services/tipo-ocorrencia.service';
 
@@ -32,6 +33,17 @@ export class ListarTipoOcorrenciaComponent implements OnInit {
     this.tipoocorrencia =  retorno;
     this.carregarTipoOcorrencia();
     this.tipoocorrencia.descricao = '';
+    });
+  }
+
+  deletar(tipoocorrencia: ITipoOcorrencia): void {
+    this.tipoocorrenciaService.excluir(tipoocorrencia.id).subscribe(() => {
+      Swal.fire({
+        title: 'Excluído com sucesso!',
+        icon: 'success',
+        confirmButtonColor: '#3085d6'
+      }),
+      this.carregarTipoOcorrencia();
     });
   }
 }

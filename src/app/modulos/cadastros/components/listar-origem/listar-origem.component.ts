@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 import { IOrigem } from './model/IOrigem.interface';
 import { OrigemService } from './services/origem.service';
 
@@ -37,6 +38,11 @@ export class ListarOrigemComponent implements OnInit {
 
   deletar(categoria: IOrigem): void {
     this.origemService.excluir(categoria.id).subscribe(() => {
+      Swal.fire({
+        title: 'Excluído com sucesso!',
+        icon: 'success',
+        confirmButtonColor: '#3085d6'
+      }),
       this.carregarOrigens();
     });
   }
