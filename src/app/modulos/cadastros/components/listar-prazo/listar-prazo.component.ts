@@ -33,6 +33,7 @@ export class ListarPrazoComponent implements OnInit {
       this.prazo =  retorno;
       this.carregarPrazos();
       this.prazo.descricao = '';
+      this.prazo.id = (0);
       });
     }
 

@@ -13,7 +13,8 @@ export class ListarTipoOcorrenciaComponent implements OnInit {
   listarTipoOcorrencia: ITipoOcorrencia[] = [];
 
   tipoocorrencia: ITipoOcorrencia= {
-    descricao: ''
+    descricao: '',
+    ativo: true
   }
 
   constructor(private tipoocorrenciaService : TipoOcorrenciaService) { }
@@ -33,16 +34,16 @@ export class ListarTipoOcorrenciaComponent implements OnInit {
     this.tipoocorrencia =  retorno;
     this.carregarTipoOcorrencia();
     this.tipoocorrencia.descricao = '';
+    this.tipoocorrencia.id = (0);
     });
   }
 
   deletar(tipoocorrencia: ITipoOcorrencia): void {
-    this.tipoocorrenciaService.excluir(tipoocorrencia.id).subscribe(() => {
-      Swal.fire({
-        title: 'Excluído com sucesso!',
-        icon: 'success',
-        confirmButtonColor: '#3085d6'
-      }),
+    this.tipoocorrenciaService.excluir(tipoocorrencia.id).subscribe(() => { Swal.fire({
+      title: 'Excluído com sucesso!',
+      icon: 'success',
+      confirmButtonColor: '#3085d6'
+    }),
       this.carregarTipoOcorrencia();
     });
   }

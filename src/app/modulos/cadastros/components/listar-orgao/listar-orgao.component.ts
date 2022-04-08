@@ -13,7 +13,8 @@ export class ListarOrgaoComponent implements OnInit {
   listarOrgaos: IOrgao[] = [];
 
   orgao: IOrgao = {
-    descricao: ''
+    descricao: '',
+    ativo: true
   }
 
   constructor(private orgaoService: OrgaoService) { }
@@ -33,6 +34,7 @@ export class ListarOrgaoComponent implements OnInit {
       this.orgao =  retorno;
       this.carregarOrgaos();
       this.orgao.descricao = '';
+      this.orgao.id = (0);
       });
     }
 

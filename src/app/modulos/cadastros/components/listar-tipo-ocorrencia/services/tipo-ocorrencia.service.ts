@@ -39,5 +39,5 @@ buscarPorId(id: number): Observable<ITipoOcorrencia> {
     return this.http.delete<any>(`${this.URL}/${id}`).pipe(
       map(retorno => retorno)
     );
-  }
+}
 }

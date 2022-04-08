@@ -13,7 +13,8 @@ export class ListarOrigemComponent implements OnInit {
   listarOrigens: IOrigem[] = [];
 
   origem: IOrigem = {
-    descricao: ''
+    descricao: '',
+    ativo: true
   }
 
   constructor(private origemService: OrigemService) { }
@@ -33,11 +34,12 @@ export class ListarOrigemComponent implements OnInit {
     this.origem =  retorno;
     this.carregarOrigens();
     this.origem.descricao = '';
+    this.origem.id = (0);
     });
   }
 
-  deletar(categoria: IOrigem): void {
-    this.origemService.excluir(categoria.id).subscribe(() => {
+  deletar(origem: IOrigem): void {
+    this.origemService.excluir(origem.id).subscribe(() => {
       Swal.fire({
         title: 'Excluído com sucesso!',
         icon: 'success',
