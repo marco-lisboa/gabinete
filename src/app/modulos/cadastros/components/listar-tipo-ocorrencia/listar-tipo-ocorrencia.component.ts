@@ -39,7 +39,8 @@ export class ListarTipoOcorrenciaComponent implements OnInit {
   }
 
   deletar(tipoocorrencia: ITipoOcorrencia): void {
-    this.tipoocorrenciaService.excluir(tipoocorrencia.id).subscribe(() => { Swal.fire({
+    this.tipoocorrenciaService.excluir(tipoocorrencia.id).subscribe(() => {
+      Swal.fire({
       title: 'Excluído com sucesso!',
       icon: 'success',
       confirmButtonColor: '#3085d6'

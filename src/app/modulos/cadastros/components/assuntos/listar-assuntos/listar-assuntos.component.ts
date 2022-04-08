@@ -36,6 +36,7 @@ export class ListarAssuntosComponent implements OnInit {
       this.assunto =  retorno;
      this.carregarAssuntos();
      this.assunto.descricao = '';
+     this.assunto.id = (0);
     });
   }
 
