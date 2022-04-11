@@ -44,7 +44,7 @@ export class ListarTipoOcorrenciaComponent implements OnInit {
       title: 'Excluído com sucesso!',
       icon: 'success',
       confirmButtonColor: '#3085d6'
-    }),
+    });
       this.carregarTipoOcorrencia();
     });
   }
