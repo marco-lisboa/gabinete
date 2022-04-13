@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;900&display=swap');
+
+.card {
+  border: 0;
+  border-radius: 10px;
+  font-family: "Raleway", sans-serif;
+  top: 20px;
+}
+
+h1 {
+  font-weight: bold;
+  padding-left: 2rem;
+  padding-top: 0.313rem;
+}
+
+
+.txt1 {
+  display: block;
+
+}
+
+.txt2 {
+  display: block;
+}
+
+input[type=date] {
+  height: 36px;
+}
+
+input[type=text], input[type=date], input[type=tel] {
+  background-color: #f6f6f6;
+  color: black;
+  padding: 0.938rem 2rem;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0.313rem;
+  width: 85%;
+  border: 1px solid #B5B8C0;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+select {
+  background-color: #f6f6f6;
+  color: #B5B8C0;
+  padding: 0.938rem 2rem;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0.313rem;
+  width: 85%;
+  border: 1px solid #B5B8C0;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+input[type=text]:focus {
+  background-color:#fff;
+}
+
+input[type=text]::placeholder {
+  color: #B5B8C0;
+}
+
+label[for=Nome] {
+  font-size: 16px;
+  padding-top: 30px;
+  display: block;
+  font-weight: bold;
+}
+
+label[for="Ate"] {
+  padding-left: 10px;
+}
+
+
+
+select:hover,
+select:focus,
+select:active,
+select:focus {
+  color: #0d0d0d;
+  transition:0s;
+}
+
+select option {
+  color: black!important;
+  font-size: 1.25rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
+
+option[value=""][disabled] {
+  display: none;
+}
+
+.depois {
+  padding-top: 53px !important;
+}
+

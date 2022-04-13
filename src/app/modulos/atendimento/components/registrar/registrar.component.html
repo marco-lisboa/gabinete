@@ -1,1 +1,69 @@
-<p>registrar works!</p>
+<div class="card">
+  <div class="card-body">
+    <div class="title">
+      <h1>Registrar atendimento</h1>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="Nome">Contato</label>
+          <input
+            type="text"
+            required="required"
+            maxlength="11"
+            class="txt1"
+            placeholder="Digite o contato"
+            ng-pattern="/^1\d\d(\d\d)?$|^0800 ?\d{3} ?\d{4}$|^(\(0?([1-9a-zA-Z][0-9a-zA-Z])?[1-9]\d\) ?|0?([1-9a-zA-Z][0-9a-zA-Z])?[1-9]\d[ .-]?)?(9|9[ .-])?[2-9]\d{3}[ .-]?\d{4}$/gm"
+          />
+        </div>
+
+        <div class="col-md-3">
+          <label for="Nome">Logradouro</label>
+          <input type="text" class="txt1" placeholder="Digite o logradouro" />
+        </div>
+        <div class="col-md-3">
+          <label for="Nome">Bairro</label>
+          <input type="text" class="txt1" placeholder="Digite seu bairro" />
+        </div>
+        <div class="col-md-3">
+          <label for="Nome">Cidade</label>
+          <input type="text" class="txt5" placeholder="Digite uma cidade" />
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="Nome">UF</label>
+          <select name="txt6" class="dropdown">
+            <option value="">Selecione</option>
+            <option value="a">a</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="Nome">Região</label>
+          <select name="txt7" class="dropdown">
+            <option value="">Selecione</option>
+            <option value=""></option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="Nome">Bairro</label>
+          <select name="txt7" class="dropdown">
+            <option value="">Selecione</option>
+            <option value=""></option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="Nome">Cidade</label>
+          <select name="txt7" class="dropdown">
+            <option value="">Selecione</option>
+            <option value=""></option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
