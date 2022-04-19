@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-registrar',
@@ -10,15 +10,22 @@ export class RegistrarComponent implements OnInit {
 
   formulario: FormGroup;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.formulario = new FormGroup({
-      contato: new FormControl(null),
-      logradouro: new FormControl(null),
-      bairro: new FormControl(null),
-      cidade: new FormControl(null)
-    });
+    this.formulario = this.formBuilder.group({
+      contato: [null],
+      logradouro: [null],
+      cidade: [null],
+      bairro: [null]
+    })
   }
 
-}
+
+
+
+  onSubmit() {
+    console.log(this.formulario.value);
+  }
+
+  }

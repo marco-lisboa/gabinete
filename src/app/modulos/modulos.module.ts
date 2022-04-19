@@ -11,6 +11,7 @@ import { AtendimentoModule } from './atendimento/atendimento.module';
 @NgModule({
   declarations: [
 
+
   ],
   imports: [
     CommonModule,
