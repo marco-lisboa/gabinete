@@ -5,82 +5,208 @@
     </div>
 
     <form class="form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      <!--primeiro bloco-->
+      <div class="form-group col-md-3">
 
-        <div class="form-group">
-          <div class="col-md-3">
-            <label for="Nome" class="control-label">Contato</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="contato"
-              maxlength="11"
-              class="txt1"
-              placeholder="Digite o contato"
-              [value]=""
-            />
-          </div>
-          <div class="form-group col-md-3">
-            <label for="Nome" class="control-label">Logradouro</label>
-            <input
-              type="text"
-              class="txt1"
-              placeholder="Digite o logradouro"
-              formControlName="logradouro"
-            />
-          </div>
-          <div class="form-group col-md-3">
-            <label for="Nome">Bairro</label>
-            <input
-              type="text"
-              class="txt1"
-              placeholder="Digite seu bairro"
-              formControlName="bairro"
-            />
-          </div>
-          <div class="form-group col-md-3">
-            <label for="Nome">Cidade</label>
-            <input
-              type="text"
-              class="txt5"
-              placeholder="Digite uma cidade"
-              formControlName="cidade"
-            />
-          </div>
+          <label for="Nome" class="control-label">Contato</label>
+          <input
+            type="text"
+            formControlName="contato"
+            maxlength="11"
+            class="txt1"
+            placeholder="Digite o contato"
+            [value]=""
+          />
         </div>
-
-
-        <div class="form-group">
-          <div class="col-md-3">
-            <label for="Nome">UF</label>
-            <select name="txt6" class="dropdown">
-              <option value="">Selecione</option>
-              <option value="a">a</option>
-            </select>
-          </div>
-          <div class="col-md-3">
-            <label for="Nome">Região</label>
-            <select name="txt7" class="dropdown">
-              <option value="">Selecione</option>
-              <option value=""></option>
-            </select>
-          </div>
-          <div class="col-md-3">
-            <label for="Nome">Bairro</label>
-            <select name="txt7" class="dropdown">
-              <option value="">Selecione</option>
-              <option value=""></option>
-            </select>
-          </div>
-          <div class="col-md-3">
-            <label for="Nome">Cidade</label>
-            <select name="txt7" class="dropdown">
-              <option value="">Selecione</option>
-              <option value=""></option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+        <div class="form-group col-md-3">
+          <label for="Nome" class="control-label">Logradouro</label>
+          <input
+            type="text"
+            class="txt1 "
+            placeholder="Digite o logradouro"
+            formControlName="logradouro"
+          />
         </div>
-        <!-- div row -->
+        <div class="form-group col-md-3">
+          <label for="Nome" class="control-label">Bairro</label>
+          <input
+            type="text"
+            class="txt1 "
+            placeholder="Digite seu bairro"
+            formControlName="bairro"
+          />
+        </div>
+        <div class="form-group col-md-3">
+          <label for="Nome">Cidade</label>
+          <input
+            type="text"
+
+            placeholder="Digite uma cidade"
+            formControlName="cidade"
+          />
+        </div>
+         <!--segundo bloco-->
+        <div class="form-group col-md-3">
+          <label for="Nome">UF</label>
+          <select class="dropdown">
+            <option value="">Selecione</option>
+            <option value="a">a</option>
+          </select>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="Nome">Região</label>
+          <select class="dropdown">
+            <option value="">Selecione</option>
+            <option value="a">a</option>
+          </select>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="Nome">Bairro</label>
+          <select class="dropdown">
+            <option value="">Selecione</option>
+            <option value="a">a</option>
+          </select>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="Nome">Cidade</label>
+          <select class="dropdown">
+            <option value="">Selecione</option>
+            <option value="a">a</option>
+          </select>
+        </div>
+        <!--terceiro bloco-->
+        <div class="form-group col-md-3">
+          <label for="Nome">Nº de atendimento</label>
+          <input
+            type="text"
+
+            placeholder="Número..."
+            formControlName="natendimento"
+          />
+        </div>
+        <div class="form-group col-md-3">
+          <label for="Nome">Data de atendimento</label>
+          <input type="date">
+          <label for="Ate">Até</label>
+        </div>
+        <div class="form-group col-md-3 fim">
+          <label for="Nome"></label>
+          <input type="date" class="data-final">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="Nome">Solicitante</label>
+          <input
+            type="text"
+            placeholder="Solicitante..."
+            formControlName="solicitante"
+          />
+        </div>
+        <!--quarto bloco-->
+        <div class="form-group col-md-3">
+          <label for="Nome">Data da ocorrência</label>
+          <input type="date">
+          <label for="Ate">Até</label>
+        </div>
+        <div class="form-group col-md-3 fim">
+          <label for="Nome"></label>
+          <input type="date" class="data-final">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="Nome">Código</label>
+          <input
+            type="text"
+            placeholder="Digite o código"
+            formControlName="código"
+          />
+        </div>
+        <div class="form-group col-md-3">
+          <label for="Nome">Categoria</label>
+          <select class="dropdown">
+            <option value="">Selecione</option>
+            <option value="a">a</option>
+          </select>
+        </div>
+        <!--quinto bloco-->
+        <div class="form-group col-md-3">
+          <label for="Nome">Status</label>
+          <select class="dropdown">
+            <option value="">Selecione</option>
+            <option value="a">a</option>
+          </select>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="Nome">Origem</label>
+          <select class="dropdown">
+            <option value="">Selecione</option>
+            <option value="a">a</option>
+          </select>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="Nome">Assunto</label>
+          <select class="dropdown">
+            <option value="">Selecione</option>
+            <option value="a">a</option>
+          </select>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="Nome">Atuação</label>
+          <select class="dropdown">
+            <option value="">Selecione</option>
+            <option value="a">a</option>
+          </select>
+        </div>
+      <!--sexto bloco-->
+      <div class="form-group col-md-3">
+        <label for="Nome">Atendente</label>
+        <select class="dropdown">
+          <option value="">Selecione</option>
+          <option value="a">a</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="Nome">Cadastrante</label>
+        <select class="dropdown">
+          <option value="">Selecione</option>
+          <option value="a">a</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="Nome">Prazo</label>
+        <select class="dropdown">
+          <option value="">Selecione</option>
+          <option value="a">a</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="Nome">Data prazo</label>
+        <input
+          type="text"
+          placeholder=""
+          formControlName="cidade"
+        />
+      </div>
+      <!--sexto bloco-->
+      <div class="form-group col-md-3">
+        <label for="Nome">Data prazo</label>
+        <input
+          type="text"
+          placeholder=""
+          formControlName="cidade"
+        />
+      </div>
+      <div class="form-group col-md-3">
+        <label for="Nome">Data prazo</label>
+        <input
+          type="text"
+          placeholder=""
+          formControlName="cidade"
+        />
+      </div>
+
+
+
+
+      <!-- div row -->
     </form>
   </div>
 </div>
