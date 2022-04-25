@@ -70,6 +70,12 @@ select {
   padding-bottom: 11px;
 }
 
+input[type="checkbox"] {
+  background: #838690;
+  margin-top: 16px;
+  border: 2px solid #838690;
+}
+
 input[type="text"]:focus {
   background-color: #fff;
 }
@@ -107,6 +113,13 @@ label[for="Ate"] {
  margin-top: 8px;
 }
 
+label[for="checkbox"] {
+  margin-left: 5px;
+  font-size: 14px;
+  font-weight: medium;
+  color: #474a51;
+}
+
 select:hover,
 select:focus,
 select:active,
@@ -142,4 +155,29 @@ select option {
 .fim {
   padding-left: 0;
   padding-right: 30px;
+}
+
+.size-input {
+  width: 425px;
+  height: 150px;
+  text-align: top !important;
+  vertical-align: top;
+}
+
+button[type="submit"] {
+  margin-top: 20px;
+  margin-right: 20px;
+  border-radius: 11px;
+  font-size: 16px;
+  background: url(./../../../../../assets/images/registrar/fluent_save-copy-24-filled.svg);
+  background-color: #0062cc;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: 95%;
+  width: 100px;
+  height: 35px;
+}
+
+span {
+  float: left;
 }
