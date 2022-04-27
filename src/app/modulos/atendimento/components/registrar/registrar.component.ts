@@ -17,7 +17,8 @@ export class RegistrarComponent implements OnInit {
       contato: [null],
       logradouro: [null],
       cidade: [null],
-      bairro: [null]
+      bairro: [null],
+      uf: [null]
     })
   }
 
@@ -26,6 +27,8 @@ export class RegistrarComponent implements OnInit {
 
   onSubmit() {
     console.log(this.formulario.value);
+
+  
   }
 
   }
