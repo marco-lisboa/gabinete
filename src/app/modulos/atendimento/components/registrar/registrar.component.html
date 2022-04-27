@@ -4,50 +4,51 @@
       <h1>Registrar atendimento</h1>
     </div>
 
-    <form class="form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <form class="form row" [formGroup]="formulario" (ngSubmit)="Submit()">
       <!--primeiro bloco-->
-      <div class="form-group col-md-3">
-
-          <label for="Nome" class="control-label">Contato</label>
-          <input type="text" formControlName="contato" maxlength="11" class="txt1" placeholder="Digite o contato">
+      <div class="form-group col-md-3" [ngClass]="aplicaCssErro('contato')">
+           <label for="Nome" class="control-label">Contato</label>
+          <input type="text" formControlName="contato" class="form-control" placeholder="Digite o contato">
+          <app-campo-control-erro [mostrarErro]="verificaValidTouched('contato')" msgErro="Contato é obrigatório."></app-campo-control-erro>
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('logradouro')">
           <label for="Nome" class="control-label">Logradouro</label>
-          <input type="text" class="txt1 " placeholder="Digite o logradouro" formControlName="logradouro">
+          <input type="text" class="form-control" placeholder="Digite o logradouro" formControlName="logradouro">
+          <app-campo-control-erro [mostrarErro]="verificaValidTouched('logradouro')" msgErro="Logradouro é obrigatório."></app-campo-control-erro>
         </div>
         <div class="form-group col-md-3">
           <label for="Nome" class="control-label">Bairro</label>
-          <input type="text" class="txt1" placeholder="Digite seu bairro" formControlName="bairro">
+          <input type="text" class="form-control" placeholder="Digite seu bairro" formControlName="bairro">
         </div>
         <div class="form-group col-md-3">
           <label for="Nome">Cidade</label>
-          <input type="text" placeholder="Digite uma cidade" formControlName="cidade">
+          <input type="text" class="form-control" placeholder="Digite uma cidade" formControlName="cidade">
         </div>
          <!--segundo bloco-->
         <div class="form-group col-md-3">
           <label for="Nome">UF</label>
-          <select class="dropdown" formControlName="uf">
-            <option value="">Selecione</option>
+          <select class="form-select" formControlName="uf">
+            <option value="" disabled selected>Selecione</option>
             <option value="a">a</option>
           </select>
         </div>
         <div class="form-group col-md-3">
           <label for="Nome">Região</label>
-          <select class="dropdown">
+          <select class="form-select" formControlName="regiao">
             <option value="">Selecione</option>
             <option value="a">a</option>
           </select>
         </div>
         <div class="form-group col-md-3">
           <label for="Nome">Bairro</label>
-          <select class="dropdown">
+          <select class="form-select" formControlName="bairrob">
             <option value="">Selecione</option>
             <option value="a">a</option>
           </select>
         </div>
         <div class="form-group col-md-3">
           <label for="Nome">Cidade</label>
-          <select class="dropdown">
+          <select class="form-select">
             <option value="">Selecione</option>
             <option value="a">a</option>
           </select>
@@ -55,38 +56,38 @@
         <!--terceiro bloco-->
         <div class="form-group col-md-3">
           <label for="Nome">Nº de atendimento</label>
-          <input type="text" placeholder="Número..."formControlName="natendimento">
+          <input type="text" class="form-control" placeholder="Número...">
         </div>
         <div class="form-group col-md-3">
           <label for="Nome">Data de atendimento</label>
-          <input type="date">
+          <input type="date" class="form-control">
           <label for="Ate">Até</label>
         </div>
         <div class="form-group col-md-3 fim">
           <label for="Nome"></label>
-          <input type="date" class="data-final">
+          <input type="date" class="data-final form-control">
         </div>
         <div class="form-group col-md-3">
           <label for="Nome">Solicitante</label>
-          <input type="text" placeholder="Solicitante..." formControlName="solicitante">
+          <input type="text"  class="form-control" placeholder="Solicitante..." >
         </div>
         <!--quarto bloco-->
         <div class="form-group col-md-3">
           <label for="Nome">Data da ocorrência</label>
-          <input type="date">
+          <input type="date" class="form-control">
           <label for="Ate">Até</label>
         </div>
         <div class="form-group col-md-3 fim">
           <label for="Nome"></label>
-          <input type="date" class="data-final">
+          <input type="date" class="data-final form-control">
         </div>
         <div class="form-group col-md-3">
           <label for="Nome">Código</label>
-          <input type="text" placeholder="Digite o código" formControlName="código">
+          <input type="text" class="form-control" placeholder="Digite o código" >
         </div>
         <div class="form-group col-md-3">
           <label for="Nome">Categoria</label>
-          <select class="dropdown">
+          <select class="form-select">
             <option value="">Selecione</option>
             <option value="a">a</option>
           </select>
@@ -94,28 +95,28 @@
         <!--quinto bloco-->
         <div class="form-group col-md-3">
           <label for="Nome">Status</label>
-          <select class="dropdown">
+          <select class="form-select">
             <option value="">Selecione</option>
             <option value="a">a</option>
           </select>
         </div>
         <div class="form-group col-md-3">
           <label for="Nome">Origem</label>
-          <select class="dropdown">
+          <select class="form-select">
             <option value="">Selecione</option>
             <option value="a">a</option>
           </select>
         </div>
         <div class="form-group col-md-3">
           <label for="Nome">Assunto</label>
-          <select class="dropdown">
+          <select class="form-select">
             <option value="">Selecione</option>
             <option value="a">a</option>
           </select>
         </div>
         <div class="form-group col-md-3">
           <label for="Nome">Atuação</label>
-          <select class="dropdown">
+          <select class="form-select">
             <option value="">Selecione</option>
             <option value="a">a</option>
           </select>
@@ -123,57 +124,55 @@
       <!--sexto bloco-->
       <div class="form-group col-md-3">
         <label for="Nome">Atendente</label>
-        <select class="dropdown">
+        <select class="form-select">
           <option value="">Selecione</option>
           <option value="a">a</option>
         </select>
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Cadastrante</label>
-        <select class="dropdown">
+        <select class="form-select">
           <option value="">Selecione</option>
           <option value="a">a</option>
         </select>
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Prazo</label>
-        <select class="dropdown">
+        <select class="form-select">
           <option value="">Selecione</option>
           <option value="a">a</option>
         </select>
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Data prazo</label>
-        <input type="text" placeholder="" formControlName="data-prazo">
+        <input type="text" class="form-control" placeholder="" >
       </div>
       <!--sexto bloco-->
-      <div class="form-group col-md-3" style="opacity: 0">
+
+      <div class="form-group col-md-3">
         <label for="Nome">Finalizado</label>
-      </div>
-      <div class="form-group col-md-3" style="margin-top: -48px">
-        <label for="Nome">Finalizado</label>
-        <select class="dropdown">
+        <select class="form-select">
           <option value="">Selecione</option>
           <option value="a">a</option>
         </select>
       </div>
-      <div class="form-group col-md-3" style="margin-top: -48px">
+      <div class="form-group col-md-3" >
         <label for="Nome">Anexo</label>
-        <select class="dropdown">
+        <select class="form-select">
           <option value="">Selecione</option>
           <option value="a">a</option>
         </select>
       </div>
-      <div class="form-group col-md-3" style="margin-top: -48px">
+      <div class="form-group col-md-3" >
         <label for="Nome">Ocorrência</label>
-        <select class="dropdown">
+        <select class="form-select">
           <option value="">Selecione</option>
           <option value="a">a</option>
         </select>
       </div>
-      <div class="form-group col-md-3" style="margin-top: -48px">
+      <div class="form-group col-md-3" >
         <label for="Nome">Ocorrência cadastrada por</label>
-        <select class="dropdown">
+        <select class="form-select">
           <option value="">Selecione</option>
           <option value="a">b</option>
         </select>
@@ -181,44 +180,44 @@
       <!--sétimo bloco-->
       <div class="form-group col-md-3" >
         <label for="Nome">Resp. pela ocorrência</label>
-        <select class="dropdown">
+        <select class="form-select">
           <option value="">Selecione</option>
           <option value="a">b</option>
         </select>
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Nº do RAP</label>
-        <input type="text" placeholder="" formControlName="numero-rap">
+        <input type="text" class="form-control" placeholder="" >
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Dígito do RAP</label>
-        <input type="text" placeholder="" formControlName="digito-rap">
+        <input type="text" class="form-control" placeholder="">
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Nº do SIMPROC</label>
-        <input type="text" placeholder="" formControlName="numero-simproc">
+        <input type="text" class="form-control" placeholder="" >
       </div>
       <!--oitavo bloco-->
-      <div class="form-group col-md-3" style="margin-left: -236px;">
+      <div class="form-group col-md-3"  >
         <label for="Nome">Nº do SEI</label>
-        <input type="text" placeholder="" formControlName="numero-sei">
+        <input type="text" class="form-control" placeholder="">
       </div>
       <div class="form-group col-md-3" >
         <label for="Nome">Nº do documento</label>
-        <input type="text" placeholder="Nº" formControlName="numero-documento" style="width: 38%">
+        <input type="text" class="form-control" placeholder="Nº"  style="width: 38%">
         <label style="font-size: 16px;">/</label>
-        <input type="text" placeholder="Ano" formControlName="numero-documento" style="width: 38%">
+        <input type="text" class="form-control" placeholder="Ano"  style="width: 38%">
       </div>
       <div class="form-group col-md-3" >
         <label for="Nome">Órgão responsável</label>
-        <select class="dropdown">
+        <select class="form-select">
           <option value="">Selecione</option>
           <option value="a">b</option>
         </select>
       </div>
-      <div class="form-group col-md-3" style="margin: -94px 0px 0px 714px;">
+      <div class="form-group col-md-3" >
         <label for="Nome">Tipo</label>
-        <select class="dropdown">
+        <select class="form-select">
           <option value="">Selecione</option>
           <option value="a">b</option>
         </select>
@@ -226,14 +225,14 @@
       <!--nono bloco-->
       <div class="form-group col-md-3" >
         <label for="Nome">Retornar</label>
-        <select class="dropdown">
+        <select class="form-select">
           <option value="">Selecione</option>
           <option value="a">b</option>
         </select>
       </div>
       <div class="form-group col-md-3" >
         <label for="Nome">C/ solicitantes</label>
-        <select class="dropdown">
+        <select class="form-select">
           <option value="">Selecione</option>
           <option value="a">b</option>
         </select>
@@ -247,18 +246,18 @@
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Local/Pessoa Beneficiada</label>
-        <input type="text" placeholder="" formControlName="loca-beneficio">
+        <input type="text" class="form-control" placeholder="" >
       </div>
       <!--décimo bloco-->
-      <div class="form-group col-lg-6" style="margin-left: -472px">
+      <div class="form-group col-lg-6">
         <label for="Nome">Observação da ocorrência</label>
-        <input type="text" placeholder="Deixe aqui uma observação da sua ocorrência..." class="size-input">
+        <input type="text"class="form-control size-input" placeholder="Deixe aqui uma observação da sua ocorrência...">
       </div>
-      <div class="form-group col-lg-6" style="margin-left: -20px">
+      <div class="form-group col-lg-6" >
         <label for="Nome">Descrição</label>
-        <input type="text" placeholder="Deixe aqui uma descrição da ocorrência...." class="size-input">
+        <input type="text" class="form-control size-input" placeholder="Deixe aqui uma descrição da ocorrência...." >
       </div>
-      <button type="submit" class="btn btn-primary btn-lg float-end">
+      <button type="submit" class="btn btn-primary btn-lg">
         <span>Salvar</span></button>
       <!-- div row -->
     </form>

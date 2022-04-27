@@ -5,6 +5,7 @@ import { LocalStorageService } from './services/local-storage.service';
 import { RequestService } from './services/request.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CampoControlErroComponent } from './campo-control-erro/campo-control-erro.component';
 
 
 
@@ -17,7 +18,8 @@ const BSMODULES = [
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   providers: [
     RequestService,
     LocalStorageService,
@@ -28,6 +30,7 @@ const BSMODULES = [
   ],
   exports: [
     ...BSMODULES,
+
   ]
 })
 export class SharedModule { }

@@ -4,6 +4,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { AniversariosModule } from './aniversarios/aniversarios.module';
 import { CadastrosModule } from './cadastros/cadastros.module';
 import { AtendimentoModule } from './atendimento/atendimento.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -11,14 +12,14 @@ import { AtendimentoModule } from './atendimento/atendimento.module';
 @NgModule({
   declarations: [
 
-
   ],
   imports: [
     CommonModule,
     DashboardModule,
     AniversariosModule,
     CadastrosModule,
-    AtendimentoModule
+    AtendimentoModule,
+    SharedModule
   ]
 })
 export class ModulosModule { }

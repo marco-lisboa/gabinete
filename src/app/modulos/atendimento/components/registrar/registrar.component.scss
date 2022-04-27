@@ -13,9 +13,7 @@ h1 {
   padding-top: 0.313rem;
 }
 
-.txt1 {
-  display: block;
-}
+
 
 .txt2 {
   display: block;
@@ -26,7 +24,6 @@ input[type="date"] {
 }
 
 input[type="text"],
-input[type="date"],
 input[type="tel"] {
   background-color: #f6f6f6;
   color: #474a51;
@@ -38,7 +35,28 @@ input[type="tel"] {
   font-weight: bold;
   margin: 0.313rem;
   width: 85%;
-  border: 1px solid #b5b8c0;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding-bottom: 11px;
+}
+
+input[type="date"]
+ {
+  background-color: #f6f6f6;
+  color: #474a51;
+  padding: 0.938rem 2rem;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0.313rem;
+  width: 85%;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -ms-transition: all 0.5s ease-in-out;
@@ -59,7 +77,6 @@ select {
   font-weight: bold;
   margin: 0.313rem;
   width: 85%;
-  border: 1px solid #b5b8c0;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -ms-transition: all 0.5s ease-in-out;
@@ -180,4 +197,19 @@ button[type="submit"] {
 
 span {
   float: left;
+  padding-left: 9px
 }
+
+
+.has-error {
+  border-color: red!important;
+}
+
+.form-select {
+  height: 34px;
+}
+
+.btn-primary {
+  margin-left: 850px;
+}
+
