@@ -6,6 +6,7 @@ import { RequestService } from './services/request.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CampoControlErroComponent } from './campo-control-erro/campo-control-erro.component';
+import { DropdownsService } from './services/dropdowns.service';
 
 
 
@@ -24,9 +25,11 @@ const BSMODULES = [
     RequestService,
     LocalStorageService,
     AuthService,
+    DropdownsService
   ],
   imports: [
     ...BSMODULES,
+    HttpClientModule
   ],
   exports: [
     ...BSMODULES,
