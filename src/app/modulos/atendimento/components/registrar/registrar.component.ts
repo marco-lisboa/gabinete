@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { empty, map, switchMap, tap } from 'rxjs';
 import { ICategoria } from 'src/app/modulos/cadastros/components/categoria/model/ICategoria.model';
 import { EstadosBr } from 'src/app/shared/models/estados-br';
-import { RegiãoRJ } from 'src/app/shared/models/RegiãoRJ';
+import { Cidades } from 'src/app/shared/models/Cidades';
 import { DropdownsService } from 'src/app/shared/services/dropdowns.service';
 
 @Component({
@@ -16,11 +16,11 @@ export class RegistrarComponent implements OnInit {
   formulario: FormGroup;
   listarEstados: EstadosBr[] ;
   listarCategorias: ICategoria[];
-  listarRegiao: RegiãoRJ[];
+  listarCidade: Cidades[];
 
   categoria: any[];
   estados: EstadosBr[];
-  regiao: RegiãoRJ[];
+  cidade: Cidades[];
 
   constructor(private formBuilder: FormBuilder,
     private http: HttpClient,
@@ -42,10 +42,10 @@ export class RegistrarComponent implements OnInit {
         ],
       ],
       logradouro: [null, Validators.required],
-      cidade: [null],
-      bairro: [null],
+      cidade2: [null],
+      bairro: [null, Validators.required],
       uf: [null],
-      regiao: [null, Validators.required],
+      cidade: [null, Validators.required],
       bairrob: [null],
       categoria: [null],
     });
@@ -55,9 +55,9 @@ export class RegistrarComponent implements OnInit {
       tap(estado => console.log('Novo Estado: ', estado)),
       map(estado => this.listarEstados.filter(e => e.sigla === estado)),
       map(estados => estados && estados.length > 0 ? estados[0].id: empty()),
-      switchMap((estadoId) => this.dropdownsService.getRegiaoRj(Number(estadoId))),
+      switchMap((estadoId) => this.dropdownsService.getCidades(Number(estadoId))),
     )
-      .subscribe(regiao => this.regiao = regiao);
+      .subscribe(cidades => this.cidade = cidades);
     ;
 
   }
@@ -77,8 +77,8 @@ export class RegistrarComponent implements OnInit {
   }
 
   carregarRegiao(): void {
-    this.dropdownsService.getRegiaoRj().subscribe(dados => {
-      this.listarRegiao = dados;
+    this.dropdownsService.getCidades().subscribe(dados => {
+      this.listarCidade = dados;
       console.log(dados);
     })
   }
