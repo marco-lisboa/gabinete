@@ -28,6 +28,7 @@
         <div class="form-group col-md-3">
           <label for="Nome">UF</label>
           <select class="form-select" formControlName="uf">
+            <option [ngValue]="null" [disabled]="true" >Selecione</option>
             <option *ngFor="let estado of listarEstados" [value]="estado.sigla">{{ estado.nome }}</option>
           </select>
         </div>
@@ -84,11 +85,11 @@
           <label for="Nome">Código</label>
           <input type="text" class="form-control" placeholder="Digite o código" >
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('categoria')">
           <label for="Nome">Categoria</label>
-          <select class="form-select">
-            <option value="">Selecione</option>
-            <option value="a">a</option>
+          <select class="form-select" formControlName="categoria" [compareWith]="compararCategorias">
+            <option [ngValue]="null" [disabled]="true" >Selecione</option>
+            <option *ngFor="let categoria of listarCategorias" [ngValue]="categoria">{{ categoria.descricao }}</option>
           </select>
         </div>
         <!--quinto bloco-->

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, tap } from 'rxjs';
+import { ICategoria } from 'src/app/modulos/cadastros/components/categoria/model/ICategoria.model';
 import { EstadosBr } from 'src/app/shared/models/estados-br';
 import { DropdownsService } from 'src/app/shared/services/dropdowns.service';
 
@@ -13,6 +14,9 @@ import { DropdownsService } from 'src/app/shared/services/dropdowns.service';
 export class RegistrarComponent implements OnInit {
   formulario: FormGroup;
   listarEstados: EstadosBr[] = [];
+  listarCategorias: ICategoria[] = [];
+
+  categoria: any[];
 
   estados: EstadosBr = {
     id: '',
@@ -27,6 +31,8 @@ export class RegistrarComponent implements OnInit {
   ngOnInit(): void {
 
     this.carregarEstados();
+
+    this.carregarCategorias();
 
     this.formulario = this.formBuilder.group({
       contato: [
@@ -43,6 +49,7 @@ export class RegistrarComponent implements OnInit {
       uf: [null],
       regiao: [null],
       bairrob: [null],
+      categoria: [null]
     });
   }
 
@@ -51,6 +58,17 @@ export class RegistrarComponent implements OnInit {
       this.listarEstados = dados;
       console.log(dados);
     })
+  }
+
+  carregarCategorias(): void {
+    this.dropdownsService.getCategorias().subscribe(dados => {
+      this.listarCategorias = dados;
+      console.log(dados);
+    })
+  }
+
+  compararCategorias(obj1: { descricao: any; id: any;}, obj2: { descricao: any; id: any;}) {
+    return obj1 && obj2 ?  (obj1.descricao === obj2.descricao && obj1.id === obj2.id) : obj1 === obj2;
   }
 
   Submit() {
