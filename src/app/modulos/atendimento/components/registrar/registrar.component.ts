@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { map, tap } from 'rxjs';
+import { empty, map, switchMap, tap } from 'rxjs';
 import { ICategoria } from 'src/app/modulos/cadastros/components/categoria/model/ICategoria.model';
 import { EstadosBr } from 'src/app/shared/models/estados-br';
+import { RegiãoRJ } from 'src/app/shared/models/RegiãoRJ';
 import { DropdownsService } from 'src/app/shared/services/dropdowns.service';
 
 @Component({
@@ -13,26 +14,23 @@ import { DropdownsService } from 'src/app/shared/services/dropdowns.service';
 })
 export class RegistrarComponent implements OnInit {
   formulario: FormGroup;
-  listarEstados: EstadosBr[] = [];
-  listarCategorias: ICategoria[] = [];
+  listarEstados: EstadosBr[] ;
+  listarCategorias: ICategoria[];
+  listarRegiao: RegiãoRJ[];
 
   categoria: any[];
-
-  estados: EstadosBr = {
-    id: '',
-    sigla: '',
-    nome: ''
-  }
+  estados: EstadosBr[];
+  regiao: RegiãoRJ[];
 
   constructor(private formBuilder: FormBuilder,
     private http: HttpClient,
     private dropdownsService: DropdownsService) {}
 
   ngOnInit(): void {
-
     this.carregarEstados();
-
     this.carregarCategorias();
+    this.carregarRegiao();
+
 
     this.formulario = this.formBuilder.group({
       contato: [
@@ -47,29 +45,51 @@ export class RegistrarComponent implements OnInit {
       cidade: [null],
       bairro: [null],
       uf: [null],
-      regiao: [null],
+      regiao: [null, Validators.required],
       bairrob: [null],
-      categoria: [null]
+      categoria: [null],
     });
+
+    this.formulario.get('uf')?.valueChanges
+    .pipe(
+      tap(estado => console.log('Novo Estado: ', estado)),
+      map(estado => this.listarEstados.filter(e => e.sigla === estado)),
+      map(estados => estados && estados.length > 0 ? estados[0].id: empty()),
+      switchMap((estadoId) => this.dropdownsService.getRegiaoRj(Number(estadoId))),
+    )
+      .subscribe(regiao => this.regiao = regiao);
+    ;
+
   }
+
 
   carregarEstados(): void {
     this.dropdownsService.getEstadosBr().subscribe(dados => {
-      this.listarEstados = dados;
+      this.listarEstados = dados
+    })
+  }
+
+
+  carregarCategorias(): void {
+    this.dropdownsService.getCategorias().subscribe(dados => {
+      this.listarCategorias = dados
+    })
+  }
+
+  carregarRegiao(): void {
+    this.dropdownsService.getRegiaoRj().subscribe(dados => {
+      this.listarRegiao = dados;
       console.log(dados);
     })
   }
 
-  carregarCategorias(): void {
-    this.dropdownsService.getCategorias().subscribe(dados => {
-      this.listarCategorias = dados;
-      console.log(dados);
-    })
-  }
+
 
   compararCategorias(obj1: { descricao: any; id: any;}, obj2: { descricao: any; id: any;}) {
     return obj1 && obj2 ?  (obj1.descricao === obj2.descricao && obj1.id === obj2.id) : obj1 === obj2;
   }
+
+
 
   Submit() {
     console.log(this.formulario);
@@ -93,6 +113,8 @@ export class RegistrarComponent implements OnInit {
     }
   }
 
+
+
   verificaValidTouched(campo: string) {
     return (
       !this.formulario.get(campo)?.valid && this.formulario.get(campo)?.touched
@@ -104,5 +126,8 @@ export class RegistrarComponent implements OnInit {
       'has-error': this.verificaValidTouched(campo),
       'has-feedback': this.verificaValidTouched(campo),
     };
+
+
   }
+
 }

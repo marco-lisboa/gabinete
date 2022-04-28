@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EstadosBr } from '../models/estados-br';
 import { ICategoria } from 'src/app/modulos/cadastros/components/categoria/model/ICategoria.model';
+import { RegiãoRJ } from '../models/RegiãoRJ';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,12 @@ export class DropdownsService {
   getEstadosBr(): Observable<EstadosBr[]> {
     return this.http.get<EstadosBr[]>('../../../assets/dados/estadosbr.json').pipe
     (map(res => res)
+    );
+  }
+
+  getRegiaoRj(idEstado?: number): Observable<RegiãoRJ[]> {
+    return this.http.get<RegiãoRJ[]>('../../../assets/dados/regiao.json').pipe
+    (map((região: RegiãoRJ[]) => região.filter(r => r.estado == idEstado))
     );
   }
 
