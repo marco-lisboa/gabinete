@@ -23,7 +23,7 @@
         </div>
         <div class="form-group col-md-3">
           <label for="Nome">Cidade</label>
-          <input type="text" class="form-control" placeholder="Digite uma cidade" formControlName="cidade">
+          <input type="text" class="form-control" placeholder="Digite uma cidade" formControlName="cidade2">
         </div>
          <!--segundo bloco-->
         <div class="form-group col-md-3" [ngClass]="aplicaCssErro('uf')">
@@ -33,25 +33,24 @@
             <option *ngFor="let estado of listarEstados" [value]="estado.sigla">{{ estado.nome }}</option>
           </select>
         </div>
-        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('regiao')">
+        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('cidade')">
           <label for="Nome">Cidade</label>
-          <select class="form-select" id="regiao" formControlName="regiao">
+          <select class="form-select" id="cidade" formControlName="cidade">
             <option [ngValue]="null" [disabled]="true">Selecione</option>
             <option *ngFor="let cidade of cidade" [value]="cidade.nome">{{ cidade.nome }}</option>
           </select>
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('regiao')">
           <label for="Nome">Região</label>
-          <select class="form-select" formControlName="bairrob">
-            <option value="">Selecione</option>
-            <option value="a">a</option>
+          <select class="form-select" formControlName="regiao">
+            <option [ngValue]="null" [disabled]="true">Selecione</option>
+            <option *ngFor="let regiao of regiao" [value]="regiao.nome">{{ regiao.nome }}</option>
           </select>
         </div>
         <div class="form-group col-md-3">
           <label for="Nome">Bairro</label>
           <select class="form-select">
             <option value="">Selecione</option>
-            <option value="a">a</option>
           </select>
         </div>
         <!--terceiro bloco-->

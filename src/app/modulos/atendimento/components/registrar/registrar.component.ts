@@ -6,6 +6,7 @@ import { ICategoria } from 'src/app/modulos/cadastros/components/categoria/model
 import { EstadosBr } from 'src/app/shared/models/estados-br';
 import { Cidades } from 'src/app/shared/models/Cidades';
 import { DropdownsService } from 'src/app/shared/services/dropdowns.service';
+import { ZonasRj } from 'src/app/shared/models/zonas-rj';
 
 @Component({
   selector: 'app-registrar',
@@ -17,10 +18,12 @@ export class RegistrarComponent implements OnInit {
   listarEstados: EstadosBr[] ;
   listarCategorias: ICategoria[];
   listarCidade: Cidades[];
+  listarRegião: ZonasRj[];
 
   categoria: any[];
   estados: EstadosBr[];
   cidade: Cidades[];
+  regiao: ZonasRj[];
 
   constructor(private formBuilder: FormBuilder,
     private http: HttpClient,
@@ -29,6 +32,7 @@ export class RegistrarComponent implements OnInit {
   ngOnInit(): void {
     this.carregarEstados();
     this.carregarCategorias();
+    this.carregarCidades();
     this.carregarRegiao();
 
 
@@ -42,10 +46,11 @@ export class RegistrarComponent implements OnInit {
         ],
       ],
       logradouro: [null, Validators.required],
-      cidade2: [null],
       bairro: [null, Validators.required],
+      cidade2: [null, Validators.required],
       uf: [null],
       cidade: [null, Validators.required],
+      regiao: [null],
       bairrob: [null],
       categoria: [null],
     });
@@ -55,10 +60,20 @@ export class RegistrarComponent implements OnInit {
       tap(estado => console.log('Novo Estado: ', estado)),
       map(estado => this.listarEstados.filter(e => e.sigla === estado)),
       map(estados => estados && estados.length > 0 ? estados[0].id: empty()),
-      switchMap((estadoId) => this.dropdownsService.getCidades(Number(estadoId))),
+      switchMap((estadoId) => this.dropdownsService.getCidades(Number(estadoId)))
     )
       .subscribe(cidades => this.cidade = cidades);
     ;
+
+    this.formulario.get('cidade')?.valueChanges
+    .pipe(
+      tap(cidade => console.log('Nova Cidade: ', cidade)),
+      map(cidade => this.listarCidade.filter(c => c.nome === cidade)),
+      map(cidades => cidades && cidades.length > 0 ? cidades[0].id : empty()),
+      switchMap(cidadeId => this.dropdownsService.getRegião(Number(cidadeId))),
+      tap(console.log)
+    )
+    .subscribe(regioes => this.regiao = regioes);
 
   }
 
@@ -76,14 +91,17 @@ export class RegistrarComponent implements OnInit {
     })
   }
 
-  carregarRegiao(): void {
+  carregarCidades(): void {
     this.dropdownsService.getCidades().subscribe(dados => {
       this.listarCidade = dados;
-      console.log(dados);
     })
   }
 
-
+  carregarRegiao(): void {
+    this.dropdownsService.getRegião().subscribe(dados => {
+      this.listarRegião = dados;
+    })
+  }
 
   compararCategorias(obj1: { descricao: any; id: any;}, obj2: { descricao: any; id: any;}) {
     return obj1 && obj2 ?  (obj1.descricao === obj2.descricao && obj1.id === obj2.id) : obj1 === obj2;
