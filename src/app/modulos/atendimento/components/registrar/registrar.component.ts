@@ -52,6 +52,13 @@ export class RegistrarComponent implements OnInit {
       cidade: [null, Validators.required],
       regiao: [null],
       bairrob: [null],
+      natendimento: [null],
+      dataInicioAtendimento: [null],
+      dataFimAtendimento: [null],
+      solicitante: [null],
+      dataInicioOcorrencia: [null],
+      dataFimOcorrencia: [null],
+      codigo: [null],
       categoria: [null],
     });
 
@@ -60,7 +67,8 @@ export class RegistrarComponent implements OnInit {
       tap(estado => console.log('Novo Estado: ', estado)),
       map(estado => this.listarEstados.filter(e => e.sigla === estado)),
       map(estados => estados && estados.length > 0 ? estados[0].id: empty()),
-      switchMap((estadoId) => this.dropdownsService.getCidades(Number(estadoId)))
+      switchMap((estadoId) => this.dropdownsService.getCidades(Number(estadoId))),
+      tap(console.log)
     )
       .subscribe(cidades => this.cidade = cidades);
     ;
@@ -68,9 +76,9 @@ export class RegistrarComponent implements OnInit {
     this.formulario.get('cidade')?.valueChanges
     .pipe(
       tap(cidade => console.log('Nova Cidade: ', cidade)),
-      map(cidade => this.listarCidade.filter(c => c.nome === cidade)),
-      map(cidades => cidades && cidades.length > 0 ? cidades[0].id : empty()),
-      switchMap(cidadeId => this.dropdownsService.getRegião(Number(cidadeId))),
+      map(cidade => this.cidade.filter(c => c.nome === cidade)),
+      map(cidades => cidades && cidades.length > 0 ? cidades[0].id: empty()),
+      switchMap((cidadeId) => this.dropdownsService.getRegião(Number(cidadeId))),
       tap(console.log)
     )
     .subscribe(regioes => this.regiao = regioes);
@@ -99,7 +107,7 @@ export class RegistrarComponent implements OnInit {
 
   carregarRegiao(): void {
     this.dropdownsService.getRegião().subscribe(dados => {
-      this.listarRegião = dados;
+      this.regiao = dados;
     })
   }
 

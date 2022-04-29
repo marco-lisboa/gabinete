@@ -21,7 +21,7 @@ export class DropdownsService {
   }
 
   getCidades(idEstado?: number): Observable<Cidades[]> {
-    return this.http.get<Cidades[]>('../../../assets/dados/regiao.json').pipe
+    return this.http.get<Cidades[]>('../../../assets/dados/cidade.json').pipe
     (map((cidade: Cidades[]) => cidade.filter(c => c.estado == idEstado))
     );
   }
