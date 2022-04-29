@@ -7,6 +7,8 @@ import { EstadosBr } from 'src/app/shared/models/estados-br';
 import { Cidades } from 'src/app/shared/models/Cidades';
 import { DropdownsService } from 'src/app/shared/services/dropdowns.service';
 import { ZonasRj } from 'src/app/shared/models/zonas-rj';
+import { IOrigem } from 'src/app/modulos/cadastros/components/listar-origem/model/IOrigem.interface';
+import { IAssunto } from 'src/app/modulos/cadastros/components/assuntos/listar-assuntos/model/IAssunto.model';
 
 @Component({
   selector: 'app-registrar',
@@ -17,10 +19,14 @@ export class RegistrarComponent implements OnInit {
   formulario: FormGroup;
   listarEstados: EstadosBr[] ;
   listarCategorias: ICategoria[];
+  listarOrigens: IOrigem[];
+  listarAssuntos: IAssunto[];
   listarCidade: Cidades[];
   listarRegião: ZonasRj[];
 
   categoria: any[];
+  origem: any[];
+  assunto: any[];
   estados: EstadosBr[];
   cidade: Cidades[];
   regiao: ZonasRj[];
@@ -32,6 +38,8 @@ export class RegistrarComponent implements OnInit {
   ngOnInit(): void {
     this.carregarEstados();
     this.carregarCategorias();
+    this.carregarOrigens();
+    this.carregarAssuntos();
     this.carregarCidades();
     this.carregarRegiao();
 
@@ -42,7 +50,8 @@ export class RegistrarComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(2),
-          Validators.maxLength(11),
+          Validators.maxLength(15),
+          Validators.pattern("([0-9]{2,3})?(\([0-9]{2}\))([0-9]{4,5})([0-9]{4})")
         ],
       ],
       logradouro: [null, Validators.required],
@@ -60,6 +69,8 @@ export class RegistrarComponent implements OnInit {
       dataFimOcorrencia: [null],
       codigo: [null],
       categoria: [null],
+      origem: [null],
+      assunto: [null],
     });
 
     this.formulario.get('uf')?.valueChanges
@@ -84,7 +95,7 @@ export class RegistrarComponent implements OnInit {
     .subscribe(regioes => this.regiao = regioes);
 
   }
-
+    //acaba OnInit
 
   carregarEstados(): void {
     this.dropdownsService.getEstadosBr().subscribe(dados => {
@@ -96,6 +107,18 @@ export class RegistrarComponent implements OnInit {
   carregarCategorias(): void {
     this.dropdownsService.getCategorias().subscribe(dados => {
       this.listarCategorias = dados
+    })
+  }
+
+  carregarOrigens(): void {
+    this.dropdownsService.getOrigens().subscribe(dados => {
+      this.listarOrigens = dados
+    })
+  }
+
+  carregarAssuntos(): void {
+    this.dropdownsService.getAssuntos().subscribe(dados => {
+      this.listarAssuntos = dados
     })
   }
 
@@ -115,6 +138,13 @@ export class RegistrarComponent implements OnInit {
     return obj1 && obj2 ?  (obj1.descricao === obj2.descricao && obj1.id === obj2.id) : obj1 === obj2;
   }
 
+  compararOrigens(obj1: { descricao: any; id: any;}, obj2: { descricao: any; id: any;}) {
+    return obj1 && obj2 ?  (obj1.descricao === obj2.descricao && obj1.id === obj2.id) : obj1 === obj2;
+  }
+
+  compararAssuntos(obj1: { descricao: any; id: any;}, obj2: { descricao: any; id: any;}) {
+    return obj1 && obj2 ?  (obj1.descricao === obj2.descricao && obj1.id === obj2.id) : obj1 === obj2;
+  }
 
 
   Submit() {

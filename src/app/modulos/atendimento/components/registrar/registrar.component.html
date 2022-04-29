@@ -8,7 +8,7 @@
       <!--primeiro bloco-->
       <div class="form-group col-md-3" [ngClass]="aplicaCssErro('contato')">
            <label for="Nome" class="control-label">Contato</label>
-          <input type="text" formControlName="contato" class="form-control" placeholder="Digite o contato">
+          <input type="text" formControlName="contato" class="form-control" placeholder="Digite o contato" maxlength="11">
           <app-campo-control-erro [mostrarErro]="verificaValidTouched('contato')" msgErro="Contato é obrigatório."></app-campo-control-erro>
         </div>
         <div class="form-group col-md-3" [ngClass]="aplicaCssErro('logradouro')">
@@ -100,18 +100,18 @@
             <option value="a">a</option>
           </select>
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('origem')">
           <label for="Nome">Origem</label>
-          <select class="form-select">
-            <option value="">Selecione</option>
-            <option value="a">a</option>
+          <select class="form-select" formControlName="origem" [compareWith]="compararOrigens">
+            <option [ngValue]="null" [disabled]="true" >Selecione</option>
+            <option *ngFor="let origem of listarOrigens" [ngValue]="origem">{{ origem.descricao }}</option>
           </select>
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('assunto')">
           <label for="Nome">Assunto</label>
-          <select class="form-select">
-            <option value="">Selecione</option>
-            <option value="a">a</option>
+          <select class="form-select" formControlName="assunto" [compareWith]="compararAssuntos">
+            <option [ngValue]="null" [disabled]="true" >Selecione</option>
+            <option *ngFor="let assunto of listarAssuntos" [ngValue]="assunto">{{ assunto.descricao }}</option>
           </select>
         </div>
         <div class="form-group col-md-3">
@@ -132,8 +132,8 @@
       <div class="form-group col-md-3">
         <label for="Nome">Cadastrante</label>
         <select class="form-select">
-          <option value="">Selecione</option>
-          <option value="a">a</option>
+          <option [ngValue]="null" [disabled]="true" >Selecione</option>
+          <option value="a">Cadastrante 1</option>
         </select>
       </div>
       <div class="form-group col-md-3">
