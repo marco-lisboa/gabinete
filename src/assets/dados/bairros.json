@@ -1,0 +1,372 @@
+[{
+  "id":"1",
+  "nome":"Botafogo",
+  "zona":"10"
+},
+  {
+  "id":"2",
+  "nome":"Catete",
+  "zona":"10"
+},
+  {
+  "id":"3",
+  "nome":"Copacabana",
+  "zona":"10"
+},
+  {
+  "id":"4",
+  "nome":"Cosme Velho",
+  "zona":"10"
+},
+{
+  "id":"5",
+  "nome":"Flamengo",
+  "zona":"10"
+},
+  {
+  "id":"6",
+  "nome":"Gávea",
+  "zona":"10"
+},
+  {
+  "id":"7",
+  "nome":"Humaitá",
+  "zona":"10"
+},
+  {
+  "id":"8",
+  "nome":"Ipanema",
+  "zona":"10"
+},
+{
+  "id":"9",
+  "nome":"Jardim Botânico",
+  "zona":"10"
+},
+  {
+  "id":"10",
+  "nome":"Lagoa",
+  "zona":"10"
+},
+  {
+  "id":"11",
+  "nome":"Laranjeiras",
+  "zona":"10"
+},
+  {
+  "id":"12",
+  "nome":"Leblon",
+  "zona":"10"
+},
+{
+  "id":"13",
+  "nome":"Leme",
+  "zona":"10"
+},
+  {
+  "id":"14",
+  "nome":"Rocinha",
+  "zona":"10"
+},
+  {
+  "id":"15",
+  "nome":"São Conrado",
+  "zona":"10"
+},
+  {
+  "id":"16",
+  "nome":"Urca",
+  "zona":"10"
+},
+{
+  "id":"17",
+  "nome":"Vidigal",
+  "zona":"10"
+},
+{
+  "id":"18",
+  "nome":"São Cristóvão",
+  "zona":"11"
+},
+  {
+  "id":"19",
+  "nome":"Benfica",
+  "zona":"11"
+},
+  {
+  "id":"20",
+  "nome":"Caju",
+  "zona":"11"
+},
+  {
+  "id":"21",
+  "nome":"Catumbi",
+  "zona":"11"
+},
+{
+  "id":"22",
+  "nome":"Centro",
+  "zona":"11"
+},
+  {
+  "id":"23",
+  "nome":"Cidade Nova",
+  "zona":"11"
+},
+  {
+  "id":"24",
+  "nome":"Estácio",
+  "zona":"11"
+},
+  {
+  "id":"25",
+  "nome":"Gamboa",
+  "zona":"11"
+},
+{
+  "id":"26",
+  "nome":"Glória",
+  "zona":"11"
+},
+  {
+  "id":"27",
+  "nome":"Lapa",
+  "zona":"11"
+},
+  {
+  "id":"28",
+  "nome":"Mangueira",
+  "zona":"11"
+},
+  {
+  "id":"29",
+  "nome":"Paquetá",
+  "zona":"11"
+},
+{
+  "id":"30",
+  "nome":"Rio Comprido",
+  "zona":"11"
+},
+  {
+  "id":"31",
+  "nome":"Santa Teresa",
+  "zona":"11"
+},
+  {
+  "id":"32",
+  "nome":"Santo Cristo",
+  "zona":"11"
+},
+  {
+  "id":"33",
+  "nome":"Saúde",
+  "zona":"11"
+},
+{
+  "id":"34",
+  "nome":"Vasco da Gama",
+  "zona":"11"
+},
+{
+  "id": "35",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "36",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "37",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "38",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "39",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "40",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "41",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "42",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "43",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "44",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "45",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "46",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "47",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "48",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "49",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "50",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "51",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "52",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "53",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "54",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "55",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "56",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "57",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "58",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "59",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "60",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "61",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "62",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "63",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "64",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "65",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "66",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "67",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "68",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "69",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "70",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "71",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "72",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "73",
+  "nome": "null",
+  "zona": "12"
+},
+{
+  "id": "74",
+  "nome": "null",
+  "zona": "12"
+}
+
+]
