@@ -1,5 +1,5 @@
 export interface IPrazo {
   id?: number;
-  situacao?: string;
+  ativo?: boolean;
   descricao: string;
 }

@@ -23,7 +23,7 @@
         </div>
         <div class="form-group col-md-3">
           <label for="Nome">Cidade</label>
-          <input type="text" class="form-control" placeholder="Digite uma cidade" formControlName="cidade2">
+          <input type="text" class="form-control" placeholder="Digite uma cidade">
         </div>
          <!--segundo bloco-->
         <div class="form-group col-md-3" [ngClass]="aplicaCssErro('uf')">
@@ -32,6 +32,7 @@
             <option [ngValue]="null" [disabled]="true" >Selecione</option>
             <option *ngFor="let estado of listarEstados" [value]="estado.sigla">{{ estado.nome }}</option>
           </select>
+          <app-campo-control-erro [mostrarErro]="verificaValidTouched('uf')" msgErro="O estado é obrigatório."></app-campo-control-erro>
         </div>
         <div class="form-group col-md-3" [ngClass]="aplicaCssErro('cidade')">
           <label for="Nome">Cidade</label>
@@ -39,6 +40,7 @@
             <option [ngValue]="null" [disabled]="true">Selecione</option>
             <option *ngFor="let cidade of cidade" [value]="cidade.nome">{{ cidade.nome }}</option>
           </select>
+          <app-campo-control-erro [mostrarErro]="verificaValidTouched('cidade')" msgErro="A cidade é obrigatória."></app-campo-control-erro>
         </div>
         <div class="form-group col-md-3" [ngClass]="aplicaCssErro('regiao')">
           <label for="Nome">Região</label>
@@ -46,38 +48,39 @@
             <option [ngValue]="null" [disabled]="true">Selecione</option>
             <option *ngFor="let regiao of regiao" [value]="regiao.nome">{{ regiao.nome }}</option>
           </select>
+          <app-campo-control-erro [mostrarErro]="verificaValidTouched('regiao')" msgErro="A região é obrigatória."></app-campo-control-erro>
         </div>
         <div class="form-group col-md-3">
           <label for="Nome">Bairro</label>
           <select class="form-select">
-            <option value="">Selecione</option>
+            <option [ngValue]="null" [disabled]="true" >Selecione</option>
           </select>
         </div>
         <!--terceiro bloco-->
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('numeroAtendimento')">
           <label for="Nome">Nº de atendimento</label>
-          <input type="text" class="form-control" placeholder="Número..." formControlName="natendimento">
+          <input type="text" class="form-control" placeholder="Número..." formControlName="numeroAtendimento">
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('dataInicioAtendimento')">
           <label for="Nome">Data de atendimento</label>
           <input type="date" class="form-control" formControlName="dataInicioAtendimento">
           <label for="Ate">Até</label>
         </div>
-        <div class="form-group col-md-3 fim">
+        <div class="form-group col-md-3 fim" [ngClass]="aplicaCssErro('dataFimAtendimento')">
           <label for="Nome"></label>
           <input type="date" class="data-final form-control" formControlName="dataFimAtendimento">
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('solcitante')">
           <label for="Nome">Solicitante</label>
           <input type="text"  class="form-control" placeholder="Solicitante..." formControlName="solicitante">
         </div>
         <!--quarto bloco-->
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('dataInicioOcorrencia')">
           <label for="Nome">Data da ocorrência</label>
           <input type="date" class="form-control" formControlName="dataInicioOcorrencia">
           <label for="Ate">Até</label>
         </div>
-        <div class="form-group col-md-3 fim">
+        <div class="form-group col-md-3 fim" [ngClass]="aplicaCssErro('dataFimOcorrencia')">
           <label for="Nome"></label>
           <input type="date" class="data-final form-control" formControlName="dataFimOcorrencia">
         </div>
@@ -96,7 +99,7 @@
         <div class="form-group col-md-3">
           <label for="Nome">Status</label>
           <select class="form-select">
-            <option value="">Selecione</option>
+            <option [ngValue]="null" [disabled]="true" >Selecione</option>
             <option value="a">a</option>
           </select>
         </div>
@@ -117,124 +120,129 @@
         <div class="form-group col-md-3">
           <label for="Nome">Atuação</label>
           <select class="form-select">
-            <option value="">Selecione</option>
+            <option [ngValue]="null" [disabled]="true" >Selecione</option>
             <option value="a">a</option>
           </select>
         </div>
       <!--sexto bloco-->
       <div class="form-group col-md-3">
         <label for="Nome">Atendente</label>
-        <select class="form-select">
-          <option value="">Selecione</option>
-          <option value="a">a</option>
+        <select class="form-select" >
+          <option [ngValue]="null" [disabled]="true" >Selecione</option>
+          <option value="Atendente 1">Atendente 1</option>
+          <option value="Atendente 2">Atendente 2</option>
         </select>
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Cadastrante</label>
-        <select class="form-select">
+        <select class="form-select" >
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
           <option value="a">Cadastrante 1</option>
+          <option value="a">Cadastrante 2</option>
         </select>
       </div>
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-3" [ngClass]="aplicaCssErro('prazo')">
         <label for="Nome">Prazo</label>
-        <select class="form-select">
-          <option value="">Selecione</option>
-          <option value="a">a</option>
+        <select class="form-select" formControlName="prazo" [compareWith]="compararPrazos">
+          <option [ngValue]="null" [disabled]="true" >Selecione</option>
+          <option *ngFor="let prazo of listarPrazos" [ngValue]="prazo">{{ prazo.descricao }}</option>
         </select>
       </div>
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-3" [ngClass]="aplicaCssErro('dataPrazo')">
         <label for="Nome">Data prazo</label>
-        <input type="text" class="form-control" placeholder="" >
+        <input type="text" class="form-control" placeholder="dd/mm/aaaa" formControlName="dataPrazo">
       </div>
       <!--sexto bloco-->
 
       <div class="form-group col-md-3">
         <label for="Nome">Finalizado</label>
         <select class="form-select">
-          <option value="">Selecione</option>
+          <option [ngValue]="null" [disabled]="true" >Selecione</option>
           <option value="a">a</option>
         </select>
       </div>
       <div class="form-group col-md-3" >
         <label for="Nome">Anexo</label>
         <select class="form-select">
-          <option value="">Selecione</option>
+          <option [ngValue]="null" [disabled]="true" >Selecione</option>
           <option value="a">a</option>
         </select>
       </div>
       <div class="form-group col-md-3" >
         <label for="Nome">Ocorrência</label>
         <select class="form-select">
-          <option value="">Selecione</option>
+          <option [ngValue]="null" [disabled]="true" >Selecione</option>
           <option value="a">a</option>
         </select>
       </div>
-      <div class="form-group col-md-3" >
+      <div class="form-group col-md-3" [ngClass]="aplicaCssErro('ocorrenciacad')">
         <label for="Nome">Ocorrência cadastrada por</label>
-        <select class="form-select">
-          <option value="">Selecione</option>
-          <option value="a">b</option>
+        <select class="form-select" formControlName="ocorrenciacad">
+          <option [ngValue]="null" [disabled]="true" >Selecione</option>
+          <option value="Leandro">Leandro</option>
+          <option value="Henrique">Henrique</option>
         </select>
       </div>
       <!--sétimo bloco-->
-      <div class="form-group col-md-3" >
+      <div class="form-group col-md-3" [ngClass]="aplicaCssErro('respocorrencia')">
         <label for="Nome">Resp. pela ocorrência</label>
-        <select class="form-select">
-          <option value="">Selecione</option>
-          <option value="a">b</option>
+        <select class="form-select" formControlName="respocorrencia">
+          <option [ngValue]="null" [disabled]="true" >Selecione</option>
+          <option value="Leandro">Leandro</option>
+          <option value="Henrique">Henrique</option>
         </select>
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Nº do RAP</label>
-        <input type="text" class="form-control" placeholder="" >
+        <input type="text" class="form-control" placeholder="" formControlName="numeroRap">
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Dígito do RAP</label>
-        <input type="text" class="form-control" placeholder="">
+        <input type="text" class="form-control" placeholder="" formControlName="digitoRap">
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Nº do SIMPROC</label>
-        <input type="text" class="form-control" placeholder="" >
+        <input type="text" class="form-control" placeholder="" formControlName="numeroSimproc">
       </div>
       <!--oitavo bloco-->
       <div class="form-group col-md-3"  >
         <label for="Nome">Nº do SEI</label>
-        <input type="text" class="form-control" placeholder="">
+        <input type="text" class="form-control" placeholder="" formControlName="numeroSei">
       </div>
       <div class="form-group col-md-3" >
         <label for="Nome">Nº do documento</label>
-        <input type="text" class="form-control" placeholder="Nº"  style="width: 38%">
+        <input type="text" class="form-control" placeholder="Nº"  style="width: 38%" formControlName="numeroDocumento">
         <label style="font-size: 16px;">/</label>
-        <input type="text" class="form-control" placeholder="Ano"  style="width: 38%">
+        <input type="text" class="form-control" placeholder="Ano"  style="width: 38%" formControlName="anoDocumento">
       </div>
       <div class="form-group col-md-3" >
         <label for="Nome">Órgão responsável</label>
-        <select class="form-select">
-          <option value="">Selecione</option>
-          <option value="a">b</option>
+        <select class="form-select" formControlName="orgao" [compareWith]="compararOrgaos">
+          <option [ngValue]="null" [disabled]="true" >Selecione</option>
+          <option *ngFor="let orgao of listarOrgaos" [ngValue]="orgao">{{ orgao.descricao }}</option>
         </select>
       </div>
       <div class="form-group col-md-3" >
         <label for="Nome">Tipo</label>
-        <select class="form-select">
-          <option value="">Selecione</option>
-          <option value="a">b</option>
+        <select class="form-select" formControlName="tipoOcorrencia" [compareWith]="compararTipos">
+          <option [ngValue]="null" [disabled]="true" >Selecione</option>
+          <option *ngFor="let tipo of listarTipos" [ngValue]="tipo">{{ tipo.descricao }}</option>
         </select>
       </div>
       <!--nono bloco-->
       <div class="form-group col-md-3" >
         <label for="Nome">Retornar</label>
         <select class="form-select">
-          <option value="">Selecione</option>
+          <option [ngValue]="null" [disabled]="true" >Selecione</option>
           <option value="a">b</option>
         </select>
       </div>
       <div class="form-group col-md-3" >
         <label for="Nome">C/ solicitantes</label>
-        <select class="form-select">
-          <option value="">Selecione</option>
-          <option value="a">b</option>
+        <select class="form-select" formControlName="solicitantes">
+          <option [ngValue]="null" [disabled]="true" >Selecione</option>
+          <option value="sim">Sim</option>
+          <option value="nao">Não</option>
         </select>
       </div>
       <div class="form-group col-md-3" style="font-size: 16px">
@@ -246,16 +254,16 @@
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Local/Pessoa Beneficiada</label>
-        <input type="text" class="form-control" placeholder="" >
+        <input type="text" class="form-control" placeholder="" formControlName="beneficiado">
       </div>
       <!--décimo bloco-->
       <div class="form-group col-lg-6">
         <label for="Nome">Observação da ocorrência</label>
-        <input type="text"class="form-control size-input" placeholder="Deixe aqui uma observação da sua ocorrência...">
+        <input type="text"class="form-control size-input" placeholder="Deixe aqui uma observação da sua ocorrência..." formControlName="observacao">
       </div>
       <div class="form-group col-lg-6" >
         <label for="Nome">Descrição</label>
-        <input type="text" class="form-control size-input" placeholder="Deixe aqui uma descrição da ocorrência...." >
+        <input type="text" class="form-control size-input" placeholder="Deixe aqui uma descrição da ocorrência...." formControlName="descricao">
       </div>
       <button type="submit" class="btn btn-primary btn-lg">
         <span>Salvar</span></button>

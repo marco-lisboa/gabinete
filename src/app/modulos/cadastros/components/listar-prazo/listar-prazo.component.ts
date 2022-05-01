@@ -13,7 +13,8 @@ export class ListarPrazoComponent implements OnInit {
   listarPrazos: IPrazo[] = [];
 
   prazo: IPrazo = {
-    descricao: ''
+    descricao: '',
+    ativo: true
   }
 
   constructor(private prazoService: PrazoService) { }

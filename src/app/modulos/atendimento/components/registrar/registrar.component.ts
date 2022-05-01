@@ -9,6 +9,9 @@ import { DropdownsService } from 'src/app/shared/services/dropdowns.service';
 import { ZonasRj } from 'src/app/shared/models/zonas-rj';
 import { IOrigem } from 'src/app/modulos/cadastros/components/listar-origem/model/IOrigem.interface';
 import { IAssunto } from 'src/app/modulos/cadastros/components/assuntos/listar-assuntos/model/IAssunto.model';
+import { IPrazo } from 'src/app/modulos/cadastros/components/listar-prazo/model/IPrazo.interface';
+import { IOrgao } from 'src/app/modulos/cadastros/components/listar-orgao/model/IOrgao.interface';
+import { ITipoOcorrencia } from 'src/app/modulos/cadastros/components/listar-tipo-ocorrencia/model/ITipoOcorrencia.interface';
 
 @Component({
   selector: 'app-registrar',
@@ -21,12 +24,18 @@ export class RegistrarComponent implements OnInit {
   listarCategorias: ICategoria[];
   listarOrigens: IOrigem[];
   listarAssuntos: IAssunto[];
+  listarPrazos:IPrazo[];
+  listarOrgaos:IOrgao[];
+  listarTipos:ITipoOcorrencia[];
   listarCidade: Cidades[];
   listarRegião: ZonasRj[];
 
   categoria: any[];
   origem: any[];
   assunto: any[];
+  prazo: any[];
+  orgao: any[];
+  tipoocorrencia: any[];
   estados: EstadosBr[];
   cidade: Cidades[];
   regiao: ZonasRj[];
@@ -42,6 +51,9 @@ export class RegistrarComponent implements OnInit {
     this.carregarAssuntos();
     this.carregarCidades();
     this.carregarRegiao();
+    this.carregarPrazos();
+    this.carregarOrgaos();
+    this.carregarTipoOcorrencia();
 
 
     this.formulario = this.formBuilder.group({
@@ -56,21 +68,36 @@ export class RegistrarComponent implements OnInit {
       ],
       logradouro: [null, Validators.required],
       bairro: [null, Validators.required],
-      cidade2: [null, Validators.required],
-      uf: [null],
+      uf: [null, Validators.required],
       cidade: [null, Validators.required],
-      regiao: [null],
+      regiao: [null, Validators.required],
       bairrob: [null],
-      natendimento: [null],
+      numeroAtendimento: [null],
       dataInicioAtendimento: [null],
       dataFimAtendimento: [null],
       solicitante: [null],
       dataInicioOcorrencia: [null],
       dataFimOcorrencia: [null],
       codigo: [null],
-      categoria: [null],
-      origem: [null],
+      categoria: [null, Validators.required],
+      origem: [null, Validators.required],
       assunto: [null],
+      prazo: [null],
+      dataPrazo: [null],
+      ocorrenciacad: [null],
+      respocorrencia: [null, Validators.required],
+      numeroRap: [null],
+      digitoRap: [null],
+      numeroSimproc: [null],
+      numeroSei: [null],
+      numeroDocumento: [null],
+      anoDocumento: [null],
+      orgao: [null],
+      tipoOcorrencia: [null],
+      solicitantes: [null],
+      beneficiado: [null],
+      observacao: [null],
+      descricao: [null],
     });
 
     this.formulario.get('uf')?.valueChanges
@@ -122,6 +149,24 @@ export class RegistrarComponent implements OnInit {
     })
   }
 
+  carregarPrazos(): void {
+    this.dropdownsService.getPrazos().subscribe(dados => {
+      this.listarPrazos = dados
+    })
+  }
+
+  carregarOrgaos(): void {
+    this.dropdownsService.getOrgaos().subscribe(dados => {
+      this.listarOrgaos = dados
+    })
+  }
+
+  carregarTipoOcorrencia(): void {
+    this.dropdownsService.getTipos().subscribe(dados => {
+      this.listarTipos = dados
+    })
+  }
+
   carregarCidades(): void {
     this.dropdownsService.getCidades().subscribe(dados => {
       this.listarCidade = dados;
@@ -143,6 +188,18 @@ export class RegistrarComponent implements OnInit {
   }
 
   compararAssuntos(obj1: { descricao: any; id: any;}, obj2: { descricao: any; id: any;}) {
+    return obj1 && obj2 ?  (obj1.descricao === obj2.descricao && obj1.id === obj2.id) : obj1 === obj2;
+  }
+
+  compararPrazos(obj1: { descricao: any; id: any;}, obj2: { descricao: any; id: any;}) {
+    return obj1 && obj2 ?  (obj1.descricao === obj2.descricao && obj1.id === obj2.id) : obj1 === obj2;
+  }
+
+  compararOrgaos(obj1: { descricao: any; id: any;}, obj2: { descricao: any; id: any;}) {
+    return obj1 && obj2 ?  (obj1.descricao === obj2.descricao && obj1.id === obj2.id) : obj1 === obj2;
+  }
+
+  compararTipos(obj1: { descricao: any; id: any;}, obj2: { descricao: any; id: any;}) {
     return obj1 && obj2 ?  (obj1.descricao === obj2.descricao && obj1.id === obj2.id) : obj1 === obj2;
   }
 
