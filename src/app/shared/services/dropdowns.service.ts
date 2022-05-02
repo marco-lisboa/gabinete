@@ -10,6 +10,7 @@ import { IOrigem } from 'src/app/modulos/cadastros/components/listar-origem/mode
 import { IPrazo } from 'src/app/modulos/cadastros/components/listar-prazo/model/IPrazo.interface';
 import { IOrgao } from 'src/app/modulos/cadastros/components/listar-orgao/model/IOrgao.interface';
 import { ITipoOcorrencia } from 'src/app/modulos/cadastros/components/listar-tipo-ocorrencia/model/ITipoOcorrencia.interface';
+import { Bairros } from '../models/bairros';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,12 @@ export class DropdownsService {
   getRegião(idCidade?: number): Observable<ZonasRj[]> {
     return this.http.get<ZonasRj[]>('../../../assets/dados/zonasrj.json').pipe
     (map((regioes: ZonasRj[]) => regioes.filter(r => r.cidade == idCidade))
+    );
+  }
+
+  getBairro(idRegião?: number): Observable<Bairros[]> {
+    return this.http.get<Bairros[]>('../../../assets/dados/bairros.json').pipe
+    (map((bairros: Bairros[]) => bairros.filter(b => b.zona == idRegião))
     );
   }
 

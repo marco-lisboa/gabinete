@@ -16,10 +16,10 @@
           <input type="text" class="form-control" placeholder="Digite o logradouro" formControlName="logradouro">
           <app-campo-control-erro [mostrarErro]="verificaValidTouched('logradouro')" msgErro="Logradouro é obrigatório."></app-campo-control-erro>
         </div>
-        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('bairro')">
+        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('bairrob')">
           <label for="Nome" class="control-label">Bairro</label>
           <input type="text" class="form-control" placeholder="Digite seu bairro" formControlName="bairro">
-          <app-campo-control-erro [mostrarErro]="verificaValidTouched('bairro')" msgErro="O bairro é obrigatório."></app-campo-control-erro>
+          <app-campo-control-erro [mostrarErro]="verificaValidTouched('bairrob')" msgErro="O bairro é obrigatório."></app-campo-control-erro>
         </div>
         <div class="form-group col-md-3">
           <label for="Nome">Cidade</label>
@@ -50,10 +50,11 @@
           </select>
           <app-campo-control-erro [mostrarErro]="verificaValidTouched('regiao')" msgErro="A região é obrigatória."></app-campo-control-erro>
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('bairro')">
           <label for="Nome">Bairro</label>
-          <select class="form-select">
+          <select class="form-select" formControlName="bairro">
             <option [ngValue]="null" [disabled]="true" >Selecione</option>
+            <option *ngFor="let bairro of bairro" [value]="bairro.nome">{{ bairro.nome }}</option>
           </select>
         </div>
         <!--terceiro bloco-->
