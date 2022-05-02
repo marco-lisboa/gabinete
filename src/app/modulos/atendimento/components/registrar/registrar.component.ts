@@ -75,7 +75,6 @@ export class RegistrarComponent implements OnInit {
         ],
       ],
       logradouro: [null, Validators.required],
-      bairrob: [null],
       uf: [null, Validators.required],
       cidade: [null, Validators.required],
       regiao: [null, Validators.required],
