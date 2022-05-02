@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { empty, map, switchMap, tap } from 'rxjs';
 import { ICategoria } from 'src/app/modulos/cadastros/components/categoria/model/ICategoria.model';
 import { EstadosBr } from 'src/app/shared/models/estados-br';
@@ -13,6 +13,7 @@ import { IPrazo } from 'src/app/modulos/cadastros/components/listar-prazo/model/
 import { IOrgao } from 'src/app/modulos/cadastros/components/listar-orgao/model/IOrgao.interface';
 import { ITipoOcorrencia } from 'src/app/modulos/cadastros/components/listar-tipo-ocorrencia/model/ITipoOcorrencia.interface';
 import { Bairros } from 'src/app/shared/models/bairros';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registrar',
@@ -31,6 +32,7 @@ export class RegistrarComponent implements OnInit {
   listarCidade: Cidades[];
   listarRegião: ZonasRj[];
   listarBairro: Bairros[];
+  opcaoNaoListar = ['Emendas', 'Internos'];
 
   categoria: any[];
   origem: any[];
@@ -43,9 +45,11 @@ export class RegistrarComponent implements OnInit {
   regiao: ZonasRj[];
   bairro: Bairros[];
 
+
   constructor(private formBuilder: FormBuilder,
     private http: HttpClient,
-    private dropdownsService: DropdownsService) {}
+    private dropdownsService: DropdownsService) {
+     }
 
   ngOnInit(): void {
     this.carregarEstados();
@@ -83,13 +87,17 @@ export class RegistrarComponent implements OnInit {
       dataInicioOcorrencia: [null],
       dataFimOcorrencia: [null],
       codigo: [null],
-      categoria: [null, Validators.required],
-      origem: [null, Validators.required],
-      assunto: [null],
-      prazo: [null],
+      categoriaEntity: [null, Validators.required],
+      status: [null],
+      origemEntity: [null, Validators.required],
+      idAtuacao: [null],
+      assuntoEntity: [null],
+      prazoEntity: [null],
       dataPrazo: [null],
-      ocorrenciacad: [null],
-      respocorrencia: [null, Validators.required],
+      idFinalizado: [null],
+      idOcorrencia: [null],
+      idResponsavelAtendimento: [null],
+      idResponsavelOcorrencia: [null, Validators.required],
       numeroRap: [null],
       digitoRap: [null],
       numeroSimproc: [null],
@@ -98,11 +106,15 @@ export class RegistrarComponent implements OnInit {
       anoDocumento: [null],
       orgao: [null],
       tipoOcorrencia: [null],
+      idRetornar: [null],
       solicitantes: [null],
+      opcaoNaoListar: this.buildOpcaoNaoListar(),
       beneficiado: [null],
       observacao: [null],
-      descricao: [null],
+      descricao: [null]
     });
+
+
 
     this.formulario.get('uf')?.valueChanges
     .pipe(
@@ -135,8 +147,16 @@ export class RegistrarComponent implements OnInit {
     )
     .subscribe(bairros => this.bairro = bairros);
 
+
+
   }
     //acaba OnInit
+
+    buildOpcaoNaoListar() {
+      const values = this.opcaoNaoListar.map(v => new FormControl(false));
+      return this.formBuilder.array(values)
+    }
+
 
   carregarEstados(): void {
     this.dropdownsService.getEstadosBr().subscribe(dados => {
@@ -227,17 +247,30 @@ export class RegistrarComponent implements OnInit {
   Submit() {
     console.log(this.formulario);
 
+    let valueSubmit = Object.assign({}, this.formulario.value);
+
+    valueSubmit = Object.assign(valueSubmit, {
+      opcaoNaoListar: valueSubmit.opcaoNaoListar
+      .map( (v: any, i: any) => v ? this.opcaoNaoListar[i] : null)
+      .filter((v: any) => v !== null)
+    });
+
+    console.log(valueSubmit);
+
     if (this.formulario.valid) {
       this.http
-        .post('https://httpbin.org/post', JSON.stringify({}))
+        .post('https://httpbin.org/post', JSON.stringify(valueSubmit))
         .subscribe((dados) => {
-          console.log(this.formulario.value);
+          console.log(valueSubmit);
           console.log(dados);
           //reseta o formulario
           //this.formulario.reset();
         });
     } else {
-      console.log('formulario invalido');
+      Swal.fire({
+        title: "Preencha os campos obrigatórios!!!",
+        icon: "error"
+      });
       Object.keys(this.formulario.controls).forEach(campo => {
         console.log(campo);
         const controle = this.formulario.get(campo);
@@ -259,8 +292,10 @@ export class RegistrarComponent implements OnInit {
       'has-error': this.verificaValidTouched(campo),
       'has-feedback': this.verificaValidTouched(campo),
     };
+  }
 
-
+  getFrameworksControls() {
+    return this.formulario.get('opcaoNaoListar') ? (<FormArray>this.formulario.get('opcaoNaoListar')).controls : null;
   }
 
 }
