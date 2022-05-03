@@ -22,14 +22,14 @@ export class DropdownsService {
   constructor(private http: HttpClient) { }
 
   getEstadosBr(): Observable<EstadosBr[]> {
-    return this.http.get<EstadosBr[]>('../../../assets/dados/estadosbr.json').pipe
+    return this.http.get<EstadosBr[]>('http://gabinetevirtual.us-east-1.elasticbeanstalk.com/api/v1/ufs').pipe
     (map(res => res)
     );
   }
 
   getCidades(idEstado?: number): Observable<Cidades[]> {
-    return this.http.get<Cidades[]>('../../../assets/dados/cidade.json').pipe
-    (map((cidade: Cidades[]) => cidade.filter(c => c.estado == idEstado))
+    return this.http.get<Cidades[]>('http://gabinetevirtual.us-east-1.elasticbeanstalk.com/api/v1/cidades').pipe
+    (map((cidade: Cidades[]) => cidade.filter(c => c.idUf == idEstado))
     );
   }
 

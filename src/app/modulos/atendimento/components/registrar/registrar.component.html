@@ -29,7 +29,7 @@
           <label for="Nome">UF</label>
           <select class="form-select" id="uf" formControlName="uf">
             <option [ngValue]="null" [disabled]="true" >Selecione</option>
-            <option *ngFor="let estado of listarEstados" [value]="estado.sigla">{{ estado.nome }}</option>
+            <option *ngFor="let estado of listarEstados" [value]="estado.sigla">{{ estado.descricao }}</option>
           </select>
           <app-campo-control-erro [mostrarErro]="verificaValidTouched('uf')" msgErro="O estado é obrigatório."></app-campo-control-erro>
         </div>
@@ -37,23 +37,23 @@
           <label for="Nome">Cidade</label>
           <select class="form-select" id="cidade" formControlName="cidade">
             <option [ngValue]="null" [disabled]="true">Selecione</option>
-            <option *ngFor="let cidade of cidade" [value]="cidade.nome">{{ cidade.nome }}</option>
+            <option *ngFor="let cidade of cidade" [value]="cidade.id">{{ cidade.nome }}</option>
           </select>
           <app-campo-control-erro [mostrarErro]="verificaValidTouched('cidade')" msgErro="A cidade é obrigatória."></app-campo-control-erro>
         </div>
-        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('regiao')">
+        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('idRegiao')">
           <label for="Nome">Região</label>
-          <select class="form-select" formControlName="regiao">
+          <select class="form-select" formControlName="idRegiao">
             <option [ngValue]="null" [disabled]="true">Selecione</option>
             <option *ngFor="let regiao of regiao" [value]="regiao.nome">{{ regiao.nome }}</option>
           </select>
-          <app-campo-control-erro [mostrarErro]="verificaValidTouched('regiao')" msgErro="A região é obrigatória."></app-campo-control-erro>
+          <app-campo-control-erro [mostrarErro]="verificaValidTouched('idRegiao')" msgErro="A região é obrigatória."></app-campo-control-erro>
         </div>
-        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('bairro')">
+        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('idBairro')">
           <label for="Nome">Bairro</label>
-          <select class="form-select" formControlName="bairro">
+          <select class="form-select" formControlName="idBairro">
             <option [ngValue]="null" [disabled]="true" >Selecione</option>
-            <option *ngFor="let bairro of bairro" [value]="bairro.nome">{{ bairro.nome }}</option>
+            <option *ngFor="let bairro of bairro" [value]="bairro.id">{{ bairro.nome }}</option>
           </select>
           <app-campo-control-erro [mostrarErro]="verificaValidTouched('bairro')" msgErro="O bairro é obrigatório."></app-campo-control-erro>
         </div>
@@ -96,11 +96,11 @@
           <input type="text" class="form-control" placeholder="Digite o código" formControlName="codigo">
           <app-campo-control-erro [mostrarErro]="verificaValidTouched('codigo')" msgErro="O código é obrigatório."></app-campo-control-erro>
         </div>
-        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('categoriaEntity')">
+        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('idCategoria')">
           <label for="Nome">Categoria</label>
-          <select class="form-select" formControlName="categoriaEntity" [compareWith]="compararCategorias">
+          <select class="form-select" formControlName="idCategoria" [compareWith]="compararCategorias">
             <option [ngValue]="null" [disabled]="true" >Selecione</option>
-            <option *ngFor="let categoria of listarCategorias" [ngValue]="categoria">{{ categoria.descricao }}</option>
+            <option *ngFor="let categoria of listarCategorias" [ngValue]="categoria.id">{{ categoria.descricao }}</option>
           </select>
           <app-campo-control-erro [mostrarErro]="verificaValidTouched('categoriaEntity')" msgErro="A categoria é obrigatória."></app-campo-control-erro>
         </div>
@@ -109,24 +109,24 @@
           <label for="Nome">Status</label>
           <select class="form-select" formControlName="status">
             <option [ngValue]="null" [disabled]="true" >Selecione</option>
-            <option value="ativo">Ativo</option>
-            <option value="inativo">Inativo</option>
+            <option value="a">Ativo</option>
+            <option value="i">Inativo</option>
           </select>
           <app-campo-control-erro [mostrarErro]="verificaValidTouched('status')" msgErro="O status é obrigatório."></app-campo-control-erro>
         </div>
-        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('origemEntity')">
+        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('idOrigem')">
           <label for="Nome">Origem</label>
-          <select class="form-select" formControlName="origemEntity" [compareWith]="compararOrigens">
+          <select class="form-select" formControlName="idOrigem" [compareWith]="compararOrigens">
             <option [ngValue]="null" [disabled]="true" >Selecione</option>
-            <option *ngFor="let origem of listarOrigens" [ngValue]="origem">{{ origem.descricao }}</option>
+            <option *ngFor="let origem of listarOrigens" [ngValue]="origem.id">{{ origem.descricao }}</option>
           </select>
           <app-campo-control-erro [mostrarErro]="verificaValidTouched('origemEntity')" msgErro="A origem é obrigatória."></app-campo-control-erro>
         </div>
-        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('assuntoEntity')">
+        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('idAssunto')">
           <label for="Nome">Assunto</label>
-          <select class="form-select" formControlName="assuntoEntity" [compareWith]="compararAssuntos">
+          <select class="form-select" formControlName="idAssunto" [compareWith]="compararAssuntos">
             <option [ngValue]="null" [disabled]="true" >Selecione</option>
-            <option *ngFor="let assunto of listarAssuntos" [ngValue]="assunto">{{ assunto.descricao }}</option>
+            <option *ngFor="let assunto of listarAssuntos" [ngValue]="assunto.id">{{ assunto.descricao }}</option>
           </select>
           <app-campo-control-erro [mostrarErro]="verificaValidTouched('assuntoEntity')" msgErro="O assunto é obrigatório."></app-campo-control-erro>
         </div>
@@ -134,7 +134,7 @@
           <label for="Nome">Atuação</label>
           <select class="form-select" formControlName="idAtuacao">
             <option [ngValue]="null" [disabled]="true" >Selecione</option>
-            <option value="35">Atuação 1</option>
+            <option [ngValue]="218">Atuação 1</option>
           </select>
         </div>
       <!--sexto bloco-->
@@ -142,23 +142,22 @@
         <label for="Nome">Atendente</label>
         <select class="form-select" >
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
-          <option value="Atendente 1">Atendente 1</option>
-          <option value="Atendente 2">Atendente 2</option>
+          <option [ngValue]="1">Atendente 1</option>
+          <option [ngValue]="2">Atendente 2</option>
         </select>
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Cadastrante</label>
-        <select class="form-select" >
+        <select class="form-select" formControlName="idCadastradoPor">
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
-          <option value="Cadastrante 1">Cadastrante 1</option>
-          <option value="Cadastarnte ">Cadastrante 2</option>
+          <option [ngValue]="218">Cadastrante 1</option>
         </select>
       </div>
-      <div class="form-group col-md-3" [ngClass]="aplicaCssErro('prazoEntity')">
+      <div class="form-group col-md-3" [ngClass]="aplicaCssErro('idPrazo')">
         <label for="Nome">Prazo</label>
-        <select class="form-select" formControlName="prazoEntity" [compareWith]="compararPrazos">
+        <select class="form-select" formControlName="idPrazo" [compareWith]="compararPrazos">
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
-          <option *ngFor="let prazo of listarPrazos" [ngValue]="prazo">{{ prazo.descricao }}</option>
+          <option *ngFor="let prazo of listarPrazos" [ngValue]="prazo.id">{{ prazo.descricao }}</option>
           <app-campo-control-erro [mostrarErro]="verificaValidTouched('prazoEntity')" msgErro="O prazo é obrigatório."></app-campo-control-erro>
         </select>
       </div>
@@ -172,12 +171,12 @@
         <label for="Nome">Finalizado</label>
         <select class="form-select" formControlName="idFinalizado">
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
-          <option value="1">Sim</option>
+          <option [ngValue]="218">Sim</option>
         </select>
       </div>
       <div class="form-group col-md-3" >
         <label for="Nome">Anexo</label>
-        <select class="form-select" formControlName="anexo">
+        <select class="form-select">
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
           <option *ngFor="let anexo of listarAnexos" [ngValue]="anexo">{{ anexo.nomeArquivo }}</option>
         </select>
@@ -186,16 +185,15 @@
         <label for="Nome">Ocorrência</label>
         <select class="form-select" formControlName="idOcorrencia">
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
-          <option value="1">Ocorrencia 1</option>
-          <option value="2">Ocorrencia 2</option>
+          <option [ngValue]="1">Ocorrencia 1</option>
+          <option [ngValue]="2">Ocorrencia 2</option>
         </select>
       </div>
       <div class="form-group col-md-3" [ngClass]="aplicaCssErro('idResponsavelAtendimento')">
         <label for="Nome">Ocorrência cadastrada por</label>
         <select class="form-select" formControlName="idResponsavelAtendimento">
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
-          <option value="1">Leandro</option>
-          <option value="2">Henrique</option>
+          <option [ngValue]="218">Leandro</option>
         </select>
       </div>
       <!--sétimo bloco-->
@@ -203,8 +201,7 @@
         <label for="Nome">Resp. pela ocorrência</label>
         <select class="form-select" formControlName="idResponsavelOcorrencia">
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
-          <option value="1">Leandro</option>
-          <option value="2">Henrique</option>
+          <option [ngValue]="218">Leandro</option>
         </select>
       </div>
       <div class="form-group col-md-3">
@@ -213,7 +210,7 @@
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Dígito do RAP</label>
-        <input type="text" class="form-control" placeholder="" formControlName="digitoRap">
+        <input type="text" class="form-control" placeholder="" formControlName="digitoRap" maxlength="3">
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Nº do SIMPROC</label>
@@ -232,9 +229,9 @@
       </div>
       <div class="form-group col-md-3" >
         <label for="Nome">Órgão responsável</label>
-        <select class="form-select" formControlName="orgao" [compareWith]="compararOrgaos">
+        <select class="form-select" formControlName="idOrgao" [compareWith]="compararOrgaos">
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
-          <option *ngFor="let orgao of listarOrgaos" [ngValue]="orgao">{{ orgao.descricao }}</option>
+          <option *ngFor="let orgao of listarOrgaos" [ngValue]="orgao.id">{{ orgao.descricao }}</option>
         </select>
       </div>
       <div class="form-group col-md-3" >
@@ -249,7 +246,7 @@
         <label for="Nome">Retornar</label>
         <select class="form-select" formControlName="idRetornar">
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
-          <option value="1">Exemplo 1</option>
+          <option [ngValue]="218">Exemplo 1</option>
         </select>
       </div>
       <div class="form-group col-md-3" >
@@ -257,18 +254,15 @@
         <select class="form-select" formControlName="solicitantes">
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
           <option value="nao">Não</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
+          <option [ngValue]=>1</option>
+          <option [ngValue]=>2</option>
+          <option [ngValue]=>3</option>
         </select>
       </div>
       <div class="form-group col-md-3" style="font-size: 14px">
         <label for="Nome">Não Listar</label>
-        <div class="checkbox" class="col-sm-6" formArrayName="opcaoNaoListar" *ngFor="let item of getFrameworksControls(); let i=index">
-        <label for="checkbox-inline" style="padding-left:2px">
-        <input type="checkbox" [formControlName]="i"> {{ opcaoNaoListar[i] }}
-        </label>
-      </div>
+        <div class="checkbox" class="col-sm-6" *ngFor="let item of getFrameworksControls(); let i=index">
+     </div>
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Local/Pessoa Beneficiada</label>

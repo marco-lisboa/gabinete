@@ -1,3 +1,4 @@
+import { RegistrarAtendimentoService } from './services/registrar-atendimento.service';
 import { Anexo } from './../../../../shared/models/anexo';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -15,6 +16,7 @@ import { IOrgao } from 'src/app/modulos/cadastros/components/listar-orgao/model/
 import { ITipoOcorrencia } from 'src/app/modulos/cadastros/components/listar-tipo-ocorrencia/model/ITipoOcorrencia.interface';
 import { Bairros } from 'src/app/shared/models/bairros';
 import Swal from 'sweetalert2';
+import { RegistrarAtendimento } from './model/registrar-atendimento';
 
 @Component({
   selector: 'app-registrar',
@@ -32,9 +34,9 @@ export class RegistrarComponent implements OnInit {
   listarTipos:ITipoOcorrencia[];
   listarAnexos:Anexo[];
   listarCidade: Cidades[];
-  listarRegião: ZonasRj[];
+  listarRegiao: ZonasRj[];
   listarBairro: Bairros[];
-  opcaoNaoListar = ['Emendas', 'Internos'];
+  opcaoNaoListar = ['Emendas', 'Internas'];
 
   categoria: any[];
   origem: any[];
@@ -47,14 +49,21 @@ export class RegistrarComponent implements OnInit {
   cidade: Cidades[];
   regiao: ZonasRj[];
   bairro: Bairros[];
+  atendimento: RegistrarAtendimento = {
+    beneficiado: ''
+  };
+
+
 
 
   constructor(private formBuilder: FormBuilder,
     private http: HttpClient,
-    private dropdownsService: DropdownsService) {
+    private dropdownsService: DropdownsService,
+    private RegistrarAtendimentoService: RegistrarAtendimentoService) {
      }
 
   ngOnInit(): void {
+
     this.carregarEstados();
     this.carregarCategorias();
     this.carregarOrigens();
@@ -69,20 +78,23 @@ export class RegistrarComponent implements OnInit {
 
 
     this.formulario = this.formBuilder.group({
+      //data: ['2022/04/20'],
+      idCadastrado: [218],
+      idBairroContato: [2],
       contato: [
         null,
         [
-          Validators.required,
+         /* Validators.required,
           Validators.minLength(2),
           Validators.maxLength(15),
-          Validators.pattern("([0-9]{2,3})?(\([0-9]{2}\))([0-9]{4,5})([0-9]{4})")
+          Validators.pattern("([0-9]{2,3})?(\([0-9]{2}\))([0-9]{4,5})([0-9]{4})")*/
         ],
       ],
-      logradouro: [null, Validators.required],
-      uf: [null, Validators.required],
-      cidade: [null, Validators.required],
-      regiao: [null, Validators.required],
-      bairro: [null, Validators.required],
+      logradouro: [null],
+      uf: [null],
+      cidade: [null],
+      idRegiao: [null],
+      idBairro: [null],
       numeroAtendimento: [null],
       dataInicioAtendimento: [null],
       dataFimAtendimento: [null],
@@ -90,29 +102,30 @@ export class RegistrarComponent implements OnInit {
       dataInicioOcorrencia: [null],
       dataFimOcorrencia: [null],
       codigo: [null],
-      categoriaEntity: [null, Validators.required],
+      idCategoria: [null],
       status: [null],
-      origemEntity: [null, Validators.required],
+      idOrigem: [null],
       idAtuacao: [null],
-      assuntoEntity: [null],
-      prazoEntity: [null],
+      idAssunto: [null],
+      idCadastradoPor: [null],
+      idPrazo: [null],
       dataPrazo: [null],
       idFinalizado: [null],
-      anexo: [null],
+      //anexo: [null],
       idOcorrencia: [null],
       idResponsavelAtendimento: [null],
-      idResponsavelOcorrencia: [null, Validators.required],
+      idResponsavelOcorrencia: [null],
       numeroRap: [null],
       digitoRap: [null],
       numeroSimproc: [null],
       numeroSei: [null],
       numeroDocumento: [null],
       anoDocumento: [null],
-      orgao: [null],
+      idOrgao: [null],
       tipoOcorrencia: [null],
       idRetornar: [null],
       solicitantes: [null],
-      opcaoNaoListar: this.buildOpcaoNaoListar(),
+      //opcaoNaoListar: this.buildOpcaoNaoListar(),
       beneficiado: [null],
       observacao: [null],
       descricao: [null]
@@ -141,7 +154,7 @@ export class RegistrarComponent implements OnInit {
     )
     .subscribe(regioes => this.regiao = regioes);
 
-    this.formulario.get('regiao')?.valueChanges
+    this.formulario.get('idRegiao')?.valueChanges
     .pipe(
       tap(regiao => console.log('Nova Região: ', regiao)),
       map(regiao => this.regiao.filter(r => r.nome === regiao)),
@@ -156,10 +169,10 @@ export class RegistrarComponent implements OnInit {
   }
     //acaba OnInit
 
-    buildOpcaoNaoListar() {
+    /*buildOpcaoNaoListar() {
       const values = this.opcaoNaoListar.map(v => new FormControl(false));
       return this.formBuilder.array(values)
-    }
+    }*/
 
 
   carregarEstados(): void {
@@ -261,25 +274,24 @@ export class RegistrarComponent implements OnInit {
   Submit() {
     console.log(this.formulario);
 
+    /*
     let valueSubmit = Object.assign({}, this.formulario.value);
 
     valueSubmit = Object.assign(valueSubmit, {
       opcaoNaoListar: valueSubmit.opcaoNaoListar
       .map( (v: any, i: any) => v ? this.opcaoNaoListar[i] : null)
       .filter((v: any) => v !== null)
-    });
+    });*/
 
-    console.log(valueSubmit);
+    //console.log(valueSubmit);
 
     if (this.formulario.valid) {
-      this.http
-        .post('https://httpbin.org/post', JSON.stringify(valueSubmit))
-        .subscribe((dados) => {
-          console.log(valueSubmit);
-          console.log(dados);
+    this.http.post('http://gabinetevirtual.us-east-1.elasticbeanstalk.com/api/v1/atendimentos', this.formulario.value)
+    .subscribe((dados) => {
+      console.log(dados);
+    })
           //reseta o formulario
           //this.formulario.reset();
-        });
     } else {
       Swal.fire({
         title: "Preencha os campos obrigatórios!!!",
