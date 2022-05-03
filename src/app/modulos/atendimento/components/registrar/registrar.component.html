@@ -177,16 +177,17 @@
       </div>
       <div class="form-group col-md-3" >
         <label for="Nome">Anexo</label>
-        <select class="form-select">
+        <select class="form-select" formControlName="anexo">
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
-          <option value="a">a</option>
+          <option *ngFor="let anexo of listarAnexos" [ngValue]="anexo">{{ anexo.nomeArquivo }}</option>
         </select>
       </div>
       <div class="form-group col-md-3" >
         <label for="Nome">Ocorrência</label>
         <select class="form-select" formControlName="idOcorrencia">
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
-          <option value="a">a</option>
+          <option value="1">Ocorrencia 1</option>
+          <option value="2">Ocorrencia 2</option>
         </select>
       </div>
       <div class="form-group col-md-3" [ngClass]="aplicaCssErro('idResponsavelAtendimento')">

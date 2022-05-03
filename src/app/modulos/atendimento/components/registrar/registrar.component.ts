@@ -1,3 +1,4 @@
+import { Anexo } from './../../../../shared/models/anexo';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -29,6 +30,7 @@ export class RegistrarComponent implements OnInit {
   listarPrazos:IPrazo[];
   listarOrgaos:IOrgao[];
   listarTipos:ITipoOcorrencia[];
+  listarAnexos:Anexo[];
   listarCidade: Cidades[];
   listarRegião: ZonasRj[];
   listarBairro: Bairros[];
@@ -40,6 +42,7 @@ export class RegistrarComponent implements OnInit {
   prazo: any[];
   orgao: any[];
   tipoocorrencia: any[];
+  anexo: any[];
   estados: EstadosBr[];
   cidade: Cidades[];
   regiao: ZonasRj[];
@@ -62,6 +65,7 @@ export class RegistrarComponent implements OnInit {
     this.carregarPrazos();
     this.carregarOrgaos();
     this.carregarTipoOcorrencia();
+    this.carregarAnexo();
 
 
     this.formulario = this.formBuilder.group({
@@ -94,6 +98,7 @@ export class RegistrarComponent implements OnInit {
       prazoEntity: [null],
       dataPrazo: [null],
       idFinalizado: [null],
+      anexo: [null],
       idOcorrencia: [null],
       idResponsavelAtendimento: [null],
       idResponsavelOcorrencia: [null, Validators.required],
@@ -200,6 +205,12 @@ export class RegistrarComponent implements OnInit {
     })
   }
 
+  carregarAnexo(): void {
+    this.dropdownsService.getAnexos().subscribe(dados => {
+      this.listarAnexos = dados
+    })
+  }
+
   carregarCidades(): void {
     this.dropdownsService.getCidades().subscribe(dados => {
       this.listarCidade = dados;
@@ -239,6 +250,10 @@ export class RegistrarComponent implements OnInit {
   }
 
   compararTipos(obj1: { descricao: any; id: any;}, obj2: { descricao: any; id: any;}) {
+    return obj1 && obj2 ?  (obj1.descricao === obj2.descricao && obj1.id === obj2.id) : obj1 === obj2;
+  }
+
+  compararAnexos(obj1: { descricao: any; id: any; }, obj2: { descricao: any; id: any; }) {
     return obj1 && obj2 ?  (obj1.descricao === obj2.descricao && obj1.id === obj2.id) : obj1 === obj2;
   }
 

@@ -11,6 +11,7 @@ import { IPrazo } from 'src/app/modulos/cadastros/components/listar-prazo/model/
 import { IOrgao } from 'src/app/modulos/cadastros/components/listar-orgao/model/IOrgao.interface';
 import { ITipoOcorrencia } from 'src/app/modulos/cadastros/components/listar-tipo-ocorrencia/model/ITipoOcorrencia.interface';
 import { Bairros } from '../models/bairros';
+import { Anexo } from '../models/anexo';
 
 @Injectable({
   providedIn: 'root'
@@ -80,4 +81,11 @@ export class DropdownsService {
     (map(res => res)
     );
   }
+
+  getAnexos(): Observable<Anexo[]> {
+    return this.http.get<Anexo[]>('http://gabinetevirtual.us-east-1.elasticbeanstalk.com/api/v1/anexosatendimentos').pipe
+    (map(res => res)
+    );
+  }
 }
+
