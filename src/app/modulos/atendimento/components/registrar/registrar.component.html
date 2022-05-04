@@ -42,7 +42,7 @@
         </div>
         <div class="form-group col-md-3" [ngClass]="aplicaCssErro('idBairro')">
           <label for="Nome">Bairro</label>
-          <select class="form-select" formControlName="idBairro idBairroContato">
+          <select class="form-select" formControlName="idBairro">
             <option [ngValue]="null" [disabled]="true">Selecione</option>
             <option *ngFor="let bairro of bairro" [value]="bairro.id">{{ bairro.descricao }}</option>
           </select>
@@ -50,7 +50,7 @@
         </div>
         <div class="form-group col-md-3">
           <label for="Nome">Região</label>
-          <select class="form-select" formControlName="idRegiao">
+          <select class="form-select" >
             <option [ngValue]="null" [disabled]="true" >Selecione</option>
           </select>
         </div>
@@ -141,8 +141,8 @@
         <select class="form-select" formControlName="idPrazo" [compareWith]="compararPrazos">
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
           <option *ngFor="let prazo of listarPrazos" [ngValue]="prazo.id">{{ prazo.descricao }}</option>
-          <app-campo-control-erro [mostrarErro]="verificaValidTouched('idPrazo')" msgErro="O prazo é obrigatório."></app-campo-control-erro>
         </select>
+        <app-campo-control-erro [mostrarErro]="verificaValidTouched('idPrazo')" msgErro="O prazo é obrigatório."></app-campo-control-erro>
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Data Prazo</label>
@@ -224,9 +224,9 @@
       </div>
       <div class="form-group col-md-3" >
         <label for="Nome">Tipo</label>
-        <select class="form-select" formControlName="tipoOcorrencia" [compareWith]="compararTipos">
+        <select class="form-select" formControlName="idTipoOcorrencia" >
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
-          <option *ngFor="let tipo of listarTipos" [ngValue]="tipo">{{ tipo.descricao }}</option>
+          <option *ngFor="let tipo of listarTipos" [ngValue]="tipo.id" >{{ tipo.descricao }}</option>
         </select>
       </div>
       <!--nono bloco-->

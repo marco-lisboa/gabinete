@@ -79,8 +79,8 @@ export class RegistrarComponent implements OnInit {
 
     this.formulario = this.formBuilder.group({
       //data: ['2022/04/20'],
-      idCadastrado: [0],
-      idBairroContato: [null],
+      idCadastrado: [218],
+      idBairroContato: [2],
       contato: [
         null,
         [
@@ -122,7 +122,7 @@ export class RegistrarComponent implements OnInit {
       numeroDocumento: [null],
       anoDocumento: [null],
       idOrgao: [null, Validators.required],
-      tipoOcorrencia: [null],
+      idTipoOcorrencia: [null],
       idRetornar: [null, Validators.required],
       solicitantes: [null],
       //opcaoNaoListar: this.buildOpcaoNaoListar(),
@@ -262,10 +262,6 @@ export class RegistrarComponent implements OnInit {
     return obj1 && obj2 ?  (obj1.descricao === obj2.descricao && obj1.id === obj2.id) : obj1 === obj2;
   }
 
-  compararTipos(obj1: { descricao: any; id: any;}, obj2: { descricao: any; id: any;}) {
-    return obj1 && obj2 ?  (obj1.descricao === obj2.descricao && obj1.id === obj2.id) : obj1 === obj2;
-  }
-
   compararAnexos(obj1: { descricao: any; id: any; }, obj2: { descricao: any; id: any; }) {
     return obj1 && obj2 ?  (obj1.descricao === obj2.descricao && obj1.id === obj2.id) : obj1 === obj2;
   }
@@ -289,9 +285,17 @@ export class RegistrarComponent implements OnInit {
     this.http.post('http://gabinetevirtual.us-east-1.elasticbeanstalk.com/api/v1/atendimentos', this.formulario.value)
     .subscribe((dados) => {
       console.log(dados);
-    })
+    }),
+    Swal.fire({
+      icon: 'success',
+      title: 'Atendimento registrado com sucesso!',
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1000,
+      timerProgressBar: true
+    });
           //reseta o formulario
-          //this.formulario.reset();
+          this.formulario.reset();
     } else {
       Swal.fire({
         title: "Preencha os campos obrigatórios!!!",

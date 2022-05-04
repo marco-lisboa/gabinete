@@ -1,5 +1,5 @@
 export interface ITipoOcorrencia {
-  id?: number;
-  descricao: string;
   ativo?: boolean;
+  descricao: string;
+  id?: number;
 }
