@@ -84,7 +84,7 @@ export class RegistrarComponent implements OnInit {
       contato: [
         null,
         [
-         /* Validators.required,
+          /*Validators.required,
           Validators.minLength(2),
           Validators.maxLength(15),
           Validators.pattern("([0-9]{2,3})?(\([0-9]{2}\))([0-9]{4,5})([0-9]{4})")*/

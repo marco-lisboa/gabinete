@@ -80,17 +80,6 @@
           <app-campo-control-erro [mostrarErro]="verificaValidTouched('solicitante')" msgErro="O solicitante é obrigatório."></app-campo-control-erro>
         </div>
         <!--QUARTO BLOCO-->
-        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('dataInicioOcorrencia')">
-          <label for="Nome">Data da ocorrência</label>
-          <input type="date" class="form-control" formControlName="dataInicioOcorrencia">
-          <label for="Ate">Até</label>
-          <app-campo-control-erro [mostrarErro]="verificaValidTouched('dataInicioOcorrencia')" msgErro="As datas são obrigatórias."></app-campo-control-erro>
-        </div>
-        <div class="form-group col-md-3 fim" [ngClass]="aplicaCssErro('dataFimOcorrencia')">
-          <label for="Nome"></label>
-          <input type="date" class="data-final form-control" formControlName="dataFimOcorrencia">
-          <app-campo-control-erro [mostrarErro]="verificaValidTouched('dataFimOcorrencia')" msgErro="As datas são obrigatórias."></app-campo-control-erro>
-        </div>
         <div class="form-group col-md-3" [ngClass]="aplicaCssErro('codigo')">
           <label for="Nome">Código</label>
           <input type="text" class="form-control" placeholder="Digite o código" formControlName="codigo">
@@ -176,7 +165,7 @@
       </div>
       <div class="form-group col-md-3" >
         <label for="Nome">Anexo</label>
-        <select class="form-select">
+        <select class="form-select" disabled>
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
           <option *ngFor="let anexo of listarAnexos" [ngValue]="anexo">{{ anexo.nomeArquivo }}</option>
         </select>
@@ -253,15 +242,21 @@
         <label for="Nome">C/ solicitantes</label>
         <select class="form-select" formControlName="solicitantes">
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
-          <option value="nao">Não</option>
-          <option [ngValue]=>1</option>
-          <option [ngValue]=>2</option>
-          <option [ngValue]=>3</option>
+          <option [ngValue]="0">Não</option>
+          <option [ngValue]="1">1</option>
+          <option [ngValue]="2">2</option>
+          <option [ngValue]="3">3</option>
         </select>
       </div>
-      <div class="form-group col-md-3" style="font-size: 14px">
+      <div class="form-group col-md-3" style="font-size: 14px; font-weight: bold">
         <label for="Nome">Não Listar</label>
-        <div class="checkbox" class="col-sm-6" *ngFor="let item of getFrameworksControls(); let i=index">
+        <div class="form-check form-check-inline">
+          <input type="checkbox" disabled>
+          <label style="margin-left:5px">Emendas</label>
+          <div class="form-check form-check-inline">
+          <input type="checkbox" disabled>
+          <label style="margin-left:5px">Internas</label>
+        </div>
      </div>
       </div>
       <div class="form-group col-md-3">
@@ -269,6 +264,7 @@
         <input type="text" class="form-control" placeholder="" formControlName="beneficiado">
       </div>
       <!--décimo bloco-->
+      <div class="w-100"></div>
       <div class="form-group col-lg-6">
         <label for="Nome">Observação da ocorrência</label>
         <input type="text"class="form-control size-input" placeholder="Deixe aqui uma observação da sua ocorrência..." formControlName="observacao">
