@@ -34,7 +34,7 @@ export class RegistrarComponent implements OnInit {
   listarTipos:ITipoOcorrencia[];
   listarAnexos:Anexo[];
   listarCidade: Cidades[];
-  listarRegiao: ZonasRj[];
+  //listarRegiao: ZonasRj[];
   listarBairro: Bairros[];
   opcaoNaoListar = ['Emendas', 'Internas'];
 
@@ -47,7 +47,7 @@ export class RegistrarComponent implements OnInit {
   anexo: any[];
   estados: EstadosBr[];
   cidade: Cidades[];
-  regiao: ZonasRj[];
+  //regiao: ZonasRj[];
   bairro: Bairros[];
   atendimento: RegistrarAtendimento = {
     beneficiado: ''
@@ -69,7 +69,7 @@ export class RegistrarComponent implements OnInit {
     this.carregarOrigens();
     this.carregarAssuntos();
     this.carregarCidades();
-    this.carregarRegiao();
+    //this.carregarRegiao();
     this.carregarBairro();
     this.carregarPrazos();
     this.carregarOrgaos();
@@ -84,10 +84,10 @@ export class RegistrarComponent implements OnInit {
       contato: [
         null,
         [
-          /*Validators.required,
+          Validators.required,
           Validators.minLength(2),
-          Validators.maxLength(15),
-          Validators.pattern("([0-9]{2,3})?(\([0-9]{2}\))([0-9]{4,5})([0-9]{4})")*/
+          Validators.maxLength(11),
+          Validators.pattern("([0-9]{2,3})?(\([0-9]{2}\))([0-9]{4,5})([0-9]{4})")
         ],
       ],
       logradouro: [null],
@@ -149,12 +149,12 @@ export class RegistrarComponent implements OnInit {
       tap(cidade => console.log('Nova Cidade: ', cidade)),
       map(cidade => this.cidade.filter(c => c.nome === cidade)),
       map(cidades => cidades && cidades.length > 0 ? cidades[0].id: empty()),
-      switchMap((cidadeId) => this.dropdownsService.getRegião(Number(cidadeId))),
+      switchMap((cidadeId) => this.dropdownsService.getBairro(Number(cidadeId))),
       tap(console.log)
     )
-    .subscribe(regioes => this.regiao = regioes);
+    .subscribe(bairros => this.bairro = bairros);
 
-    this.formulario.get('idRegiao')?.valueChanges
+    /*this.formulario.get('idRegiao')?.valueChanges
     .pipe(
       tap(regiao => console.log('Nova Região: ', regiao)),
       map(regiao => this.regiao.filter(r => r.nome === regiao)),
@@ -162,7 +162,7 @@ export class RegistrarComponent implements OnInit {
       switchMap((regiaoId) => this.dropdownsService.getBairro(Number(regiaoId))),
       tap(console.log)
     )
-    .subscribe(bairros => this.bairro = bairros);
+    .subscribe(bairros => this.bairro = bairros);*/
 
 
 
@@ -230,11 +230,11 @@ export class RegistrarComponent implements OnInit {
     })
   }
 
-  carregarRegiao(): void {
+  /*carregarRegiao(): void {
     this.dropdownsService.getRegião().subscribe(dados => {
       this.regiao = dados;
     })
-  }
+  }*/
 
   carregarBairro(): void {
     this.dropdownsService.getBairro().subscribe(dados => {

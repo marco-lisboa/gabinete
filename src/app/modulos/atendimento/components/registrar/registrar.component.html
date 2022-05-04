@@ -11,10 +11,9 @@
           <input type="text" formControlName="contato" class="form-control" placeholder="Digite o contato" maxlength="11">
           <app-campo-control-erro [mostrarErro]="verificaValidTouched('contato')" msgErro="Contato é obrigatório."></app-campo-control-erro>
         </div>
-        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('logradouro')">
+        <div class="form-group col-md-3">
           <label for="Nome" class="control-label">Logradouro</label>
           <input type="text" class="form-control" placeholder="Digite o logradouro" formControlName="logradouro">
-          <app-campo-control-erro [mostrarErro]="verificaValidTouched('logradouro')" msgErro="Logradouro é obrigatório."></app-campo-control-erro>
         </div>
         <div class="form-group col-md-3" >
           <label for="Nome" class="control-label">Bairro</label>
@@ -37,23 +36,22 @@
           <label for="Nome">Cidade</label>
           <select class="form-select" id="cidade" formControlName="cidade">
             <option [ngValue]="null" [disabled]="true">Selecione</option>
-            <option *ngFor="let cidade of cidade" [value]="cidade.id">{{ cidade.nome }}</option>
+            <option *ngFor="let cidade of cidade" [value]="cidade.nome">{{ cidade.nome }}</option>
           </select>
           <app-campo-control-erro [mostrarErro]="verificaValidTouched('cidade')" msgErro="A cidade é obrigatória."></app-campo-control-erro>
-        </div>
-        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('idRegiao')">
-          <label for="Nome">Região</label>
-          <select class="form-select" formControlName="idRegiao">
-            <option [ngValue]="null" [disabled]="true">Selecione</option>
-            <option *ngFor="let regiao of regiao" [value]="regiao.nome">{{ regiao.nome }}</option>
-          </select>
-          <app-campo-control-erro [mostrarErro]="verificaValidTouched('idRegiao')" msgErro="A região é obrigatória."></app-campo-control-erro>
         </div>
         <div class="form-group col-md-3" [ngClass]="aplicaCssErro('idBairro')">
           <label for="Nome">Bairro</label>
           <select class="form-select" formControlName="idBairro">
+            <option [ngValue]="null" [disabled]="true">Selecione</option>
+            <option *ngFor="let bairro of bairro" [value]="bairro.id">{{ bairro.descricao }}</option>
+          </select>
+          <app-campo-control-erro [mostrarErro]="verificaValidTouched('idRegiao')" msgErro="A região é obrigatória."></app-campo-control-erro>
+        </div>
+        <div class="form-group col-md-3" [ngClass]="aplicaCssErro('idRegiao')">
+          <label for="Nome">Região</label>
+          <select class="form-select" formControlName="idRegiao">
             <option [ngValue]="null" [disabled]="true" >Selecione</option>
-            <option *ngFor="let bairro of bairro" [value]="bairro.id">{{ bairro.nome }}</option>
           </select>
           <app-campo-control-erro [mostrarErro]="verificaValidTouched('bairro')" msgErro="O bairro é obrigatório."></app-campo-control-erro>
         </div>
@@ -151,8 +149,9 @@
         </select>
       </div>
       <div class="form-group col-md-3" [ngClass]="aplicaCssErro('dataPrazo')">
-        <label for="Nome">Data prazo</label>
-        <input type="text" class="form-control" placeholder="dd/mm/aaaa" formControlName="dataPrazo">
+        <label for="Nome">Data Prazo</label>
+        <input type="date" class="form-control" formControlName="dataPrazo">
+        <app-campo-control-erro [mostrarErro]="verificaValidTouched('dataPrazo')" msgErro="As datas são obrigatórias."></app-campo-control-erro>
       </div>
       <!--sexto bloco-->
 

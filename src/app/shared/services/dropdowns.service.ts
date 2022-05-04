@@ -33,17 +33,17 @@ export class DropdownsService {
     );
   }
 
-  getRegião(idCidade?: number): Observable<ZonasRj[]> {
-    return this.http.get<ZonasRj[]>('../../../assets/dados/zonasrj.json').pipe
-    (map((regioes: ZonasRj[]) => regioes.filter(r => r.cidade == idCidade))
+  getBairro(idCidade?: number): Observable<Bairros[]> {
+    return this.http.get<Bairros[]>('http://gabinetevirtual.us-east-1.elasticbeanstalk.com/api/v1/bairros').pipe
+    (map((regioes: Bairros[]) => regioes.filter(r => r.idCidade == idCidade))
     );
   }
 
-  getBairro(idRegião?: number): Observable<Bairros[]> {
+  /*getBairro(idRegião?: number): Observable<Bairros[]> {
     return this.http.get<Bairros[]>('../../../assets/dados/bairros.json').pipe
     (map((bairros: Bairros[]) => bairros.filter(b => b.zona == idRegião))
     );
-  }
+  }*/
 
 
   getCategorias(): Observable<ICategoria[]> {

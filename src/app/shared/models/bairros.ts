@@ -1,5 +1,5 @@
 export interface Bairros {
   id: number;
-  nome: string;
-  zona: number;
+  descricao: string;
+  idCidade: number;
 }
