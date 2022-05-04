@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;900&display=swap');
 
 * {
   font-family: 'Raleway', sans-serif;
@@ -12,17 +12,19 @@
     margin-top:50px;
     margin-left: 180px;
     padding-top:300px;
-    height: 365px;
+    height: 350px;
     width: 600px;
     border:1px solid white;
     border-radius: 15px;
-    font-family: "Raleway", sans-serif;
+
 }
 
 .profile-usermenu {
-    margin-top:-300px;
+    margin-top:-281px;
     margin-left:170px;
     text-decoration: none;
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
 }
 
 
@@ -34,7 +36,7 @@
 .profile-usermenu ul li a {
    color: #6A6A6A;
    font-size: 16px;
-   font-weight: 400;
+   font-weight: 400 bold;
    text-decoration: none;
    width: 280px;
 }

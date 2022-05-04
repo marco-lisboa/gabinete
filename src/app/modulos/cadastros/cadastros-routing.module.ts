@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContainerCadastrosComponent } from './container/container-cadastros/container-cadastros.component';
 import { ListarAssuntosComponent } from './components/assuntos/listar-assuntos/listar-assuntos.component';
 import { CategoriaComponent } from './components/categoria/categoria.component';
-import { ListarAtuacaoComponent } from './components/listar-atuacao/listar-atuacao.component';
 import { ListarOrigemComponent } from './components/listar-origem/listar-origem.component';
 import { ListarPrazoComponent } from './components/listar-prazo/listar-prazo.component';
 import { ListarTipoOcorrenciaComponent } from './components/listar-tipo-ocorrencia/listar-tipo-ocorrencia.component';
@@ -37,10 +36,6 @@ const routes: Routes = [
   {
     path: 'cadastros/categoria/editar/:id',
     component: AtualizarCategoriaComponent,
-  },
-  {
-    path: 'cadastros/atuacao',
-    component: ListarAtuacaoComponent,
   },
   {
     path: 'cadastros/origem',
