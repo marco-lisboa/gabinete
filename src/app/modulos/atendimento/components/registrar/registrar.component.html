@@ -13,7 +13,7 @@
         </div>
         <div class="form-group col-md-3">
           <label for="Nome" class="control-label">Logradouro</label>
-          <input type="text" class="form-control" placeholder="Digite o logradouro" formControlName="logradouro">
+          <input type="text" class="form-control" placeholder="Digite o logradouro" formControlName="logradouro" maxlength="200">
         </div>
         <div class="form-group col-md-3" >
           <label for="Nome" class="control-label">Bairro</label>
@@ -57,7 +57,7 @@
         <!--terceiro bloco-->
         <div class="form-group col-md-3">
           <label for="Nome">Nº de atendimento</label>
-          <input type="text" class="form-control" placeholder="Número..." formControlName="numeroAtendimento">
+          <input type="text" class="form-control" placeholder="Número..." formControlName="numeroAtendimento" maxlength="10">
         </div>
         <div class="form-group col-md-3">
           <label for="Nome">Data de atendimento</label>
@@ -75,7 +75,7 @@
         <!--QUARTO BLOCO-->
         <div class="form-group col-md-3">
           <label for="Nome">Código</label>
-          <input type="text" class="form-control" placeholder="Digite o código" formControlName="codigo">
+          <input type="text" class="form-control" placeholder="Digite o código" formControlName="codigo"maxlength="20">
         </div>
         <div class="form-group col-md-3" [ngClass]="aplicaCssErro('idCategoria')">
           <label for="Nome">Categoria</label>
@@ -193,7 +193,7 @@
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Nº do RAP</label>
-        <input type="text" class="form-control" placeholder="" formControlName="numeroRap">
+        <input type="text" class="form-control" placeholder="" formControlName="numeroRap" maxlength="10">
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Dígito do RAP</label>
@@ -201,18 +201,18 @@
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Nº do SIMPROC</label>
-        <input type="text" class="form-control" placeholder="" formControlName="numeroSimproc">
+        <input type="text" class="form-control" placeholder="" formControlName="numeroSimproc" maxlength="20">
       </div>
       <!--oitavo bloco-->
       <div class="form-group col-md-3"  >
         <label for="Nome">Nº do SEI</label>
-        <input type="text" class="form-control" placeholder="" formControlName="numeroSei">
+        <input type="text" class="form-control" placeholder="" formControlName="numeroSei" maxlength="30">
       </div>
       <div class="form-group col-md-3" >
         <label for="Nome">Nº do documento</label>
-        <input type="text" class="form-control" placeholder="Nº"  style="width: 38%" formControlName="numeroDocumento">
+        <input type="text" class="form-control" placeholder="Nº"  style="width: 38%" formControlName="numeroDocumento" maxlength="20">
         <label style="font-size: 16px;">/</label>
-        <input type="text" class="form-control" placeholder="Ano"  style="width: 38%" formControlName="anoDocumento">
+        <input type="text" class="form-control" placeholder="Ano"  style="width: 38%" formControlName="anoDocumento" maxlength="4">
       </div>
       <div class="form-group col-md-3" [ngClass]="aplicaCssErro('idOrgao')">
         <label for="Nome">Órgão responsável</label>
@@ -267,11 +267,11 @@
       <div class="w-100"></div>
       <div class="form-group col-lg-6">
         <label for="Nome">Observação da ocorrência</label>
-        <input type="text"class="form-control size-input" placeholder="Deixe aqui uma observação da sua ocorrência..." formControlName="observacao">
+        <input type="text"class="form-control size-input" placeholder="Deixe aqui uma observação da sua ocorrência..." formControlName="observacao" maxlength="200">
       </div>
       <div class="form-group col-lg-6" >
         <label for="Nome">Descrição</label>
-        <input type="text" class="form-control size-input" placeholder="Deixe aqui uma descrição da ocorrência...." formControlName="descricao">
+        <input type="text" class="form-control size-input" placeholder="Deixe aqui uma descrição da ocorrência...." formControlName="descricao" maxlength="60">
       </div>
       <button type="submit" class="btn btn-primary btn-lg">
         <span>Salvar</span></button>
