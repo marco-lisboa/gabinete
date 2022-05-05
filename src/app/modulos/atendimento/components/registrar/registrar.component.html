@@ -155,6 +155,7 @@
         <select class="form-select" formControlName="idFinalizado">
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
           <option [ngValue]="218">Sim</option>
+          <option [ngValue]="210">Não</option>
         </select>
         <app-campo-control-erro [mostrarErro]="verificaValidTouched('idFinalizado')" msgErro="O campo é obrigatório."></app-campo-control-erro>
       </div>
