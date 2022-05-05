@@ -6,6 +6,10 @@
 
     <form class="form row" [formGroup]="formulario" (ngSubmit)="Submit()">
       <!--primeiro bloco-->
+      <div class="form-group col-md-6" >
+        <label for="Nome" class="control-label">Nome Completo</label>
+        <input type="text" class="form-control" placeholder="Digite seu nome completo" style="width: 93%">
+      </div>
       <div class="form-group col-md-3" [ngClass]="aplicaCssErro('contato')">
            <label for="Nome" class="control-label">Contato</label>
           <input type="text" formControlName="contato" class="form-control" placeholder="Digite o contato" maxlength="11">
@@ -15,14 +19,7 @@
           <label for="Nome" class="control-label">Logradouro</label>
           <input type="text" class="form-control" placeholder="Digite o logradouro" formControlName="logradouro" maxlength="200">
         </div>
-        <div class="form-group col-md-3" >
-          <label for="Nome" class="control-label">Bairro</label>
-          <input type="text" class="form-control" placeholder="Digite seu bairro">
-        </div>
-        <div class="form-group col-md-3">
-          <label for="Nome">Cidade</label>
-          <input type="text" class="form-control" placeholder="Digite uma cidade">
-        </div>
+
          <!--segundo bloco-->
         <div class="form-group col-md-3" [ngClass]="aplicaCssErro('uf')">
           <label for="Nome">UF</label>
@@ -248,17 +245,6 @@
           <option [ngValue]="2">2</option>
           <option [ngValue]="3">3</option>
         </select>
-      </div>
-      <div class="form-group col-md-3" style="font-size: 14px; font-weight: bold">
-        <label for="Nome">Não Listar</label>
-        <div class="form-check form-check-inline">
-          <input type="checkbox" disabled>
-          <label style="margin-left:5px">Emendas</label>
-          <div class="form-check form-check-inline">
-          <input type="checkbox" disabled>
-          <label style="margin-left:5px">Internas</label>
-        </div>
-     </div>
       </div>
       <div class="form-group col-md-3">
         <label for="Nome">Local/Pessoa Beneficiada</label>
