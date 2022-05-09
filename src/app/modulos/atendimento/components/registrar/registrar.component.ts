@@ -81,6 +81,7 @@ export class RegistrarComponent implements OnInit {
       //data: ['2022/04/20'],
       idCadastrado: [218],
       idBairroContato: [2],
+      nomeCompleto: [null],
       contato: [
         null,
         [
