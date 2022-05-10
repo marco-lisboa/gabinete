@@ -11,15 +11,21 @@
         <input type="text" class="form-control" placeholder="Digite seu nome completo" style="width: 93%" formControlName="nomeCompleto">
         <app-campo-control-erro [mostrarErro]="verificaValidTouched('nomeCompleto')" msgErro="O nome é obrigatório."></app-campo-control-erro>
       </div>
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-3" [ngClass]="aplicaCssErro('genero')">
         <label for="Nome">Gênero</label>
-        <select class="form-select" >
+        <select class="form-select" formControlName="genero">
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
+          <option value="masculino">Masculino</option>
+          <option value="feminino">Feminino</option>
+          <option value="trans">Transgênero</option>
+          <option value="outros">Outros</option>
         </select>
+        <app-campo-control-erro [mostrarErro]="verificaValidTouched('genero')" msgErro="O campo é obrigatório."></app-campo-control-erro>
       </div>
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-3" [ngClass]="aplicaCssErro('dtNascimento')">
         <label for="Nome">Data de Nascimento</label>
-        <input type="date" class="form-control" formControlName="">
+        <input type="date" class="form-control" formControlName="dtNascimento">
+        <app-campo-control-erro [mostrarErro]="verificaValidTouched('dtNascimento')" msgErro="A data de nascimento é obrigatória."></app-campo-control-erro>
       </div>
       <div class="form-group col-md-3" [ngClass]="aplicaCssErro('contato')">
            <label for="Nome" class="control-label">Contato</label>
