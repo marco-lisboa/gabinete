@@ -15,10 +15,10 @@
         <label for="Nome">Gênero</label>
         <select class="form-select" formControlName="genero">
           <option [ngValue]="null" [disabled]="true" >Selecione</option>
-          <option value="masculino">Masculino</option>
-          <option value="feminino">Feminino</option>
-          <option value="trans">Transgênero</option>
-          <option value="outros">Outros</option>
+          <option value="m">Masculino</option>
+          <option value="f">Feminino</option>
+          <option value="t">Transgênero</option>
+          <option value="o">Outros</option>
         </select>
         <app-campo-control-erro [mostrarErro]="verificaValidTouched('genero')" msgErro="O campo é obrigatório."></app-campo-control-erro>
       </div>
