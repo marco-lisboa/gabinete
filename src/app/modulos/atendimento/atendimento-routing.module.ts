@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RaspagemComponent } from './components/raspagem/raspagem.component';
 import { RegistrarComponent } from './components/registrar/registrar.component';
 
+
 const routes: Routes = [
   {
     path: 'atendimento/registrar',

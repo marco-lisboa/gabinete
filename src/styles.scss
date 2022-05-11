@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;900&display=swap");
+
 body {
   background-color: #F7F6F4 !important;
 }
@@ -8,3 +10,36 @@ body {
 @import "~bootstrap/scss/bootstrap";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+
+.multiselect-dropdown {
+  $base-color: #cccccc!important;
+  font-size: 1.1rem!important;
+  font-family: "Raleway", sans-serif !important;
+.dropdown-btn {
+  font-weight: bold!important;
+  padding: 7px 12px !important;
+  background-color: #f6f6f6 !important;
+  border: 1px solid #ced4da !important;
+  width: 95%;
+  .selected-item {
+    border: 1px solid #cccccc !important;
+    background: #2e2e2e !important;
+    border-radius: 5px !important;
+  }
+.dropdown-multiselect__caret {
+  height: 34px !important;
+}
+  }
+  .multiselect-item-checkbox input[type='checkbox'] + div:before {
+    color: #2e2e2e !important;
+    border: 2px solid #2e2e2e !important;
+     }
+.multiselect-item-checkbox input[type='checkbox'] + div:after {
+  background-color: #2e2e2e !important;
+}
+.multiselect-item-checkbox input[type='checkbox']:checked + div:before {
+  background: #2e2e2e !important;
+}
+}
+

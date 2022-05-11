@@ -6,12 +6,15 @@ import { AtendimentoRoutingModule } from './atendimento-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CampoControlErroComponent } from 'src/app/shared/campo-control-erro/campo-control-erro.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { RaspagemComponent } from './components/raspagem/raspagem.component';
 
 
 
 @NgModule({
   declarations: [
     RegistrarComponent,
+    RaspagemComponent,
     CampoControlErroComponent
   ],
   imports: [
@@ -20,7 +23,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FormsModule,
     ReactiveFormsModule,
     AtendimentoRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgMultiSelectDropDownModule.forRoot()
   ]
 })
 export class AtendimentoModule { }

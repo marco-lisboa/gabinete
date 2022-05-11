@@ -162,7 +162,7 @@
     "symbol-observable" "4.0.0"
     "uuid" "8.3.2"
 
-"@angular/common@^13.0.0", "@angular/common@^13.0.0 || ^14.0.0-0", "@angular/common@>=12.0.0", "@angular/common@>=12.0.0-0", "@angular/common@~13.1.0", "@angular/common@13.1.1":
+"@angular/common@^13.0.0", "@angular/common@^13.0.0 || ^14.0.0-0", "@angular/common@>=12.0.0", "@angular/common@>=12.0.0-0", "@angular/common@>=2.0.0", "@angular/common@~13.1.0", "@angular/common@13.1.1":
   "integrity" "sha512-FQwRZ1XgTH2PbPjBmq2jAZzETVNX9yWQt21MuNGtokC7V4eS0NYlFIDbhy3UPWCzRgd3+P7P4+HdX15VxCjf9g=="
   "resolved" "https://registry.npmjs.org/@angular/common/-/common-13.1.1.tgz"
   "version" "13.1.1"
@@ -193,7 +193,7 @@
   dependencies:
     "tslib" "^2.3.0"
 
-"@angular/core@^13.0.0", "@angular/core@^13.0.0 || ^14.0.0-0", "@angular/core@>=12.0.0", "@angular/core@>=12.0.0-0", "@angular/core@~13.1.0", "@angular/core@13.1.1":
+"@angular/core@^13.0.0", "@angular/core@^13.0.0 || ^14.0.0-0", "@angular/core@>=12.0.0", "@angular/core@>=12.0.0-0", "@angular/core@>=2.0.0", "@angular/core@~13.1.0", "@angular/core@13.1.1":
   "integrity" "sha512-oLGKgzUbHqte/q7EokOJWUiXAtBjwuZM6c9Or2a7WDJNeImQilxk5qy91RPSbP8FhOBysebqAayrfiCYexlShg=="
   "resolved" "https://registry.npmjs.org/@angular/core/-/core-13.1.1.tgz"
   "version" "13.1.1"
@@ -4134,6 +4134,13 @@
   "resolved" "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   "version" "2.6.2"
 
+"ng-multiselect-dropdown@^0.3.8":
+  "integrity" "sha512-b6WohT+ouGQfBqo+OpYPClJI25Qmj/nNWcyGUIMh2JCAHEpWEQRUVzHJB7pPVW+n5a/P26I/sLyOQekxfkW9aQ=="
+  "resolved" "https://registry.npmjs.org/ng-multiselect-dropdown/-/ng-multiselect-dropdown-0.3.8.tgz"
+  "version" "0.3.8"
+  dependencies:
+    "tslib" "^1.9.0"
+
 "ngx-bootstrap@^8.0.0":
   "integrity" "sha512-UjJ/57Pr7ctdI2L113QX1IqJPYtOMrp5Qq/RLvUT1TOwPQWPi9LXTQ/7BtipkptQjer7Fk9yueITH3Y8vD+Dmg=="
   "resolved" "https://registry.npmjs.org/ngx-bootstrap/-/ngx-bootstrap-8.0.0.tgz"
@@ -5887,15 +5894,20 @@
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
   "version" "1.14.1"
 
-"tslib@^2.0.0", "tslib@^2.3.0", "tslib@2.3.1":
-  "integrity" "sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw=="
-  "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.3.1.tgz"
-  "version" "2.3.1"
+"tslib@^2.0.0", "tslib@^2.3.0", "tslib@^2.4.0":
+  "integrity" "sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ=="
+  "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.4.0.tgz"
+  "version" "2.4.0"
 
 "tslib@~2.1.0":
   "integrity" "sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A=="
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.1.0.tgz"
   "version" "2.1.0"
+
+"tslib@2.3.1":
+  "integrity" "sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw=="
+  "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.3.1.tgz"
+  "version" "2.3.1"
 
 "type-fest@^0.21.3":
   "integrity" "sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w=="

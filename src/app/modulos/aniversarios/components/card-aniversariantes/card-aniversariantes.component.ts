@@ -5,6 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './card-aniversariantes.component.html',
   styleUrls: ['./card-aniversariantes.component.scss']
 })
+
+
+
+
 export class CardAniversariantesComponent implements OnInit {
 
   constructor() { }
