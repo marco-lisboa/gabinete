@@ -1,6 +1,9 @@
+import { DropdownsService } from 'src/app/shared/services/dropdowns.service';
 import { Component, OnInit } from '@angular/core';
 import {  IDropdownSettings } from 'ng-multiselect-dropdown';
-import { IDropdownsItens } from './IDropdownsItens';
+import { IAssunto } from 'src/app/modulos/cadastros/components/assuntos/listar-assuntos/model/IAssunto.model';
+import { HttpClient } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-raspagem',
@@ -10,25 +13,25 @@ import { IDropdownsItens } from './IDropdownsItens';
 
 
 export class RaspagemComponent implements OnInit {
-  dropdownList: IDropdownsItens[];
-  selectedItems: IDropdownsItens[];
+  dropdownList : any[];
+  selectedItems = [];
   dropdownSettings: IDropdownSettings;
+  listarAssuntos: IAssunto[];
+  form: FormGroup;
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+    private dropdownsService: DropdownsService,
+    private formBuilder : FormBuilder) { }
 
   ngOnInit() {
-    this.dropdownList = [
-      { item_id: 1, item_text: 'Mumbai' },
-      { item_id: 2, item_text: 'Vasco' },
-    ];
-    this.selectedItems = [
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' }
-    ];
+    this.initForm();
+    this.getData();
+    console.log(this.dropdownList);
     this.dropdownSettings = {
       singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
+      idField: 'id',
+      textField: 'descricao',
       selectAllText: 'Selecionar tudo',
       unSelectAllText: 'Desmarcar tudo',
       searchPlaceholderText: 'Pesquisar',
@@ -37,14 +40,33 @@ export class RaspagemComponent implements OnInit {
     };
   }
 
-onItemSelect(item: any) {
-  console.log('onItemSelect', item);
-}
-onSelectAll(items: any) {
-  console.log('onSelectAll', items);
-}
-onItemClick(item: any) {
-  console.log(item)
-}
+  initForm(){
+    this.form = this.formBuilder.group({
+      assuntos : ['', Validators.required],
+    })
+  }
+
+  handleButton(){
+    console.log('reactive form value', this.form.value);
+  }
+
+  getData(): void {
+    let tmp: { id: number; descricao: any; }[] = [];
+    this.http.get<any>('http://gabinetevirtual.us-east-1.elasticbeanstalk.com/api/v1/assuntos').subscribe(data => {
+      for(let i=0; i < data.length; i++) {
+        tmp.push({ id: i, descricao: data[i].descricao });
+      }
+      this.dropdownList = tmp;
+    });
+  }
+
+  onItemSelect(item: any) {
+    console.log(item);
+  }
+
+
+
+
+
 
 }

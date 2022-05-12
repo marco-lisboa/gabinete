@@ -20,6 +20,6 @@ import { SharedModule } from '../shared/shared.module';
     CadastrosModule,
     AtendimentoModule,
     SharedModule
-  ]
+  ],
 })
 export class ModulosModule { }
