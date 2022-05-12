@@ -5,36 +5,36 @@
     </div>
     <form [formGroup]="form">
       <div class="row">
-        <div class="col-md-2">
-          <label for="Cidade">Cidade</label>
-          <select class="cidade">
+        <div class="col-lg-2">
+          <label for="Estado">Estado</label>
+          <select class="estado form-select" formControlName="uf">
             <option [ngValue]="null" [disabled]="true">Selecione</option>
-            <option value="a">aaaaaa</option>
+            <option *ngFor="let estado of listarEstados" [value]="estado.sigla">{{ estado.descricao }}</option>
           </select>
         </div>
-        <div class="col-md-2 form-group">
+        <div class="col-lg-2 form-group">
+          <label for="cidade">Cidade</label>
+          <select class="form-select" formControlName="cidade">
+            <option [ngValue]="null" [disabled]="true">Selecione</option>
+            <option *ngFor="let cidade of cidade" [value]="cidade.nome">{{ cidade.nome }}</option>
+          </select>
+        </div>
+        <div class="col-md-2">
           <label for="Bairro">Bairro</label>
-          <select>
+          <select class="bairro form-select" formControlName="idBairro">
             <option [ngValue]="null" [disabled]="true">Selecione</option>
-            <option value="a">aaaaaa</option>
-          </select>
-        </div>
-        <div class="col-md-2">
-          <label for="Cidade">Cidade</label>
-          <select class="cidade">
-            <option [ngValue]="null" [disabled]="true">Selecione</option>
-            <option value="a">aaaaaa</option>
+            <option *ngFor="let bairro of bairro" [value]="bairro.id">{{ bairro.descricao }}</option>
           </select>
         </div>
         <div class="col-md-2">
           <label for="Idade">Idade</label>
           <div class="row-cols-sm-auto row">
             <span>De:</span>
-            <input type="number" style="margin-left: 7px" />
+            <input type="number" style="margin-left: 7px" class="form-control"/>
           </div>
           <div class="row-cols-sm-auto row">
             <span>Até:</span>
-            <input type="number" />
+            <input type="number" class="form-control"/>
           </div>
         </div>
         <div class="col-md-2">

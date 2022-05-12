@@ -4,6 +4,10 @@ import {  IDropdownSettings } from 'ng-multiselect-dropdown';
 import { IAssunto } from 'src/app/modulos/cadastros/components/assuntos/listar-assuntos/model/IAssunto.model';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EstadosBr } from 'src/app/shared/models/estados-br';
+import { Cidades } from 'src/app/shared/models/Cidades';
+import { map, tap, switchMap, empty } from 'rxjs';
+import { Bairros } from 'src/app/shared/models/bairros';
 
 @Component({
   selector: 'app-raspagem',
@@ -17,7 +21,13 @@ export class RaspagemComponent implements OnInit {
   selectedItems = [];
   dropdownSettings: IDropdownSettings;
   listarAssuntos: IAssunto[];
+  listarEstados: EstadosBr[];
+  listarCidade: Cidades[];
+  listarBairro: Bairros[];
   form: FormGroup;
+
+  cidade: Cidades[];
+  bairro: Bairros[];
 
   constructor(
     private http: HttpClient,
@@ -26,6 +36,7 @@ export class RaspagemComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
+    this.carregarEstados();
     this.getData();
     this.dropdownSettings = {
       singleSelection: false,
@@ -37,13 +48,50 @@ export class RaspagemComponent implements OnInit {
       itemsShowLimit: 27,
       allowSearchFilter: true
     };
-  }
+
+    this.form.get('uf')?.valueChanges
+    .pipe(
+      tap(estado => console.log('Novo Estado: ', estado)),
+      map(estado => this.listarEstados.filter(e => e.sigla === estado)),
+      map(estados => estados && estados.length > 0 ? estados[0].id: empty()),
+      switchMap((estadoId) => this.dropdownsService.getCidades(Number(estadoId))),
+      tap(console.log)
+    )
+      .subscribe(cidades => this.cidade = cidades);
+
+      this.form.get('cidade')?.valueChanges
+    .pipe(
+      tap(cidade => console.log('Nova Cidade: ', cidade)),
+      map(cidade => this.cidade.filter(c => c.nome === cidade)),
+      map(cidades => cidades && cidades.length > 0 ? cidades[0].id: empty()),
+      switchMap((cidadeId) => this.dropdownsService.getBairro(Number(cidadeId))),
+      tap(console.log)
+    )
+    .subscribe(bairros => this.bairro = bairros);
+  };
+
+
 
   initForm(){
     this.form = this.formBuilder.group({
       assuntos : ['', Validators.required],
+      uf: [null],
+      cidade: [null],
+      idBairro: [null]
     })
   }
+
+
+  carregarEstados(): void {
+    this.dropdownsService.getEstadosBr().subscribe(dados => {
+      this.listarEstados = dados
+    })
+  }
+
+
+
+
+
 
   handleButton(){
     console.log('reactive form value', this.form.value);
@@ -63,9 +111,5 @@ export class RaspagemComponent implements OnInit {
     console.log(item);
   }
 
-
-
-
-
-
 }
+

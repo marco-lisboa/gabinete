@@ -145,7 +145,7 @@ export class RegistrarComponent implements OnInit {
       tap(console.log)
     )
       .subscribe(cidades => this.cidade = cidades);
-    ;
+
 
     this.formulario.get('cidade')?.valueChanges
     .pipe(
