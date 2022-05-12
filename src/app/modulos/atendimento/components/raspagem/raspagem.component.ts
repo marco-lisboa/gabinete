@@ -27,7 +27,6 @@ export class RaspagemComponent implements OnInit {
   ngOnInit() {
     this.initForm();
     this.getData();
-    console.log(this.dropdownList);
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'id',
