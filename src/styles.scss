@@ -13,7 +13,7 @@ body {
 
 
 .multiselect-dropdown {
-  $base-color: #cccccc!important;
+  $base-color: #236DC5!important;
   font-size: 1.1rem!important;
   font-family: "Raleway", sans-serif !important;
 .dropdown-btn {
@@ -21,25 +21,26 @@ body {
   padding: 7px 12px !important;
   background-color: #f6f6f6 !important;
   border: 1px solid #ced4da !important;
-  width: 95%;
+  width: 85% !important;
   .selected-item {
-    border: 1px solid #cccccc !important;
-    background: #2e2e2e !important;
+    border: 1px solid #236DC5 !important;
+   background: #236DC5 !important;
     border-radius: 5px !important;
   }
 .dropdown-multiselect__caret {
   height: 34px !important;
+  width: 100px !important;
 }
   }
   .multiselect-item-checkbox input[type='checkbox'] + div:before {
-    color: #2e2e2e !important;
-    border: 2px solid #2e2e2e !important;
+    color: #236DC5 !important;
+    border: 2px solid #236DC5 !important;
      }
 .multiselect-item-checkbox input[type='checkbox'] + div:after {
-  background-color: #2e2e2e !important;
+  background-color: #236DC5 !important;
 }
 .multiselect-item-checkbox input[type='checkbox']:checked + div:before {
-  background: #2e2e2e !important;
+  background: #236DC5 !important;
 }
 }
 

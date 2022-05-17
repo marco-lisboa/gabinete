@@ -18,8 +18,10 @@ import { Bairros } from 'src/app/shared/models/bairros';
 
 export class RaspagemComponent implements OnInit {
   dropdownList : any[];
+  List : any[];
   selectedItems = [];
   dropdownSettings: IDropdownSettings;
+  dropdownSettingsList: IDropdownSettings;
   listarAssuntos: IAssunto[];
   listarEstados: EstadosBr[];
   listarCidade: Cidades[];
@@ -48,6 +50,21 @@ export class RaspagemComponent implements OnInit {
       itemsShowLimit: 27,
       allowSearchFilter: true
     };
+    this.List = [
+      { item_id: 218, item_text: 'Atuação 1' },
+      { item_id: 219, item_text: 'Atuação 2' },
+    ];
+    this.dropdownSettingsList = {
+      singleSelection: false,
+      idField: 'item_id',
+      textField: 'item_text',
+      selectAllText: 'Selecionar tudo',
+      unSelectAllText: 'Desmarcar tudo',
+      searchPlaceholderText: 'Pesquisar',
+      itemsShowLimit: 27,
+      allowSearchFilter: true
+    };
+
 
     this.form.get('uf')?.valueChanges
     .pipe(
@@ -74,10 +91,17 @@ export class RaspagemComponent implements OnInit {
 
   initForm(){
     this.form = this.formBuilder.group({
-      assuntos : ['', Validators.required],
+      assuntos : ['', ],
+      atuacao: [''],
       uf: [null],
       cidade: [null],
-      idBairro: [null]
+      idBairro: [null],
+      idadeInicio: [null],
+      idadeFim: [null],
+      masculino: [false],
+      feminino: [false],
+      transgenero: [false],
+      outros: [false]
     })
   }
 
@@ -93,8 +117,22 @@ export class RaspagemComponent implements OnInit {
 
 
 
-  handleButton(){
-    console.log('reactive form value', this.form.value);
+  Submit(){
+    console.log(this.form);
+
+    if (this.form.valid) {
+      this.http.post('https://httpbin.org/post', this.form.value)
+      .subscribe((dados) => {
+        console.log(dados);
+        return
+      })
+      } else {
+        Object.keys(this.form.controls).forEach(campo => {
+          console.log(campo);
+          const controle = this.form.get(campo);
+          controle?.markAsTouched();
+        });
+      }
   }
 
   getData(): void {

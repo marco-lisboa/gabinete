@@ -24,16 +24,21 @@ label[for="Cidade"] {
   padding-left: 2rem;
 }
 
+label[for="genero"] {
+  padding-left: 1.1rem;
+}
+
 .dropdown-btn {
   height: 300px;
+  width: 85% !important;
 }
 
 select {
   background-color: #f6f6f6;
   color: #474a51;
   //padding: 0.938rem 2rem;s
-  text-align: center;
-  text-align-last: center;
+  text-align: left;
+  text-align-last: left;
   text-decoration: none;
   display: inline-block;
   font-size: 1.1rem;
@@ -57,13 +62,14 @@ input[type="number"] {
   background-color: #f6f6f6;
   color: #474a51;
   //padding: 0.938rem 2rem;s
-  text-align: center;
+  text-align: left;
   text-align-last: left;
   text-decoration: none;
   display: inline-block;
   font-size: 1.1rem;
   font-weight: bold;
   margin: 0.313rem;
+  margin-bottom: 10px;
   width: 60px;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
@@ -130,3 +136,4 @@ table {
   box-shadow: 0 0 0 0;
   outline: 0;
 }
+
