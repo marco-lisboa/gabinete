@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
   styles : [
-      `@media only screen and (max-width: 320px) {
+      `@media only screen and (max-width: 375px) {
         .container { max-width: 85%};
         .profile-sidebar { max-width: 85%};
         .profile-usermenu ul li a { font-size: 12px};

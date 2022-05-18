@@ -14,14 +14,14 @@
         </div>
         <div class="col-md-3 form-group">
           <label for="cidade">Cidade</label>
-          <select class="form-select" formControlName="cidade">
+          <select class="form-select" formControlName="cidade" [compareWith]="compararCidades">
             <option [ngValue]="null" [disabled]="true">Selecione</option>
-            <option *ngFor="let cidade of cidade" [value]="cidade.nome">{{ cidade.nome }}</option>
+            <option *ngFor="let cidade of cidade" [ngValue]="cidade">{{ cidade.nome }}</option>
           </select>
         </div>
         <div class="col-md-3">
           <label for="Bairro">Bairro</label>
-          <select class="bairro form-select" formControlName="idBairro">
+          <select class="form-select" formControlName="idBairro">
             <option [ngValue]="null" [disabled]="true">Selecione</option>
             <option *ngFor="let bairro of bairro" [value]="bairro.id">{{ bairro.descricao }}</option>
           </select>
@@ -30,24 +30,27 @@
           <label for="Atuação">Atuação(s)</label>
           <ng-multiselect-dropdown
                 class="multi"
+                [(ngModel)]="selectedItems"
                 formControlName="atuacao"
                 [placeholder]="'Selecione'"
                 [settings]="dropdownSettingsList"
-                [data]="List">
-                (onSelect)="onItemSelect($event)"
-              </ng-multiselect-dropdown>
+                [data]="List"
+                (onSelect)="onItemSelect($event)">
+          </ng-multiselect-dropdown>
             </div>
             <div class="col-md-3">
-              <label for="Assunto">Assunto(s)</label>
+              <label for="Assunto" >Assunto(s)</label>
+
               <ng-multiselect-dropdown
                 formControlName="assuntos"
                 class="multi"
                 [placeholder]="'Selecione'"
                 [settings]="dropdownSettings"
                 [data]="dropdownList"
-              >
                 (onSelect)="onItemSelect($event)"
+                >
               </ng-multiselect-dropdown>
+
             </div>
             <div class="col-md-3">
               <label for="Idade">Idade</label>
@@ -68,7 +71,7 @@
                 <th></th>
                 <td class="list-anot">Masculino</td>
                 <td></td>
-                <td><input class="form-check-input" type="checkbox" formControlName="masculino"/></td>
+                <td><input class="form-check-input" type="checkbox" formControlName="m"/></td>
               </div>
               <div class="line">
                 <th></th>
@@ -79,7 +82,7 @@
                     class="form-check-input"
                     type="checkbox"
                     style="margin-left: 6px"
-                    formControlName="feminino"
+                    formControlName="f"
                   />
                 </td>
               </div>
@@ -92,7 +95,9 @@
                     class="form-check-input float-end"
                     type="checkbox"
                     style="margin-left: -14px"
-                    formControlName="transgenero"
+                    value="t"
+                    [checked]="saveUsername"
+                    formControlName="t"
                   />
                 </td>
               </div>
@@ -105,7 +110,7 @@
                     class="form-check-input"
                     type="checkbox"
                     style="margin-left: 20px"
-                    formControlName="outros"
+                    formControlName="o"
                   />
                 </td>
               </div>

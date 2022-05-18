@@ -19,13 +19,16 @@ import { Bairros } from 'src/app/shared/models/bairros';
 export class RaspagemComponent implements OnInit {
   dropdownList : any[];
   List : any[];
-  selectedItems = [];
+  selectedItems: any[];
+  idField : any[];
   dropdownSettings: IDropdownSettings;
   dropdownSettingsList: IDropdownSettings;
   listarAssuntos: IAssunto[];
   listarEstados: EstadosBr[];
   listarCidade: Cidades[];
   listarBairro: Bairros[];
+  atuacao = [];
+  saveUsername:boolean;
   form: FormGroup;
 
   cidade: Cidades[];
@@ -39,6 +42,7 @@ export class RaspagemComponent implements OnInit {
   ngOnInit() {
     this.initForm();
     this.carregarEstados();
+   // this.handleValueChanges();
     this.getData();
     this.dropdownSettings = {
       singleSelection: false,
@@ -51,19 +55,24 @@ export class RaspagemComponent implements OnInit {
       allowSearchFilter: true
     };
     this.List = [
-      { item_id: 218, item_text: 'Atuação 1' },
-      { item_id: 219, item_text: 'Atuação 2' },
+      { id: 218, descricao: 'Atuação 1' },
+      { id: 219, descricao: 'Atuação 2' },
+    ];
+    this.selectedItems = [
+
     ];
     this.dropdownSettingsList = {
       singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
+      idField: 'id',
+      textField: 'descricao',
       selectAllText: 'Selecionar tudo',
       unSelectAllText: 'Desmarcar tudo',
       searchPlaceholderText: 'Pesquisar',
       itemsShowLimit: 27,
       allowSearchFilter: true
     };
+
+
 
 
     this.form.get('uf')?.valueChanges
@@ -80,28 +89,28 @@ export class RaspagemComponent implements OnInit {
     .pipe(
       tap(cidade => console.log('Nova Cidade: ', cidade)),
       map(cidade => this.cidade.filter(c => c.nome === cidade)),
-      map(cidades => cidades && cidades.length > 0 ? cidades[0].id: empty()),
-      switchMap((cidadeId) => this.dropdownsService.getBairro(Number(cidadeId))),
+      map(cidades => cidades && cidades.length > 0 ? cidades[0]: empty()),
+      switchMap((cidade) => this.dropdownsService.getBairro(cidade)),
       tap(console.log)
     )
     .subscribe(bairros => this.bairro = bairros);
   };
 
-
+  //.id
 
   initForm(){
     this.form = this.formBuilder.group({
-      assuntos : ['', ],
-      atuacao: [''],
+      assuntos : [null, ],
+      atuacao: [null],
       uf: [null],
       cidade: [null],
       idBairro: [null],
       idadeInicio: [null],
       idadeFim: [null],
-      masculino: [false],
-      feminino: [false],
-      transgenero: [false],
-      outros: [false]
+      m: [false],
+      f: [false],
+      t: [false],
+      o: [false]
     })
   }
 
@@ -112,13 +121,19 @@ export class RaspagemComponent implements OnInit {
     })
   }
 
+  compararCidades(obj1: { nome: any; id: any; idUf: any; uf: any}, obj2: { nome: any; id: any; idUf: any; uf: any}) {
+    return obj1 && obj2 ?  (obj1.nome === obj2.nome && obj1.id === obj2.id && obj1.idUf === obj2.idUf && obj1.uf === obj2.uf) : obj1 === obj2;
+  }
 
-
+ /*handleValueChanges() {
+   this.form.get('atuacao')?.valueChanges.
+ }*/
 
 
 
   Submit(){
     console.log(this.form);
+    //const cusIds=this.List.map(item => item.id);
 
     if (this.form.valid) {
       this.http.post('https://httpbin.org/post', this.form.value)
@@ -137,7 +152,8 @@ export class RaspagemComponent implements OnInit {
 
   getData(): void {
     let tmp: { id: number; descricao: any; }[] = [];
-    this.http.get<any>('http://gabinetevirtual.us-east-1.elasticbeanstalk.com/api/v1/assuntos').subscribe(data => {
+    this.http.get<any>('http://gabinetevirtual.us-east-1.elasticbeanstalk.com/api/v1/assuntos')
+    .subscribe(data => {
       for(let i=0; i < data.length; i++) {
         tmp.push({ id: i, descricao: data[i].descricao });
       }
@@ -145,9 +161,10 @@ export class RaspagemComponent implements OnInit {
     });
   }
 
-  onItemSelect(item: any) {
-    console.log(item);
-  }
+   onItemSelect(item: any) {
+           item = item.id;
+            console.log('onItemSelect', item.id);
+        }
 
 }
 
