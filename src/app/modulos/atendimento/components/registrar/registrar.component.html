@@ -58,7 +58,7 @@
           <label for="Nome">Bairro</label>
           <select class="form-select" formControlName="idBairro">
             <option [ngValue]="null" [disabled]="true">Selecione</option>
-            <option *ngFor="let bairro of bairro" [value]="bairro.id">{{ bairro.descricao }}</option>
+            <option *ngFor="let bairro of bairro" [ngValue]="bairro.id">{{ bairro.descricao }}</option>
           </select>
           <app-campo-control-erro [mostrarErro]="verificaValidTouched('idBairro')" msgErro="O bairro é obrigatório."></app-campo-control-erro>
         </div>

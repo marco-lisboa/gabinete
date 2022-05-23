@@ -153,9 +153,9 @@ export class RegistrarComponent implements OnInit {
       map(cidade => this.cidade.filter(c => c.nome === cidade)),
       map(cidades => cidades && cidades.length > 0 ? cidades[0].id: empty()),
       switchMap((cidadeId) => this.dropdownsService.getBairro(Number(cidadeId))),
-      tap(console.log)
     )
     .subscribe(bairros => this.bairro = bairros);
+
 
     /*this.formulario.get('idRegiao')?.valueChanges
     .pipe(

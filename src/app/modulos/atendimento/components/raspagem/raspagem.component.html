@@ -14,35 +14,37 @@
         </div>
         <div class="col-md-3 form-group">
           <label for="cidade">Cidade</label>
-          <select class="form-select" formControlName="cidade" [compareWith]="compararCidades">
+          <select class="form-select" formControlName="cidade">
             <option [ngValue]="null" [disabled]="true">Selecione</option>
-            <option *ngFor="let cidade of cidade" [ngValue]="cidade">{{ cidade.nome }}</option>
+            <option *ngFor="let cidade of cidade" [value]="cidade.nome">{{ cidade.nome }}</option>
           </select>
         </div>
         <div class="col-md-3">
           <label for="Bairro">Bairro</label>
           <select class="form-select" formControlName="idBairro">
             <option [ngValue]="null" [disabled]="true">Selecione</option>
-            <option *ngFor="let bairro of bairro" [value]="bairro.id">{{ bairro.descricao }}</option>
+            <option *ngFor="let bairro of bairro" [ngValue]="bairro.id">{{ bairro.descricao }}</option>
           </select>
         </div>
         <div class="col-md-3">
           <label for="Atuação">Atuação(s)</label>
+          <div>
           <ng-multiselect-dropdown
                 class="multi"
-                [(ngModel)]="selectedItems"
-                formControlName="atuacao"
+                value
+                formControlName="idAtuacao"
                 [placeholder]="'Selecione'"
                 [settings]="dropdownSettingsList"
                 [data]="List"
                 (onSelect)="onItemSelect($event)">
           </ng-multiselect-dropdown>
+        </div>
             </div>
             <div class="col-md-3">
               <label for="Assunto" >Assunto(s)</label>
 
               <ng-multiselect-dropdown
-                formControlName="assuntos"
+                formControlName="idAssuntos"
                 class="multi"
                 [placeholder]="'Selecione'"
                 [settings]="dropdownSettings"
@@ -56,24 +58,24 @@
               <label for="Idade">Idade</label>
           <div class="row-cols-sm-auto row">
             <span>De:</span>
-            <input type="number" style="margin-left: 7px" class="form-control" formControlName="idadeInicio"/>
+            <input type="number" style="margin-left: 7px" class="form-control" formControlName="idadeMenorQue"/>
           </div>
           <div class="row-cols-sm-auto row">
             <span>Até:</span>
-            <input type="number" class="form-control" formControlName="idadeFim" />
+            <input type="number" class="form-control" formControlName="idadeMaiorQue" />
           </div>
         </div>
-        <div class="col-md-3">
+        <div  class="col-md-3">
           <label for="genero">Gênero</label>
           <table class="table">
             <tbody class="table-names">
-              <div class="line">
+              <div class="line" formArrayName="genero" *ngFor="let item of getGenerosControls(); let i = index">
                 <th></th>
-                <td class="list-anot">Masculino</td>
+                <td class="list-anot" >{{ genero[i].descricao }}</td>
                 <td></td>
-                <td><input class="form-check-input" type="checkbox" formControlName="m"/></td>
+                <td><input class="form-check-input" type="checkbox"  [formControlName]="i" /></td>
               </div>
-              <div class="line">
+            <!--  <div class="line">
                 <th></th>
                 <td class="list-anot">Feminino</td>
                 <td></td>
@@ -95,8 +97,7 @@
                     class="form-check-input float-end"
                     type="checkbox"
                     style="margin-left: -14px"
-                    value="t"
-                    [checked]="saveUsername"
+                    checked="t"
                     formControlName="t"
                   />
                 </td>
@@ -113,7 +114,7 @@
                     formControlName="o"
                   />
                 </td>
-              </div>
+              </div> -->
             </tbody>
           </table>
         </div>

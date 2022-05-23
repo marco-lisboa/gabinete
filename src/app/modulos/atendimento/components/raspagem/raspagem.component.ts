@@ -1,9 +1,10 @@
+import { FileServiceService } from 'src/app/shared/services/file-service.service';
 import { DropdownsService } from 'src/app/shared/services/dropdowns.service';
 import { Component, OnInit } from '@angular/core';
 import {  IDropdownSettings } from 'ng-multiselect-dropdown';
 import { IAssunto } from 'src/app/modulos/cadastros/components/assuntos/listar-assuntos/model/IAssunto.model';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EstadosBr } from 'src/app/shared/models/estados-br';
 import { Cidades } from 'src/app/shared/models/Cidades';
 import { map, tap, switchMap, empty } from 'rxjs';
@@ -17,9 +18,10 @@ import { Bairros } from 'src/app/shared/models/bairros';
 
 
 export class RaspagemComponent implements OnInit {
+  [x: string]: any;
   dropdownList : any[];
-  List : any[];
-  selectedItems: any[];
+  List : [{ id: 218, descricao: 'Atuação 1' },
+  { id: 219, descricao: 'Atuação 2' },];
   idField : any[];
   dropdownSettings: IDropdownSettings;
   dropdownSettingsList: IDropdownSettings;
@@ -28,7 +30,12 @@ export class RaspagemComponent implements OnInit {
   listarCidade: Cidades[];
   listarBairro: Bairros[];
   atuacao = [];
-  saveUsername:boolean;
+  genero = [
+   { nome:'m', descricao: 'Masculino'},
+   { nome:'f', descricao: 'Feminino'},
+   { nome:'t', descricao: 'Transgênero'},
+   { nome:'o', descricao: 'Outros'},
+    ];
   form: FormGroup;
 
   cidade: Cidades[];
@@ -37,11 +44,13 @@ export class RaspagemComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private dropdownsService: DropdownsService,
+    private fileService: FileServiceService,
     private formBuilder : FormBuilder) { }
 
   ngOnInit() {
     this.initForm();
     this.carregarEstados();
+    this.carregarBairro();
    // this.handleValueChanges();
     this.getData();
     this.dropdownSettings = {
@@ -57,9 +66,6 @@ export class RaspagemComponent implements OnInit {
     this.List = [
       { id: 218, descricao: 'Atuação 1' },
       { id: 219, descricao: 'Atuação 2' },
-    ];
-    this.selectedItems = [
-
     ];
     this.dropdownSettingsList = {
       singleSelection: false,
@@ -89,30 +95,34 @@ export class RaspagemComponent implements OnInit {
     .pipe(
       tap(cidade => console.log('Nova Cidade: ', cidade)),
       map(cidade => this.cidade.filter(c => c.nome === cidade)),
-      map(cidades => cidades && cidades.length > 0 ? cidades[0]: empty()),
-      switchMap((cidade) => this.dropdownsService.getBairro(cidade)),
+      map(cidades => cidades && cidades.length > 0 ? cidades[0].id: empty()),
+      switchMap((cidadeId) => this.dropdownsService.getBairro(Number(cidadeId))),
       tap(console.log)
     )
     .subscribe(bairros => this.bairro = bairros);
-  };
+      //console.log(this.bairro);
+    };
 
-  //.id
+    //.id
 
-  initForm(){
-    this.form = this.formBuilder.group({
-      assuntos : [null, ],
-      atuacao: [null],
+    initForm(){
+      this.form = this.formBuilder.group({
+      idAtuacao : [null],
+      idAssuntos: [null],
       uf: [null],
       cidade: [null],
       idBairro: [null],
-      idadeInicio: [null],
-      idadeFim: [null],
-      m: [false],
-      f: [false],
-      t: [false],
-      o: [false]
+      idadeMenorQue: [null],
+      idadeMaiorQue: [null],
+      genero: this.buildGeneros()
     })
   }
+
+  buildGeneros() {
+    const values = this.genero.map(v => new FormControl(false))
+    return this.formBuilder.array(values);
+  }
+
 
 
   carregarEstados(): void {
@@ -121,9 +131,15 @@ export class RaspagemComponent implements OnInit {
     })
   }
 
-  compararCidades(obj1: { nome: any; id: any; idUf: any; uf: any}, obj2: { nome: any; id: any; idUf: any; uf: any}) {
-    return obj1 && obj2 ?  (obj1.nome === obj2.nome && obj1.id === obj2.id && obj1.idUf === obj2.idUf && obj1.uf === obj2.uf) : obj1 === obj2;
+  carregarBairro(): void {
+    this.dropdownsService.getBairro().subscribe(dados => {
+      this.bairro = dados;
+    })
   }
+
+  /*compararCidades(obj1: { nome: any; id: any; idUf: any; uf: any}, obj2: { nome: any; id: any; idUf: any; uf: any}) {
+    return obj1 && obj2 ?  (obj1.nome === obj2.nome && obj1.id === obj2.id && obj1.idUf === obj2.idUf && obj1.uf === obj2.uf) : obj1 === obj2;
+  }*/
 
  /*handleValueChanges() {
    this.form.get('atuacao')?.valueChanges.
@@ -135,11 +151,27 @@ export class RaspagemComponent implements OnInit {
     console.log(this.form);
     //const cusIds=this.List.map(item => item.id);
 
+    let valueSubmit = Object.assign({}, this.form.value);
+    valueSubmit = Object.assign({}, valueSubmit, {
+      genero: valueSubmit.genero
+      .map((v: any, i: any) => v ? this.genero[i].nome : null)
+      .filter((v: any, i: any) => v !== null),
+      idAtuacao: valueSubmit.idAtuacao
+      .map((v: any, i: any) => v ? this.List[i].id : null)
+      .filter((v: any, i: any) => v !== null),
+      idAssuntos: valueSubmit.idAssuntos
+      .map((v: any, i: any) => v ? this.dropdownList[i].id : null)
+      .filter((v: any, i: any) => v !== null)
+    });
+
+  console.log(valueSubmit)
+
     if (this.form.valid) {
-      this.http.post('https://httpbin.org/post', this.form.value)
+      this.http.post('http://gabinetevirtual.us-east-1.elasticbeanstalk.com/api/v1/atendimentos/buscar', valueSubmit)
       .subscribe((dados) => {
         console.log(dados);
-        return
+        return;
+        //this.fileService.download('http://gabinetevirtual.us-east-1.elasticbeanstalk.com/api/v1/atendimentos/download1')
       })
       } else {
         Object.keys(this.form.controls).forEach(campo => {
@@ -166,5 +198,9 @@ export class RaspagemComponent implements OnInit {
             console.log('onItemSelect', item.id);
         }
 
+    getGenerosControls() {
+      return this.form.get('genero') ? (<FormArray>this.form.get('genero')).controls : null;
+    }
 }
 
+//https://httpbin.org/post

@@ -33,10 +33,11 @@ export class DropdownsService {
     );
   }
 
-  getBairro(Cidade?: any): Observable<Bairros[]> {
+  getBairro(idCidade?: number): Observable<Bairros[]> {
     return this.http.get<Bairros[]>('http://gabinetevirtual.us-east-1.elasticbeanstalk.com/api/v1/bairros').pipe
-    (map((regioes: Bairros[]) => regioes.filter(r => r.cidade === Cidade))
+    (map((regioes: Bairros[]) => regioes.filter(r => r.idCidade == idCidade))
     );
+
   }
 
   /*getBairro(idRegião?: number): Observable<Bairros[]> {
