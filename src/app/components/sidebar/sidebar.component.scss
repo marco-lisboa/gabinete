@@ -2,7 +2,17 @@
     text-align: left;
     width: 100%;
     margin-left: -20px;
+    display: flex
 }
+
+.bi-person-circle {
+  font-size: 53.5pt;
+  position:relative;
+  top:0%;
+  left:15%;
+  transform:translate(-50%, 0%)
+}
+
 
 
 .iconeseg {
@@ -71,6 +81,45 @@
    font-weight: 400;
    text-decoration: none;
    width: 272px;
+}
+
+@media(max-width: 1173px){
+  .profile-usermenu ul li a {
+    width: 245px;
+  }
+}
+
+@media(max-width: 1065px){
+  .profile-usermenu ul li a {
+    width: 205px;
+  }
+  .bi-person-circle {
+    left: auto;
+  }
+}
+
+@media(max-width: 905px){
+  .profile-usermenu ul li a {
+    width: 192px;
+  }
+}
+
+@media(max-width: 840px){
+  .profile-usermenu ul li a {
+    width: 180px;
+  }
+}
+
+@media(max-width: 800px){
+  .profile-usermenu ul li a {
+    width: 180px;
+  }
+}
+
+@media(max-width: 767px){
+  .container {
+    max-width: 231px;
+  }
 }
 
 
