@@ -5,3 +5,35 @@
 .active {
     padding-right: 7.9px;
 }
+
+@media(max-width: 1309px) {
+  .active {
+    font-size: 10px;
+    width: 71.25pt;
+    height: 71.25pt;
+  }
+
+  @media(max-width: 1269px) {
+    .active {
+      font-size: 10px;
+      width: 70.5pt;
+      height: 84.5pt;
+    }
+  }
+
+  @media(max-width: 1251px) {
+    .active {
+      font-size: 10px;
+      width: 70pt;
+      height: 70pt;
+    }
+  }
+
+  @media(max-width: 1247px) {
+    .active {
+      font-size: 10px;
+      width: 60pt;
+      height: 60pt;
+    }
+  }
+}

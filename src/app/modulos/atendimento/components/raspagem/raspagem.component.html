@@ -3,7 +3,7 @@
     <div class="title">
       <h1>Raspagem de contatos</h1>
     </div>
-    <form [formGroup]="form" (ngSubmit)="Submit()">
+    <form [formGroup]="form" (ngSubmit)="OnSubmit()">
       <div class="row">
         <div class="col-md-3">
           <label for="Estado">Estado</label>
@@ -26,12 +26,11 @@
             <option *ngFor="let bairro of bairro" [ngValue]="bairro.id">{{ bairro.descricao }}</option>
           </select>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3" >
           <label for="Atuação">Atuação(s)</label>
           <div>
           <ng-multiselect-dropdown
                 class="multi"
-                value
                 formControlName="idAtuacao"
                 [placeholder]="'Selecione'"
                 [settings]="dropdownSettingsList"
@@ -44,7 +43,7 @@
               <label for="Assunto" >Assunto(s)</label>
 
               <ng-multiselect-dropdown
-                formControlName="idAssuntos"
+                formControlName="idAssunto"
                 class="multi"
                 [placeholder]="'Selecione'"
                 [settings]="dropdownSettings"
@@ -58,11 +57,11 @@
               <label for="Idade">Idade</label>
           <div class="row-cols-sm-auto row">
             <span>De:</span>
-            <input type="number" style="margin-left: 7px" class="form-control" formControlName="idadeMenorQue"/>
+            <input type="number" style="margin-left: 7px" class="form-control" formControlName="menorQ"/>
           </div>
           <div class="row-cols-sm-auto row">
             <span>Até:</span>
-            <input type="number" class="form-control" formControlName="idadeMaiorQue" />
+            <input type="number" class="form-control" formControlName="maiorQ" />
           </div>
         </div>
         <div  class="col-md-3">

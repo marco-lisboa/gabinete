@@ -18,10 +18,11 @@ import { Bairros } from 'src/app/shared/models/bairros';
 
 
 export class RaspagemComponent implements OnInit {
-  [x: string]: any;
   dropdownList : any[];
-  List : [{ id: 218, descricao: 'Atuação 1' },
-  { id: 219, descricao: 'Atuação 2' },];
+  List : [
+  { id: 218, descricao: 'Atuação 1' },
+  { id: 219, descricao: 'Atuação 2' },
+  ];
   idField : any[];
   dropdownSettings: IDropdownSettings;
   dropdownSettingsList: IDropdownSettings;
@@ -107,13 +108,13 @@ export class RaspagemComponent implements OnInit {
 
     initForm(){
       this.form = this.formBuilder.group({
-      idAtuacao : [null],
-      idAssuntos: [null],
+      idAtuacao: [[]],
+      idAssunto: [[]],
       uf: [null],
       cidade: [null],
-      idBairro: [null],
-      idadeMenorQue: [null],
-      idadeMaiorQue: [null],
+      idBairro: [""],
+      menorQ: [""],
+      maiorQ: [""],
       genero: this.buildGeneros()
     })
   }
@@ -147,21 +148,24 @@ export class RaspagemComponent implements OnInit {
 
 
 
-  Submit(){
+  OnSubmit(){
     console.log(this.form);
     //const cusIds=this.List.map(item => item.id);
 
     let valueSubmit = Object.assign({}, this.form.value);
+
+
+
     valueSubmit = Object.assign({}, valueSubmit, {
       genero: valueSubmit.genero
       .map((v: any, i: any) => v ? this.genero[i].nome : null)
       .filter((v: any, i: any) => v !== null),
+      idAssunto: valueSubmit.idAssunto
+      .map((v: any, i: any) => v ? this.dropdownList[i].id : null)
+      .filter((v: any, i: any) => v !== null),
       idAtuacao: valueSubmit.idAtuacao
       .map((v: any, i: any) => v ? this.List[i].id : null)
       .filter((v: any, i: any) => v !== null),
-      idAssuntos: valueSubmit.idAssuntos
-      .map((v: any, i: any) => v ? this.dropdownList[i].id : null)
-      .filter((v: any, i: any) => v !== null)
     });
 
   console.log(valueSubmit)
@@ -204,3 +208,4 @@ export class RaspagemComponent implements OnInit {
 }
 
 //https://httpbin.org/post
+//http://gabinetevirtual.us-east-1.elasticbeanstalk.com/api/v1/atendimentos/buscar
