@@ -5,6 +5,16 @@
   border-radius: 15px;
 }
 
+.glyphicon-search {
+  display: flex;
+}
+
+input[type="text"] {
+  background-image: url(../../../assets/images/navbar/search.svg);
+  background-position: 10px;
+  background-repeat: no-repeat;
+}
+
 
 .input-group w-25 p-3 col-md-8 {
   border-radius: 11px;
@@ -61,4 +71,8 @@ i.glyphicon-user {
   font-size: 14px;
 }
 
-
+@media(max-width: 767px){
+  .navbar {
+    width: 384.76pt;
+  }
+}

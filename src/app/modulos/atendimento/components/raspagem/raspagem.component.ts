@@ -9,6 +9,7 @@ import { EstadosBr } from 'src/app/shared/models/estados-br';
 import { Cidades } from 'src/app/shared/models/Cidades';
 import { map, tap, switchMap, empty } from 'rxjs';
 import { Bairros } from 'src/app/shared/models/bairros';
+import { RaspagemService } from './services/raspagem.service';
 
 @Component({
   selector: 'app-raspagem',
@@ -45,7 +46,7 @@ export class RaspagemComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private dropdownsService: DropdownsService,
-    private fileService: FileServiceService,
+    private raspagemService: RaspagemService,
     private formBuilder : FormBuilder) { }
 
   ngOnInit() {
@@ -171,12 +172,27 @@ export class RaspagemComponent implements OnInit {
   console.log(valueSubmit)
 
     if (this.form.valid) {
-      this.http.post('http://gabinetevirtual.us-east-1.elasticbeanstalk.com/api/v1/atendimentos/buscar', valueSubmit)
+      /*this.http.post('http://gabinetevirtual.us-east-1.elasticbeanstalk.com/api/v1/atendimentos/buscar', valueSubmit)
       .subscribe((dados) => {
-        console.log(dados);
-        return;
-        //this.fileService.download('http://gabinetevirtual.us-east-1.elasticbeanstalk.com/api/v1/atendimentos/download1')
-      })
+        console.log(dados);*/
+        this.raspagemService.download('http://gabinetevirtual.us-east-1.elasticbeanstalk.com/api/v1/atendimentos/download1', valueSubmit)
+        .subscribe((res: any) => {
+          const file = new Blob([res], {
+           type: res.type
+          });
+
+          const blob = window.URL.createObjectURL(file);
+
+          const link = document.createElement('a')
+          link.href = blob;
+          link.download = 'RelatórioDeAtendimentos.txt';
+
+          link.click();
+
+          window.URL.revokeObjectURL(blob);
+          link.remove();
+        })
+
       } else {
         Object.keys(this.form.controls).forEach(campo => {
           console.log(campo);

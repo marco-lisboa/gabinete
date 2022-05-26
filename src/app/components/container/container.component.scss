@@ -1,0 +1,11 @@
+.container-fluid {
+  display: flex;
+}
+
+
+
+@media (max-width: 767px) {
+  .row > * {
+    width: 30% !important;
+  }
+}
