@@ -10,6 +10,7 @@ import { Cidades } from 'src/app/shared/models/Cidades';
 import { map, tap, switchMap, empty } from 'rxjs';
 import { Bairros } from 'src/app/shared/models/bairros';
 import { RaspagemService } from './services/raspagem.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-raspagem',
@@ -85,7 +86,7 @@ export class RaspagemComponent implements OnInit {
 
     this.form.get('uf')?.valueChanges
     .pipe(
-      tap(estado => console.log('Novo Estado: ', estado)),
+     // tap(estado => console.log('Novo Estado: ', estado)),
       map(estado => this.listarEstados.filter(e => e.sigla === estado)),
       map(estados => estados && estados.length > 0 ? estados[0].id: empty()),
       switchMap((estadoId) => this.dropdownsService.getCidades(Number(estadoId))),
@@ -95,7 +96,7 @@ export class RaspagemComponent implements OnInit {
 
       this.form.get('cidade')?.valueChanges
     .pipe(
-      tap(cidade => console.log('Nova Cidade: ', cidade)),
+     // tap(cidade => console.log('Nova Cidade: ', cidade)),
       map(cidade => this.cidade.filter(c => c.nome === cidade)),
       map(cidades => cidades && cidades.length > 0 ? cidades[0].id: empty()),
       switchMap((cidadeId) => this.dropdownsService.getBairro(Number(cidadeId))),
@@ -150,7 +151,7 @@ export class RaspagemComponent implements OnInit {
 
 
   OnSubmit(){
-    console.log(this.form);
+  //  console.log(this.form);
     //const cusIds=this.List.map(item => item.id);
 
     let valueSubmit = Object.assign({}, this.form.value);
@@ -169,9 +170,19 @@ export class RaspagemComponent implements OnInit {
       .filter((v: any, i: any) => v !== null),
     });
 
-  console.log(valueSubmit)
+  //console.log(valueSubmit)
 
     if (this.form.valid) {
+      Swal.fire({
+        title: 'Baixando...',
+        html: 'Aguarde...',
+        timer: 4000,
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading()
+        }
+      });
       /*this.http.post('http://gabinetevirtual.us-east-1.elasticbeanstalk.com/api/v1/atendimentos/buscar', valueSubmit)
       .subscribe((dados) => {
         console.log(dados);*/
@@ -180,6 +191,8 @@ export class RaspagemComponent implements OnInit {
           const file = new Blob([res], {
            type: res.type
           });
+
+
 
           const blob = window.URL.createObjectURL(file);
 
@@ -195,7 +208,7 @@ export class RaspagemComponent implements OnInit {
 
       } else {
         Object.keys(this.form.controls).forEach(campo => {
-          console.log(campo);
+         // console.log(campo);
           const controle = this.form.get(campo);
           controle?.markAsTouched();
         });
@@ -215,7 +228,7 @@ export class RaspagemComponent implements OnInit {
 
    onItemSelect(item: any) {
            item = item.id;
-            console.log('onItemSelect', item.id);
+            //console.log('onItemSelect', item.id);
         }
 
     getGenerosControls() {

@@ -138,7 +138,7 @@ export class RegistrarComponent implements OnInit {
 
     this.formulario.get('uf')?.valueChanges
     .pipe(
-      tap(estado => console.log('Novo Estado: ', estado)),
+      //tap(estado => console.log('Novo Estado: ', estado)),
       map(estado => this.listarEstados.filter(e => e.sigla === estado)),
       map(estados => estados && estados.length > 0 ? estados[0].id: empty()),
       switchMap((estadoId) => this.dropdownsService.getCidades(Number(estadoId))),
@@ -149,7 +149,7 @@ export class RegistrarComponent implements OnInit {
 
     this.formulario.get('cidade')?.valueChanges
     .pipe(
-      tap(cidade => console.log('Nova Cidade: ', cidade)),
+      //tap(cidade => console.log('Nova Cidade: ', cidade)),
       map(cidade => this.cidade.filter(c => c.nome === cidade)),
       map(cidades => cidades && cidades.length > 0 ? cidades[0].id: empty()),
       switchMap((cidadeId) => this.dropdownsService.getBairro(Number(cidadeId))),
@@ -271,7 +271,7 @@ export class RegistrarComponent implements OnInit {
 
 
   Submit() {
-    console.log(this.formulario);
+   // console.log(this.formulario);
 
     /*
     let valueSubmit = Object.assign({}, this.formulario.value);
@@ -287,7 +287,7 @@ export class RegistrarComponent implements OnInit {
     if (this.formulario.valid) {
     this.http.post('http://gabinetevirtual.us-east-1.elasticbeanstalk.com/api/v1/atendimentos', this.formulario.value)
     .subscribe((dados) => {
-      console.log(dados);
+     // console.log(dados);
     }),
     Swal.fire({
       icon: 'success',
@@ -305,7 +305,7 @@ export class RegistrarComponent implements OnInit {
         icon: "error"
       });
       Object.keys(this.formulario.controls).forEach(campo => {
-        console.log(campo);
+        //console.log(campo);
         const controle = this.formulario.get(campo);
         controle?.markAsTouched();
       });
