@@ -8,6 +8,7 @@ import { CampoControlErroComponent } from 'src/app/shared/campo-control-erro/cam
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { RaspagemComponent } from './components/raspagem/raspagem.component';
+import { ListagemComponent } from './components/listagem/listagem.component';
 
 
 
@@ -15,6 +16,7 @@ import { RaspagemComponent } from './components/raspagem/raspagem.component';
   declarations: [
     RegistrarComponent,
     RaspagemComponent,
+    ListagemComponent,
     CampoControlErroComponent
   ],
   imports: [
