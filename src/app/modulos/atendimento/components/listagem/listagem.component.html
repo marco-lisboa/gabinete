@@ -1,3 +1,44 @@
-<p>
-  listagem works!
-</p>
+<div class="card">
+  <div class="card-body">
+    <header class="title">
+      <div class="line-1">
+        <h1>Listagem de atendimentos</h1>
+        <div class="legenda">
+          <div class="tipo-prazo">
+            <div class="in-time-limit"></div>
+            Dentro do prazo
+          </div>
+          <div class="tipo-prazo">
+            <div class="late"></div>
+            Atrasado
+          </div>
+          <div class="tipo-prazo">
+            <div class="finished"></div>
+            Finalizado
+          </div>
+          <div class="tipo-prazo">
+            <div class="not-finished"></div>
+            Não finalizado
+          </div>
+        </div>
+      </div>
+      <div class="line-2">
+        <div class="button">
+          <input
+            type="text"
+            class="form-control pesquisa float-end"
+            placeholder="Contato, número, data"
+            aria-label="Contato, número, data"
+            aria-describedby="basic-addon1"
+          />
+          <button>Pesquisar</button>
+        </div>
+        <button class="print-out-list">Imprimir lista <i class="icon bi bi-printer"></i></button>
+        <div class="found-items">
+          Itens encontrados
+          <div></div>
+        </div>
+      </div>
+    </header>
+  </div>
+</div>
